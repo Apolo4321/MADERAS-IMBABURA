@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maderas Imbabura | Catálogo Interactivo 3D</title>
+    <title>Maderas Imbabura | Catálogo Interactivo 3D Premium</title>
     <style>
         /* Estilo General - Lujo Minimalista Claro */
         body {
@@ -15,7 +15,6 @@
             line-height: 1.6;
         }
 
-        /* Encabezado */
         header {
             padding: 4rem 1rem 3rem 1rem;
             text-align: center;
@@ -39,14 +38,12 @@
             font-style: italic;
         }
 
-        /* Sección Principal */
         main {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 1.5rem 4rem 1.5rem;
         }
 
-        /* El Recuadro Único de Catálogo - Interactivo */
         .bloque-catalogo-interactivo {
             background: #ffffff;
             border: 1px solid #eaeaea;
@@ -151,7 +148,6 @@
             padding-bottom: 10px;
         }
 
-        /* Estructura de cada uno de los 7 Artículos */
         .producto-item-premium {
             margin-bottom: 50px;
             border-bottom: 1px solid #f0f0f0;
@@ -159,16 +155,17 @@
             text-align: center;
         }
 
-        /* Contenedor interactivo del render 3D */
+        /* Contenedor 3D de alta tasa de refresco */
         .contenedor-3d {
             width: 100%;
-            height: 300px;
-            background-color: #fcfbfa;
-            border: 1px solid #f0eeeb;
+            height: 320px;
+            background-color: #faf9f6;
+            border: 1px solid #f2efea;
             margin-bottom: 20px;
             position: relative;
             cursor: grab;
             overflow: hidden;
+            touch-action: none; /* Previene retrasos por gestos nativos en móvil */
         }
 
         .contenedor-3d:active {
@@ -177,12 +174,12 @@
 
         .indicador-3d {
             position: absolute;
-            bottom: 10px;
+            bottom: 12px;
             right: 15px;
             font-size: 0.75rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #999;
+            color: #aaa;
             pointer-events: none;
             font-style: italic;
         }
@@ -203,12 +200,12 @@
             text-align: left;
         }
 
-        /* --- CONTROLADORES DE CANTIDAD AL ESTILO COMPRA DE LUJO --- */
+        /* Selectores de Cantidad Estilo Minimalista */
         .interaccion-compra {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #fcfbfa;
+            background: #faf9f6;
             border: 1px solid #e5e5e5;
             padding: 12px 20px;
             max-width: 320px;
@@ -235,11 +232,6 @@
             color: #111;
             cursor: pointer;
             padding: 0 10px;
-            transition: color 0.2s;
-        }
-
-        .btn-cantidad:hover {
-            color: #888;
         }
 
         .numero-unidades {
@@ -250,7 +242,6 @@
             text-align: center;
         }
 
-        /* Botón de Contacto */
         .cta-container {
             text-align: center;
             margin-top: 4rem;
@@ -267,6 +258,7 @@
             font-size: 0.85rem;
             transition: all 0.3s;
             display: inline-block;
+            cursor: pointer;
         }
 
         .btn-lujo:hover {
@@ -296,7 +288,7 @@
 
     <main>
         <div class="bloque-catalogo-interactivo" onclick="abrirCatalogo()">
-            <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Variedad de Maderas Solidas">
+            <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Maderas de Calidad">
             <h2>Nuestro Catálogo de Madera</h2>
             <p>Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
             <p class="txt-click">Presione aquí para visualizar el catálogo interactivo 3D</p>
@@ -316,119 +308,119 @@
             <h2 class="titulo-interno">Línea de Productos 3D</h2>
             
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-tabla-monte" data-tipo="tabla_ancha">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-guadua-machacada" data-wood="guadua_machacada">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Guadua Machacada (Esterilla Única)</h3>
+                <p>Pieza individual de caña guadua abierta mediante cortes longitudinales uniformes. Conserva la corteza verde protectora en su exterior y expone su cara interna de fibra amarillo natural.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-machacada', -1)">−</button>
+                        <span class="numero-unidades" id="cant-machacada">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-machacada', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-tabla-monte" data-wood="tabla_monte">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
                 <h3>Tabla de Monte</h3>
-                <p>Madera rústica y sumamente resistente extraída de bosques locales, ideal para cimbras, encofrados pesados y obras estructurales rudas.</p>
+                <p>Tabla de corte rústico y estructural extraída de maderas nativas locales. Presenta un tono rojizo denso y alta resistencia física para encofrados exigentes.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-monte', -1)">−</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-monte', -1)">−</button>
                         <span class="numero-unidades" id="cant-monte">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-monte', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-monte', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-guadua-machacada" data-tipo="esterilla">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-guadua-normal" data-wood="guadua_normal">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
-                <h3>Guadua Machacada (Esterilla)</h3>
-                <p>Paneles flexibles de bambú guadua procesado. Excelentes para revestimientos orgánicos, tumbados, bioconstrucción y refuerzo de paredes.</p>
+                <h3>Guadua Normal (Caña)</h3>
+                <p>Cilindro tubular natural y hueco de caña guadua seleccionada. Color verde vivo uniforme con nudos estructurales auténticos, ideal para soportes verticales y bioconstrucción.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-machacada', -1)">−</button>
-                        <span class="numero-unidades" id="cant-machacada">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-machacada', 1)">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-guadua-normal" data-tipo="cilindro_vacio">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
-                </div>
-                <h3>Guadua Normal (Cáliz/Poste)</h3>
-                <p>Cañas estructurales seleccionadas por su grosor y madurez. El acero vegetal de la construcción, ideal para columnas, vigas estructurales y diseño rústico.</p>
-                <div class="interaccion-compra">
-                    <span class="label-cantidad">Cantidad</span>
-                    <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-guadua', -1)">−</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-guadua', -1)">−</button>
                         <span class="numero-unidades" id="cant-guadua">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-guadua', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-guadua', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-duela-eucalipto" data-tipo="tabla_delgada">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-duela-eucalipto" data-wood="duela_eucalipto">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
                 <h3>Duela de Eucalipto</h3>
-                <p>Madera machihembrada, pulida y secada al horno. Perfecta para la instalación de pisos elegantes de alta resistencia al tráfico peatonal.</p>
+                <p>Listón de madera maciza cepillada, de líneas completamente rectas y caras lisas cuadradas sin relieves laterales. Color amarillo pálido ideal para acabados pulidos.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-duela', -1)">−</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-duela', -1)">−</button>
                         <span class="numero-unidades" id="cant-duela">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-duela', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-duela', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-vigas-madera" data-tipo="viga_gruesa">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-viga-madera" data-wood="viga_madera">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
-                <h3>Vigas de Madera</h3>
-                <p>Cortes rectangulares masivos de gran calibre. Soportes ideales para techados expuestos, pérgolas residenciales y altillos.</p>
+                <h3>Viga de Madera</h3>
+                <p>Bloque masivo de sección cuadrada estructural. Diseñado para recibir cargas pesadas en techados principales y marcos arquitectónicos expuestos.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-vigas', -1)">−</button>
-                        <span class="numero-unidades" id="cant-vigas">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-vigas', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-viga', -1)">−</button>
+                        <span class="numero-unidades" id="cant-viga">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-viga', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-pingos" data-tipo="cilindro_lleno">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-pingo" data-wood="pingo">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
-                <h3>Pingos / Puntales</h3>
-                <p>Postes circulares de eucalipto ideales para soporte vertical temporal en losas de hormigón, puntales de construcción y cercados de linderos.</p>
+                <h3>Pingo</h3>
+                <p>Tronco cilíndrico uniforme de eucalipto. Su color es amarillo pálido natural, con un maquinado que remata en puntas totalmente planas pero de bordes redondeados.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-pingos', -1)">−</button>
-                        <span class="numero-unidades" id="cant-pingos">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-pingos', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-pingo', -1)">−</button>
+                        <span class="numero-unidades" id="cant-pingo">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-pingo', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <div class="producto-item-premium">
-                <div class="contenedor-3d" id="canvas-tirantes" data-tipo="tirante">
-                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                <div class="contenedor-3d" id="3d-tirante" data-wood="tirante">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
                 </div>
-                <h3>Tirantes de Madera</h3>
-                <p>Listones cuadrados y cepillados de sección uniforme, indispensables para clavar tejas, armados de techos falsos y subdivisiones.</p>
+                <h3>Tirante</h3>
+                <p>Pieza cilíndrica de madera de gran alcance. Se caracteriza por un diámetro robusto y mucho más ancho que el de un pingo estándar, ideal para contenciones estructurales.</p>
                 <div class="interaccion-compra">
                     <span class="label-cantidad">Cantidad</span>
                     <div class="selector-cantidad">
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-tirantes', -1)">−</button>
-                        <span class="numero-unidades" id="cant-tirantes">0</span>
-                        <button class="btn-cantidad" onclick="modificarCantidad('cant-tirantes', 1)">+</button>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-tirante', -1)">−</button>
+                        <span class="numero-unidades" id="cant-tirante">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-tirante', 1)">+</button>
                     </div>
                 </div>
             </div>
 
             <center style="margin-top: 40px;">
-                <button class="btn-lujo" onclick="enviarPedidoWhatsApp()">Enviar Pedido Seleccionado</button>
+                <button class="btn-lujo" onclick="enviarPedidoWhatsApp()">Cotizar Pedido Seleccionado</button>
             </center>
         </div>
     </div>
@@ -438,7 +430,6 @@
     </footer>
 
     <script>
-        // Funciones del Desplegable
         function abrirCatalogo() {
             document.getElementById("miCatalogo").classList.add("activa");
             document.body.style.overflow = "hidden";
@@ -448,154 +439,192 @@
             document.body.style.overflow = "auto";
         }
 
-        // Lógica de Cantidades (+ / -)
-        function modificarCantidad(id, cambio) {
-            let elemento = document.getElementById(id);
-            let valorActual = parseInt(elemento.innerText);
-            let nuevoValor = valorActual + cambio;
-            if (nuevoValor >= 0) {
-                elemento.innerText = nuevoValor;
-            }
+        function cambiarCant(id, delta) {
+            const el = document.getElementById(id);
+            let val = parseInt(el.innerText) + delta;
+            if (val >= 0) el.innerText = val;
         }
 
-        // Envío Inteligente de Pedidos a WhatsApp
         function enviarPedidoWhatsApp() {
-            let mensaje = "Hola Maderas Imbabura. Me interesa cotizar el siguiente pedido:\n\n";
-            let productos = [
-                { nombre: "Tabla de Monte", id: "cant-monte" },
-                { nombre: "Guadua Machacada", id: "cant-machacada" },
-                { nombre: "Guadua Normal", id: "cant-guadua" },
-                { nombre: "Duela de Eucalipto", id: "cant-duela" },
-                { nombre: "Vigas de Madera", id: "cant-vigas" },
-                { nombre: "Pingos", id: "cant-pingos" },
-                { nombre: "Tirantes de Madera", id: "cant-tirantes" }
+            let msg = "Hola Maderas Imbabura. Solicito la cotización del siguiente listado:\n\n";
+            const items = [
+                { n: "Guadua Machacada", id: "cant-machacada" },
+                { n: "Tabla de Monte", id: "cant-monte" },
+                { n: "Guadua Normal", id: "cant-guadua" },
+                { n: "Duela de Eucalipto", id: "cant-duela" },
+                { n: "Viga de Madera", id: "cant-viga" },
+                { n: "Pingo", id: "cant-pingo" },
+                { n: "Tirante", id: "cant-tirante" }
             ];
-            
-            let tieneItems = false;
-            productos.forEach(p => {
-                let cant = parseInt(document.getElementById(p.id).innerText);
-                if (cant > 0) {
-                    mensaje += `• ${p.nombre}: ${cant} unidades\n`;
-                    tieneItems = true;
-                }
+            let check = false;
+            items.forEach(p => {
+                let c = parseInt(document.getElementById(p.id).innerText);
+                if (c > 0) { msg += `• ${p.n}: ${c} unidades\n`; check = true; }
             });
-
-            if (!tieneItems) {
-                alert("Por favor, aumente la cantidad de al menos un artículo antes de enviar.");
-                return;
-            }
-
-            window.open("https://wa.me/593962746147?text=" + encodeURIComponent(mensaje), "_blank");
+            if (!check) { alert("Por favor, selecciona al menos 1 unidad de algún artículo."); return; }
+            window.open("https://wa.me/593962746147?text=" + encodeURIComponent(msg), "_blank");
         }
 
-        // --- MOTOR INTERACTIVO DE RENDERS 3D REALES ---
-        function inicializarMundo3D(idContenedor, tipoGeometria) {
-            const contenedor = document.getElementById(idContenedor);
-            if (!contenedor) return;
+        // --- MOTOR INTERACTIVO WEBGL OPTIMIZADO (60 FPS FIXED) ---
+        function crearVisorMadera3D(idContenedor, tipoMadera) {
+            const cont = document.getElementById(idContenedor);
+            if (!cont) return;
 
-            // Escena y Cámara
             const escena = new THREE.Scene();
-            escena.background = new THREE.Color(0xfcfbfa);
-            const camara = new THREE.PerspectiveCamera(45, contenedor.clientWidth / contenedor.clientHeight, 0.1, 1000);
-            camara.position.set(0, 0, 5);
+            escena.background = new THREE.Color(0xfaf9f6);
 
-            // Renderizador
-            const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(contenedor.clientWidth, contenedor.clientHeight);
-            contenedor.appendChild(renderer.domElement);
+            const camara = new THREE.PerspectiveCamera(40, cont.clientWidth / cont.clientHeight, 0.1, 100);
+            camara.position.set(0, 0, 4.5);
 
-            // Iluminación
-            const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.7);
-            escena.add(luzAmbiente);
-            const luzDireccional = new THREE.DirectionalLight(0xfff5ea, 0.6);
-            luzDireccional.position.set(5, 5, 4);
-            escena.add(luzDireccional);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+            renderer.setSize(cont.clientWidth, cont.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Fluidez extrema sin saturar GPU
+            cont.appendChild(renderer.domElement);
 
-            // Modelado de Piezas de Madera de Acuerdo a su Naturaleza Real
-            let geometria;
-            if (tipoGeometria === 'tabla_ancha') geometria = new THREE.BoxGeometry(2.4, 0.8, 0.15);
-            else if (tipoGeometria === 'tabla_delgada') geometria = new THREE.BoxGeometry(2.4, 0.4, 0.1);
-            else if (tipoGeometria === 'viga_gruesa') geometria = new THREE.BoxGeometry(2.5, 0.5, 0.5);
-            else if (tipoGeometria === 'tirante') geometria = new THREE.BoxGeometry(2.5, 0.2, 0.2);
-            else if (tipoGeometria === 'esterilla') geometria = new THREE.BoxGeometry(2.0, 1.2, 0.05);
-            else if (tipoGeometria === 'cilindro_lleno') geometria = new THREE.CylinderGeometry(0.18, 0.18, 2.6, 16);
-            else if (tipoGeometria === 'cilindro_vacio') geometria = new THREE.CylinderGeometry(0.2, 0.2, 2.6, 16, 1, true);
+            // Iluminación Premium de Estudio
+            const luzA = new THREE.AmbientLight(0xffffff, 0.8);
+            escena.add(luzA);
+            const luzD = new THREE.DirectionalLight(0xfffbf2, 0.5);
+            luzD.position.set(4, 6, 3);
+            escena.add(luzD);
 
-            // Generación de Textura Orgánica de Madera Real mediante Algoritmo de Vetas
-            const canvasTextura = document.createElement('canvas');
-            canvasTextura.width = 256; canvasTextura.height = 256;
-            const ctx = canvasTextura.getContext('2d');
-            ctx.fillStyle = tipoGeometria.includes('guadua') ? '#c2b280' : '#b08d57'; 
-            ctx.fillRect(0, 0, 256, 256);
-            ctx.fillStyle = tipoGeometria.includes('guadua') ? '#a39360' : '#8a6532';
-            for (let i = 0; i < 256; i += 4) {
-                if (Math.random() > 0.3) ctx.fillRect(0, i, 256, Math.random() * 2);
+            let mallaPrincipal;
+
+            // Modelado Geométrico y Paleta de Colores de Precisión
+            if (tipoMadera === 'guadua_machacada') {
+                // Grupo para combinar el exterior verde y el interior amarillo con hendiduras
+                mallaPrincipal = new THREE.Group();
+                
+                // Base interna (Amarillo Bambú Natural Abierto)
+                const geoInt = new THREE.BoxGeometry(2.2, 0.9, 0.08);
+                const matInt = new THREE.MeshStandardMaterial({ color: 0xdfcb90, roughness: 0.5 });
+                const baseInt = new THREE.Mesh(geoInt, matInt);
+                mallaPrincipal.add(baseInt);
+
+                // Listones simuladores de fisuras rectas (Corteza exterior verde)
+                const numTiras = 8;
+                const anchoTira = 0.9 / numTiras;
+                for(let i=0; i<numTiras; i++) {
+                    const geoTira = new THREE.BoxGeometry(2.202, anchoTira - 0.02, 0.02);
+                    const matTira = new THREE.MeshStandardMaterial({ color: 0x6e7e55, roughness: 0.6 });
+                    const tira = new THREE.Mesh(geoTira, matTira);
+                    // Desplazamos las tiras al frente para simular el relieve de la caña machacada
+                    tira.position.set(0, -0.45 + (anchoTira*i) + (anchoTira/2), 0.05);
+                    mallaPrincipal.add(tira);
+                }
+            } 
+            else if (tipoMadera === 'tabla_monte') {
+                // Tabla estructural de color rojo denso
+                const geo = new THREE.BoxGeometry(2.3, 0.65, 0.12);
+                const mat = new THREE.MeshStandardMaterial({ color: 0x935143, roughness: 0.7 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'guadua_normal') {
+                // Cilindro hueco y completamente verde
+                const geo = new THREE.CylinderGeometry(0.18, 0.18, 2.5, 24, 1, true);
+                const mat = new THREE.MeshStandardMaterial({ color: 0x5a6d41, roughness: 0.5, side: THREE.DoubleSide });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+                mallaPrincipal.rotation.z = Math.PI / 2;
+            } 
+            else if (tipoMadera === 'duela_eucalipto') {
+                // Rectangular, lisa y perfectamente recta. Amarillo pálido.
+                const geo = new THREE.BoxGeometry(2.4, 0.38, 0.09);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xf3eac2, roughness: 0.4 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'viga_madera') {
+                // Bloque de sección gruesa y cuadrada
+                const geo = new THREE.BoxGeometry(2.2, 0.45, 0.45);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xbc986a, roughness: 0.6 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'pingo') {
+                // Cilindro uniforme, amarillo pálido, puntas planas pero bordes curvos
+                mallaPrincipal = new THREE.Group();
+                const geoCil = new THREE.CylinderGeometry(0.13, 0.13, 2.4, 24);
+                const matPingo = new THREE.MeshStandardMaterial({ color: 0xeedfa4, roughness: 0.5 });
+                const cilindro = new THREE.Mesh(geoCil, matPingo);
+                cilindro.rotation.z = Math.PI / 2;
+                mallaPrincipal.add(cilindro);
+
+                // Bordes suavizados en las puntas (Toros planos)
+                const geoBorde = new THREE.TorusGeometry(0.11, 0.02, 8, 24);
+                const borde1 = new THREE.Mesh(geoBorde, matPingo);
+                borde1.position.set(-1.2, 0, 0); borde1.rotation.y = Math.PI / 2;
+                const borde2 = new THREE.Mesh(geoBorde, matPingo);
+                borde2.position.set(1.2, 0, 0); borde2.rotation.y = Math.PI / 2;
+                mallaPrincipal.add(borde1, borde2);
+            } 
+            else if (tipoMadera === 'tirante') {
+                // Cilindro redondo de diámetro muy ancho (más grueso que el pingo)
+                const geo = new THREE.CylinderGeometry(0.25, 0.25, 2.4, 24);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xd0b382, roughness: 0.5 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+                mallaPrincipal.rotation.z = Math.PI / 2;
             }
-            const texturaGenerada = new THREE.CanvasTexture(canvasTextura);
 
-            // Material
-            const material = new THREE.MeshStandardMaterial({
-                map: texturaGenerada,
-                roughness: 0.6,
-                metalness: 0.1,
-                side: THREE.DoubleSide
-            });
+            // Inclinación inicial estética de exhibición
+            mallaPrincipal.rotation.set(0.3, 0.6, 0);
+            escena.add(mallaPrincipal);
 
-            const piezaMadera = new THREE.Mesh(geometria, material);
-            piezaMadera.rotation.set(0.4, 0.5, 0);
-            escena.add(piezaMadera);
+            // Interacción táctil de fricción cero (Ultra Fluida)
+            let presionado = false;
+            let antX = 0, antY = 0;
 
-            // Animación e Interacción Táctil / Mouse
-            let mouseApretado = false;
-            let coordXAnterior = 0;
-            let coordYAnterior = 0;
-
-            contenedor.addEventListener('mousedown', (e) => { mouseApretado = true; coordXAnterior = e.clientX; coordYAnterior = e.clientY; });
-            contenedor.addEventListener('touchstart', (e) => { mouseApretado = true; coordXAnterior = e.touches[0].clientX; coordYAnterior = e.touches[0].clientY; });
+            cont.addEventListener('mousedown', (e) => { presionado = true; antX = e.clientX; antY = e.clientY; });
+            cont.addEventListener('touchstart', (e) => { presionado = true; antX = e.touches[0].clientX; antY = e.touches[0].clientY; }, {passive: true});
             
-            window.addEventListener('mouseup', () => mouseApretado = false);
-            window.addEventListener('touchend', () => mouseApretado = false);
+            window.addEventListener('mouseup', () => presionado = false);
+            window.addEventListener('touchend', () => presionado = false);
 
-            contenedor.addEventListener('mousemove', (e) => {
-                if (!mouseApretado) return;
-                let deltaX = e.clientX - coordXAnterior;
-                let deltaY = e.clientY - coordYAnterior;
-                piezaMadera.rotation.y += deltaX * 0.01;
-                piezaMadera.rotation.x += deltaY * 0.01;
-                coordXAnterior = e.clientX;
-                coordYAnterior = e.clientY;
+            cont.addEventListener('mousemove', (e) => {
+                if (!presionado) return;
+                let dx = e.clientX - antX;
+                let dy = e.clientY - antY;
+                mallaPrincipal.rotation.y += dx * 0.007;
+                mallaPrincipal.rotation.x += dy * 0.007;
+                antX = e.clientX; antY = e.clientY;
             });
 
-            contenedor.addEventListener('touchmove', (e) => {
-                if (!mouseApretado) return;
-                let deltaX = e.touches[0].clientX - coordXAnterior;
-                let deltaY = e.touches[0].clientY - coordYAnterior;
-                piezaMadera.rotation.y += deltaX * 0.01;
-                piezaMadera.rotation.x += deltaY * 0.01;
-                coordXAnterior = e.touches[0].clientX;
-                coordYAnterior = e.touches[0].clientY;
-            });
+            cont.addEventListener('touchmove', (e) => {
+                if (!presionado) return;
+                let dx = e.touches[0].clientX - antX;
+                let dy = e.touches[0].clientY - antY;
+                mallaPrincipal.rotation.y += dx * 0.009;
+                mallaPrincipal.rotation.x += dy * 0.009;
+                antX = e.touches[0].clientX; antY = e.touches[0].clientY;
+            }, {passive: true});
 
-            function animar() {
-                requestAnimationFrame(animar);
-                if (!mouseApretado) {
-                    piezaMadera.rotation.y += 0.003; // Rotación automática sutil si no se toca
+            // Bucle de animación optimizado
+            function renderizar() {
+                requestAnimationFrame(renderizar);
+                if (!presionado) {
+                    mallaPrincipal.rotation.y += 0.004; // Rotación inercial continua suave
                 }
                 renderer.render(escena, camara);
             }
-            animar();
+            renderizar();
+
+            // Ajuste automático al cambiar tamaño de pantalla
+            window.addEventListener('resize', () => {
+                if(cont.clientWidth > 0){
+                    camara.aspect = cont.clientWidth / cont.clientHeight;
+                    camara.updateProjectionMatrix();
+                    renderer.setSize(cont.clientWidth, cont.clientHeight);
+                }
+            });
         }
 
-        // Inicializar los 7 Canvas al cargar el sitio
-        window.addEventListener('load', () => {
-            inicializarMundo3D('canvas-tabla-monte', 'tabla_ancha');
-            inicializarMundo3D('canvas-guadua-machacada', 'esterilla');
-            inicializarMundo3D('canvas-guadua-normal', 'cilindro_vacio');
-            inicializarMundo3D('canvas-duela-eucalipto', 'tabla_delgada');
-            inicializarMundo3D('canvas-vigas-madera', 'viga_gruesa');
-            inicializarMundo3D('canvas-pingos', 'cilindro_lleno');
-            inicializarMundo3D('canvas-tirantes', 'tirante');
-        });
+            // Inicializar las piezas de manera asíncrona al cargar la página
+            window.addEventListener('DOMContentLoaded', () => {
+                crearVisorMadera3D('3d-guadua-machacada', 'guadua_machacada');
+                crearVisorMadera3D('3d-tabla-monte', 'tabla_monte');
+                crearVisorMadera3D('3d-guadua-normal', 'guadua_normal');
+                crearVisorMadera3D('3d-duela-eucalipto', 'duela_eucalipto');
+                crearVisorMadera3D('3d-viga-madera', 'viga_madera');
+                crearVisorMadera3D('3d-pingo', 'pingo');
+                crearVisorMadera3D('3d-tirante', 'tirante');
+            });
     </script>
 </body>
 </html>
