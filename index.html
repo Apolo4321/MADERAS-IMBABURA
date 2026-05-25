@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Maderas Imbabura | Catálogo Premium 3D</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -18,67 +20,97 @@
 }
 
 body{
-    background:#f5f3ef;
+
+    background:#f5f1eb;
+
     font-family:'Inter',sans-serif;
+
     color:#111;
+
     overflow-x:hidden;
 }
 
-/* HERO */
+/* HEADER */
 
 header{
-    padding:90px 20px 60px;
+
     text-align:center;
+
+    padding:80px 20px 60px;
 }
 
 .logo{
-    width:150px;
-    margin-bottom:25px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,.08));
+
+    width:140px;
+
+    margin-bottom:20px;
+
+    filter:drop-shadow(0 12px 25px rgba(0,0,0,.12));
 }
 
 header h1{
+
     font-family:'Cormorant Garamond',serif;
+
     font-size:4rem;
-    letter-spacing:8px;
+
+    letter-spacing:10px;
+
     font-weight:500;
+
+    color:#2b1e15;
 }
 
 header p{
-    margin-top:15px;
-    color:#666;
-    letter-spacing:2px;
+
+    margin-top:10px;
+
+    color:#8b6b47;
+
+    letter-spacing:4px;
+
     text-transform:uppercase;
+
     font-size:.9rem;
 }
 
-/* CATALOGO */
+/* GRID */
 
 .catalogo{
-    max-width:1200px;
+
+    max-width:1500px;
+
     margin:auto;
-    padding:40px 20px 100px;
+
+    padding:20px 20px 120px;
 }
 
 .grid{
+
     display:grid;
+
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:40px;
+
+    gap:28px;
 }
+
+/* CARD */
 
 .card{
 
-    background:white;
+    background:#f8f5f0;
 
-    border-radius:30px;
+    border:1px solid rgba(0,0,0,.05);
+
+    border-radius:22px;
 
     overflow:hidden;
 
     box-shadow:
     0 10px 30px rgba(0,0,0,.04),
-    0 1px 3px rgba(0,0,0,.06);
+    0 2px 6px rgba(0,0,0,.04);
 
-    transition:.4s ease;
+    transition:.45s;
 }
 
 .card:hover{
@@ -86,24 +118,44 @@ header p{
     transform:translateY(-8px);
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,.08),
-    0 3px 6px rgba(0,0,0,.06);
+    0 20px 45px rgba(0,0,0,.08),
+    0 5px 12px rgba(0,0,0,.06);
 }
 
-/* CONTENEDOR 3D */
+/* VIEWER */
 
 .viewer{
 
     width:100%;
-    height:300px;
+
+    height:320px;
 
     background:
-    radial-gradient(circle at top,#ffffff,#ece7df);
+    radial-gradient(circle at top,#ffffff,#ece5dc);
 
     position:relative;
 
     overflow:hidden;
 }
+
+.viewer::after{
+
+    content:'GIRAR 360°';
+
+    position:absolute;
+
+    bottom:18px;
+
+    right:20px;
+
+    font-size:.7rem;
+
+    letter-spacing:2px;
+
+    color:#666;
+}
+
+/* INFO */
 
 .info{
 
@@ -116,29 +168,33 @@ header p{
 
     font-size:2rem;
 
-    margin-bottom:10px;
-
     font-weight:600;
+
+    margin-bottom:12px;
+
+    color:#2b1e15;
 }
 
 .info p{
 
-    color:#666;
+    color:#555;
 
-    line-height:1.7;
+    line-height:1.8;
 
-    margin-bottom:25px;
+    font-size:.95rem;
+
+    min-height:120px;
 }
 
-/* CONTROLES */
+/* CONTROLS */
 
 .controls{
 
+    margin-top:25px;
+
     display:flex;
 
-    justify-content:space-between;
-
-    align-items:center;
+    justify-content:center;
 }
 
 .qty{
@@ -147,56 +203,46 @@ header p{
 
     align-items:center;
 
-    border:1px solid #ddd;
+    border:1px solid rgba(0,0,0,.12);
 
     border-radius:14px;
 
     overflow:hidden;
+
+    background:white;
 }
 
 .qty button{
 
-    width:42px;
-    height:42px;
+    width:45px;
+    height:45px;
 
     border:none;
 
     background:white;
 
-    font-size:1.2rem;
-
     cursor:pointer;
+
+    font-size:1.3rem;
+
+    transition:.2s;
+}
+
+.qty button:hover{
+
+    background:#f0ece7;
 }
 
 .qty span{
 
-    width:45px;
+    width:50px;
+
     text-align:center;
+
     font-weight:600;
 }
 
-.btn{
-
-    background:#111;
-    color:white;
-
-    padding:14px 26px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    border:none;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.btn:hover{
-
-    background:#333;
-}
+/* CTA */
 
 .cta{
 
@@ -207,18 +253,20 @@ header p{
 
 .btn-main{
 
-    background:#111;
+    background:
+    linear-gradient(135deg,#2d2118,#5d442f);
+
     color:white;
 
     border:none;
 
-    padding:20px 45px;
+    padding:20px 55px;
 
     border-radius:18px;
 
     font-size:1rem;
 
-    letter-spacing:2px;
+    letter-spacing:4px;
 
     cursor:pointer;
 
@@ -227,47 +275,56 @@ header p{
 
 .btn-main:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 
-    background:#222;
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 }
+
+/* FOOTER */
 
 footer{
 
-    padding:60px 20px;
+    padding:40px 20px;
 
     text-align:center;
 
-    color:#888;
+    color:#777;
 
     font-size:.8rem;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
 }
+
+/* MOBILE */
 
 @media(max-width:768px){
 
     header h1{
-        font-size:2.7rem;
+
+        font-size:2.5rem;
+
+        letter-spacing:5px;
     }
 
     .viewer{
-        height:240px;
+
+        height:250px;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-<img src="https://i.imgur.com/YOURLOGO.png" class="logo">
+<img class="logo" src="https://i.imgur.com/YOURLOGO.png">
 
 <h1>MADERAS IMBABURA</h1>
 
-<p>Calidad estructural premium</p>
+<p>Calidad que construye confianza</p>
 
 </header>
 
@@ -275,7 +332,41 @@ footer{
 
 <div class="grid">
 
-<!-- GUADUA -->
+<!-- GUADUA MACHACADA -->
+
+<div class="card">
+
+<div class="viewer" id="viewer-machacada"></div>
+
+<div class="info">
+
+<h2>Guadua Machacada</h2>
+
+<p>
+Pieza abierta longitudinalmente con fibras naturales visibles,
+intersecciones horizontales y separación orgánica entre tiras.
+Aspecto realista basado en guadua natural ecuatoriana.
+</p>
+
+<div class="controls">
+
+<div class="qty">
+
+<button onclick="qty('q1',-1)">−</button>
+
+<span id="q1">0</span>
+
+<button onclick="qty('q1',1)">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GUADUA NORMAL -->
 
 <div class="card">
 
@@ -283,24 +374,30 @@ footer{
 
 <div class="info">
 
-<h2>Guadua Natural</h2>
+<h2>Guadua Normal</h2>
 
 <p>
-Caña estructural premium de guadua seleccionada.
-Acabado natural con relieve realista y nodos orgánicos.
+Caña tubular natural con divisiones horizontales
+cada 30 centímetros aproximadamente,
+tonos verdes envejecidos y nudos amarillos reales.
 </p>
 
 <div class="controls">
 
 <div class="qty">
-<button onclick="changeQty('q1',-1)">−</button>
-<span id="q1">0</span>
-<button onclick="changeQty('q1',1)">+</button>
-</div>
+
+<button onclick="qty('q2',-1)">−</button>
+
+<span id="q2">0</span>
+
+<button onclick="qty('q2',1)">+</button>
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 <!-- TABLA -->
@@ -314,56 +411,34 @@ Acabado natural con relieve realista y nodos orgánicos.
 <h2>Tabla de Monte</h2>
 
 <p>
-Madera estructural rústica con vetas naturales,
-acabado orgánico y volumen realista.
+Tabla estructural de madera natural
+con vetas profundas y bordes imperfectos.
+Acabado arquitectónico premium.
 </p>
 
 <div class="controls">
 
 <div class="qty">
-<button onclick="changeQty('q2',-1)">−</button>
-<span id="q2">0</span>
-<button onclick="changeQty('q2',1)">+</button>
-</div>
 
-</div>
+<button onclick="qty('q3',-1)">−</button>
 
-</div>
-</div>
-
-<!-- VIGA -->
-
-<div class="card">
-
-<div class="viewer" id="viewer-viga"></div>
-
-<div class="info">
-
-<h2>Viga Maciza</h2>
-
-<p>
-Bloque estructural de madera premium con
-bordes suavizados y profundidad cinematográfica.
-</p>
-
-<div class="controls">
-
-<div class="qty">
-<button onclick="changeQty('q3',-1)">−</button>
 <span id="q3">0</span>
-<button onclick="changeQty('q3',1)">+</button>
-</div>
+
+<button onclick="qty('q3',1)">+</button>
 
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 </div>
 
 <div class="cta">
 
-<button class="btn-main" onclick="sendWhatsApp()">
+<button class="btn-main" onclick="cotizar()">
 COTIZAR PEDIDO
 </button>
 
@@ -383,50 +458,50 @@ COTIZAR PEDIDO
 
 <script>
 
-/* ===========================
-CANTIDADES
-=========================== */
+/* ==========================
+CANTIDAD
+========================== */
 
-function changeQty(id,val){
+function qty(id,val){
 
     const el=document.getElementById(id);
 
-    let num=parseInt(el.innerText)+val;
+    let n=parseInt(el.innerText)+val;
 
-    if(num<0) num=0;
+    if(n<0)n=0;
 
-    el.innerText=num;
+    el.innerText=n;
 }
 
-/* ===========================
+/* ==========================
 WHATSAPP
-=========================== */
+========================== */
 
-function sendWhatsApp(){
+function cotizar(){
 
-    let msg="Hola, deseo cotizar:\n\n";
+    let msg="Hola Maderas Imbabura, deseo cotizar:\n\n";
 
-    const products=[
-        ["Guadua Natural","q1"],
-        ["Tabla de Monte","q2"],
-        ["Viga Maciza","q3"]
+    const items=[
+        ["Guadua Machacada","q1"],
+        ["Guadua Normal","q2"],
+        ["Tabla de Monte","q3"]
     ];
 
-    let has=false;
+    let ok=false;
 
-    products.forEach(p=>{
+    items.forEach(i=>{
 
-        const q=parseInt(document.getElementById(p[1]).innerText);
+        const c=parseInt(document.getElementById(i[1]).innerText);
 
-        if(q>0){
+        if(c>0){
 
-            msg+=`• ${p[0]}: ${q}\n`;
+            msg+=`• ${i[0]}: ${c}\n`;
 
-            has=true;
+            ok=true;
         }
     });
 
-    if(!has){
+    if(!ok){
 
         alert("Seleccione al menos un producto");
 
@@ -439,9 +514,9 @@ function sendWhatsApp(){
     );
 }
 
-/* ===========================
+/* ==========================
 TEXTURAS
-=========================== */
+========================== */
 
 const loader=new THREE.TextureLoader();
 
@@ -449,30 +524,26 @@ const woodTexture=loader.load(
 'https://threejs.org/examples/textures/hardwood2_diffuse.jpg'
 );
 
-const woodNormal=loader.load(
+const woodBump=loader.load(
 'https://threejs.org/examples/textures/hardwood2_bump.jpg'
 );
 
-const bambooTexture=loader.load(
-'https://threejs.org/examples/textures/uv_grid_opengl.jpg'
-);
+/* ==========================
+ESCENA
+========================== */
 
-/* ===========================
-CREADOR ESCENAS
-=========================== */
+function createScene(id,type){
 
-function createScene(containerId,type){
-
-    const container=document.getElementById(containerId);
+    const container=document.getElementById(id);
 
     const scene=new THREE.Scene();
 
-    scene.fog=new THREE.Fog(0xf5f3ef,6,12);
+    scene.fog=new THREE.Fog(0xf5f1eb,7,15);
 
     const camera=new THREE.PerspectiveCamera(
         40,
         container.clientWidth/container.clientHeight,
-        0.1,
+        .1,
         100
     );
 
@@ -504,21 +575,21 @@ function createScene(containerId,type){
     const hemi=new THREE.HemisphereLight(
         0xffffff,
         0x444444,
-        1.5
+        1.6
     );
 
     scene.add(hemi);
 
-    const keyLight=new THREE.DirectionalLight(
+    const key=new THREE.DirectionalLight(
         0xffffff,
         2
     );
 
-    keyLight.position.set(5,8,5);
+    key.position.set(6,8,6);
 
-    keyLight.castShadow=true;
+    key.castShadow=true;
 
-    scene.add(keyLight);
+    scene.add(key);
 
     const rim=new THREE.DirectionalLight(
         0xffffff,
@@ -529,47 +600,204 @@ function createScene(containerId,type){
 
     scene.add(rim);
 
-    /* MATERIAL */
+    /* MATERIALS */
 
-    const woodMaterial=
+    const woodMat=
     new THREE.MeshPhysicalMaterial({
 
         map:woodTexture,
 
-        bumpMap:woodNormal,
+        bumpMap:woodBump,
 
-        bumpScale:0.05,
+        bumpScale:.05,
 
-        roughness:.85,
+        roughness:.88,
 
         metalness:.02,
 
-        clearcoat:.05,
-
-        clearcoatRoughness:.8
+        clearcoat:.05
     });
 
-    const bambooMaterial=
+    const bambooGreen=
     new THREE.MeshPhysicalMaterial({
 
-        color:0x7c8f62,
+        color:0x5f6f4b,
 
-        roughness:.8,
-
-        metalness:.02
+        roughness:.9
     });
 
-    let mesh;
+    const bambooYellow=
+    new THREE.MeshPhysicalMaterial({
 
-    /* MODELOS */
+        color:0xcaa86d,
+
+        roughness:.85
+    });
+
+    let model;
+
+    /* ==========================
+    GUADUA MACHACADA
+    ========================== */
+
+    if(type==="machacada"){
+
+        model=new THREE.Group();
+
+        for(let i=0;i<14;i++){
+
+            const width=.16+(Math.random()*.02);
+
+            const geo=
+            new THREE.RoundedBoxGeometry(
+                width,
+                3,
+                .03,
+                4,
+                .01
+            );
+
+            const mat=
+            new THREE.MeshPhysicalMaterial({
+
+                color:0xa87a42,
+
+                roughness:.95
+            });
+
+            const strip=
+            new THREE.Mesh(geo,mat);
+
+            strip.position.x=
+            -1.1+(i*.17);
+
+            strip.rotation.z=
+            (Math.random()-.5)*.02;
+
+            strip.castShadow=true;
+
+            model.add(strip);
+
+            /* LINEAS HORIZONTALES */
+
+            for(let j=-1;j<=1;j++){
+
+                const lineGeo=
+                new THREE.BoxGeometry(
+                    width+.02,
+                    .03,
+                    .035
+                );
+
+                const line=
+                new THREE.Mesh(
+                    lineGeo,
+                    bambooYellow
+                );
+
+                line.position.y=j*.9;
+
+                line.position.z=.01;
+
+                strip.add(line);
+            }
+        }
+
+        model.rotation.x=.6;
+        model.rotation.z=.1;
+    }
+
+    /* ==========================
+    GUADUA NORMAL
+    ========================== */
+
+    if(type==="guadua"){
+
+        model=new THREE.Group();
+
+        const geo=
+        new THREE.CylinderGeometry(
+            .33,
+            .38,
+            3.5,
+            60,
+            20,
+            true
+        );
+
+        const tube=
+        new THREE.Mesh(
+            geo,
+            bambooGreen
+        );
+
+        tube.rotation.z=Math.PI/2;
+
+        model.add(tube);
+
+        /* INTERSECCIONES */
+
+        for(let i=-1.2;i<=1.2;i+=.6){
+
+            const ringGeo=
+            new THREE.TorusGeometry(
+                .36,
+                .025,
+                16,
+                80
+            );
+
+            const ring=
+            new THREE.Mesh(
+                ringGeo,
+                bambooYellow
+            );
+
+            ring.rotation.y=Math.PI/2;
+
+            ring.position.x=i;
+
+            model.add(ring);
+        }
+
+        /* INTERIOR */
+
+        const insideGeo=
+        new THREE.CylinderGeometry(
+            .26,
+            .31,
+            .1,
+            60
+        );
+
+        const inside=
+        new THREE.Mesh(
+            insideGeo,
+            bambooYellow
+        );
+
+        inside.rotation.z=Math.PI/2;
+
+        inside.position.x=-1.75;
+
+        model.add(inside);
+
+        model.rotation.x=.3;
+        model.rotation.z=.1;
+    }
+
+    /* ==========================
+    TABLA
+    ========================== */
 
     if(type==="tabla"){
 
-        const geo=new THREE.RoundedBoxGeometry(
+        const geo=
+        new THREE.RoundedBoxGeometry(
             3,
-            .5,
+            .55,
             .18,
-            8,
+            10,
             .03
         );
 
@@ -581,114 +809,43 @@ function createScene(containerId,type){
 
             pos.setY(
                 i,
-                y+(Math.random()-.5)*0.015
+                y+(Math.random()-.5)*.015
             );
         }
 
         geo.computeVertexNormals();
 
-        mesh=new THREE.Mesh(
+        model=new THREE.Mesh(
             geo,
-            woodMaterial
+            woodMat
         );
+
+        model.rotation.z=.1;
     }
 
-    if(type==="viga"){
+    scene.add(model);
 
-        const geo=new THREE.RoundedBoxGeometry(
-            2.8,
-            .7,
-            .7,
-            8,
-            .05
-        );
-
-        mesh=new THREE.Mesh(
-            geo,
-            woodMaterial
-        );
-    }
-
-    if(type==="guadua"){
-
-        mesh=new THREE.Group();
-
-        const geo=
-        new THREE.CylinderGeometry(
-            .22,
-            .25,
-            3,
-            48,
-            10,
-            true
-        );
-
-        const cyl=
-        new THREE.Mesh(
-            geo,
-            bambooMaterial
-        );
-
-        cyl.rotation.z=Math.PI/2;
-
-        mesh.add(cyl);
-
-        for(let i=-1;i<=1;i++){
-
-            const ringGeo=
-            new THREE.TorusGeometry(
-                .23,
-                .02,
-                16,
-                50
-            );
-
-            const ring=
-            new THREE.Mesh(
-                ringGeo,
-                bambooMaterial
-            );
-
-            ring.rotation.y=Math.PI/2;
-
-            ring.position.x=i*.9;
-
-            mesh.add(ring);
-        }
-    }
-
-    mesh.rotation.x=.4;
-    mesh.rotation.y=.5;
-
-    scene.add(mesh);
-
-    /* SOMBRA SUELO */
-
-    const floorGeo=
-    new THREE.PlaneGeometry(10,10);
-
-    const floorMat=
-    new THREE.ShadowMaterial({
-        opacity:.15
-    });
+    /* FLOOR */
 
     const floor=
     new THREE.Mesh(
-        floorGeo,
-        floorMat
+        new THREE.PlaneGeometry(10,10),
+        new THREE.ShadowMaterial({
+            opacity:.2
+        })
     );
 
     floor.rotation.x=-Math.PI/2;
 
-    floor.position.y=-1;
+    floor.position.y=-1.2;
 
     floor.receiveShadow=true;
 
     scene.add(floor);
 
-    mesh.castShadow=true;
+    model.castShadow=true;
 
-    /* INTERACCION */
+    /* INTERACTION */
 
     let down=false;
 
@@ -708,11 +865,11 @@ function createScene(containerId,type){
 
     container.addEventListener("mousemove",(e)=>{
 
-        if(!down) return;
+        if(!down)return;
 
         const dx=e.clientX-lastX;
 
-        mesh.rotation.y+=dx*.01;
+        model.rotation.y+=dx*.01;
 
         lastX=e.clientX;
     });
@@ -733,16 +890,16 @@ function createScene(containerId,type){
 
     container.addEventListener("touchmove",(e)=>{
 
-        if(!down) return;
+        if(!down)return;
 
         const dx=e.touches[0].clientX-lastX;
 
-        mesh.rotation.y+=dx*.01;
+        model.rotation.y+=dx*.01;
 
         lastX=e.touches[0].clientX;
     });
 
-    /* ANIMACION */
+    /* ANIMATION */
 
     function animate(){
 
@@ -750,11 +907,11 @@ function createScene(containerId,type){
 
         if(!down){
 
-            mesh.rotation.y+=0.002;
+            model.rotation.y+=.002;
 
-            mesh.rotation.x=
-            .35+
-            Math.sin(Date.now()*.001)*.03;
+            model.rotation.x=
+            model.rotation.x+
+            (0.35-model.rotation.x)*.02;
         }
 
         renderer.render(scene,camera);
@@ -779,11 +936,16 @@ function createScene(containerId,type){
     });
 }
 
-/* ===========================
-INICIALIZAR
-=========================== */
+/* ==========================
+INIT
+========================== */
 
 window.addEventListener("DOMContentLoaded",()=>{
+
+    createScene(
+        "viewer-machacada",
+        "machacada"
+    );
 
     createScene(
         "viewer-guadua",
@@ -793,11 +955,6 @@ window.addEventListener("DOMContentLoaded",()=>{
     createScene(
         "viewer-tabla",
         "tabla"
-    );
-
-    createScene(
-        "viewer-viga",
-        "viga"
     );
 });
 
