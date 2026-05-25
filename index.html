@@ -3,37 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maderas Imbabura | Catálogo Exclusivo</title>
+    <title>Maderas Imbabura | Exclusividad Forestal</title>
     <style>
         /* Estilo General - Lujo Minimalista Claro */
         body {
             font-family: "Times New Roman", Times, serif;
             margin: 0;
             padding: 0;
-            background-color: #fcfbfa; /* Blanco hueso premium */
+            background-color: #fcfbfa;
             color: #111111;
             line-height: 1.6;
         }
 
         /* Encabezado */
         header {
-            padding: 4rem 1rem 2.5rem 1rem;
+            padding: 4rem 1rem 3rem 1rem;
             text-align: center;
             background-color: #fcfbfa;
-        }
-
-        /* Espacio para el Logo Familiar */
-        .logo-container {
-            margin-bottom: 1.5rem;
-        }
-        .logo-container img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #000000; /* Fondo negro para que tu logo resalte */
-            border: 1px solid #111111;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
@@ -60,76 +46,125 @@
             padding: 0 1.5rem 4rem 1.5rem;
         }
 
-        .intro-text {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 3.5rem auto;
-            font-style: italic;
-            color: #444;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        /* El Recuadro Único de Catálogo */
-        .bloque-catalogo {
+        /* El Recuadro Único de Catálogo - Ahora es un Botón de Lujo */
+        .bloque-catalogo-interactivo {
             background: #ffffff;
             border: 1px solid #eaeaea;
             padding: 40px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.02);
             border-radius: 2px;
+            cursor: pointer; /* Cambia el cursor a mano para indicar que es clickeable */
+            transition: all 0.4s ease;
+            text-align: center;
         }
 
-        /* Imagen Principal del Catálogo (Madera Real Estable) */
+        .bloque-catalogo-interactivo:hover {
+            border-color: #111111;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-3px);
+        }
+
         .imagen-catalogo {
             width: 100%;
             height: 350px;
             object-fit: cover;
             margin-bottom: 30px;
-            border-radius: 1px;
         }
 
-        .bloque-catalogo h2 {
+        .bloque-catalogo-interactivo h2 {
             font-size: 1.8rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 400;
             margin: 0 0 15px 0;
             color: #111;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .txt-click {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* --- PÁGINA DESPLEGABLE (MODAL DE LUJO) --- */
+        .pantalla-desplegable {
+            display: none; /* Oculta por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fcfbfa;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 3rem 1rem;
+            box-sizing: border-box;
+        }
+
+        .contenido-desplegado {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            padding: 40px;
+        }
+
+        .btn-cerrar {
+            background: none;
+            border: none;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #111;
+            cursor: pointer;
+            float: right;
+            border-bottom: 1px solid #111;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .titulo-interno {
+            font-size: 2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin: 40px 0 20px 0;
             border-bottom: 1px solid #111;
             padding-bottom: 10px;
-            text-align: center;
         }
 
-        .bloque-catalogo .descripcion {
-            color: #444;
-            font-size: 1.1rem;
-            text-align: center;
-            margin-bottom: 30px;
+        /* Galería de productos dentro del despliegue */
+        .producto-item-premium {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 30px;
         }
 
-        /* Lista Premium de Productos */
-        .lista-productos {
-            margin: 20px 0;
-            padding-left: 20px;
+        .producto-item-premium img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 15px;
         }
 
-        .item-producto {
-            margin-bottom: 20px;
-            list-style-type: square;
-            color: #111;
-        }
-
-        .item-producto strong {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+        .producto-item-premium h3 {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin: 10px 0;
             text-transform: uppercase;
             font-weight: bold;
         }
 
-        .item-producto p {
-            margin: 5px 0 0 0;
-            color: #555;
-            font-size: 1rem;
+        .producto-item-premium p {
+            color: #444;
+            font-size: 1.05rem;
+            margin: 0;
         }
 
         /* Botón de Contacto */
@@ -164,49 +199,23 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             border-top: 1px solid #f0f0f0;
-            margin-top: 4rem;
+            margin-top: 5rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Maderas Imbabura" onerror="this.style.display='none';">
-        </div>
         <h1>Maderas Imbabura</h1>
         <p>Elige seguridad y calidad con nosotros.</p>
     </header>
 
     <main>
-        <div class="intro-text">
-            "Seleccionamos las piezas más nobles de nuestra tierra para crear estructuras que trascienden el tiempo."
-        </div>
-
-        <div class="bloque-catalogo">
+        <div class="bloque-catalogo-interactivo" onclick="abrirCatalogo()">
             <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Variedad de Maderas Solidas">
-            
             <h2>Nuestro Catálogo de Madera</h2>
-            <p class="descripcion">Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
-            
-            <ul class="lista-productos">
-                <li class="item-producto">
-                    <strong>Tablas de Medida</strong>
-                    <p>Ideales para la construcción y encofrados firmes. Disponibles en pino y eucalipto de gran resistencia.</p>
-                </li>
-                <li class="item-producto">
-                    <strong>Vigas Estructurales</strong>
-                    <p>Soporte macizo y cortes robustos diseñados para soportar techados, pérgolas y grandes obras arquitectónicas.</p>
-                </li>
-                <li class="item-producto">
-                    <strong>Tirantes de Madera</strong>
-                    <p>Líneas de soporte perfectamente alineadas y cepilladas, indispensables para armazones y armados de cubiertas.</p>
-                </li>
-                <li class="item-producto">
-                    <strong>Maderas de Acabado (Seike y Finas)</strong>
-                    <p>Selección veteada de alta elegancia y estacionada, lista para la fabricación de pisos, puertas y muebles de autor.</p>
-                </li>
-            </ul>
+            <p>Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
+            <p class="txt-click">Presione aquí para visualizar el catálogo completo</p>
         </div>
 
         <div class="cta-container">
@@ -216,9 +225,59 @@
         </div>
     </main>
 
+    <div id="miCatalogo" class="pantalla-desplegable">
+        <div class="contenido-desplegado">
+            <button class="btn-cerrar" onclick="cerrarCatalogo()">Volver al Inicio ✕</button>
+            
+            <h2 class="titulo-interno">Línea de Productos</h2>
+            
+            <div class="producto-item-premium">
+                <img src="https://images.pexels.com/photos/1762973/pexels-photo-1762973.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tablas de Medida">
+                <h3>Tablas de Medida</h3>
+                <p>Cortes ideales para la construcción y sistemas de encofrados firmes. Disponibles en pino seleccionado y eucalipto de alta resistencia ante la humedad y la carga.</p>
+            </div>
+
+            <div class="producto-item-premium">
+                <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vigas Estructurales">
+                <h3>Vigas Estructurales</h3>
+                <p>Soporte macizo y robusto diseñado rigurosamente para soportar techados pesados, pórticos, pérgolas residenciales y grandes obras de arquitectura.</p>
+            </div>
+
+            <div class="producto-item-premium">
+                <img src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tirantes de Madera">
+                <h3>Tirantes de Madera</h3>
+                <p>Líneas de soporte perfectamente alineadas, niveladas y cepilladas. Piezas indispensables para armazones internos, techos falsos y cubiertas expuestas.</p>
+            </div>
+
+            <div class="producto-item-premium">
+                <img src="https://images.pexels.com/photos/5411234/pexels-photo-5411234.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maderas de Acabado">
+                <h3>Maderas de Acabado (Seike y Finas)</h3>
+                <p>Selección premium de veta fina y madera noble estacionada. El material perfecto y predilecto para carpintería residencial, fabricación de pisos residenciales, puertas señoriales y muebles de autor.</p>
+            </div>
+
+            <center style="margin-top: 30px;">
+                <a href="https://wa.me/593962746147?text=Hola,%20me%20interesa%20un%20producto%20de%20su%20catálogo%20desplegable." class="btn-lujo" target="_blank">
+                    Cotizar este Catálogo
+                </a>
+            </center>
+        </div>
+    </div>
+
     <footer>
         © 2026 MADERAS IMBABURA — OTAVALO, ECUADOR
     </footer>
+
+    <script>
+        function abrirCatalogo() {
+            document.getElementById("miCatalogo").style.display = "block";
+            document.body.style.overflow = "hidden"; /* Evita que la página de atrás se mueva */
+        }
+
+        function cerrarCatalogo() {
+            document.getElementById("miCatalogo").style.display = "none";
+            document.body.style.overflow = "auto"; /* Devuelve el movimiento normal */
+        }
+    </script>
 
 </body>
 </html>
