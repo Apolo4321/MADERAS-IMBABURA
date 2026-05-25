@@ -2,9 +2,9 @@
 
 <script>
 
-/* =========================
+/* =======================
 CANTIDADES
-========================= */
+======================= */
 
 function qty(id,val){
 
@@ -17,9 +17,9 @@ if(n<0)n=0;
 el.innerText=n;
 }
 
-/* =========================
+/* =======================
 WHATSAPP
-========================= */
+======================= */
 
 function cotizar(){
 
@@ -66,109 +66,33 @@ window.open(
 
 }
 
-/* =========================
-TEXTURA MADERA REALISTA
-========================= */
+/* =======================
+TEXTURA NATURAL
+======================= */
 
-function woodTexture(base="#b07a45",lines="#6b4423"){
+function woodMaterial(base=0xb07a45){
 
-const canvas=document.createElement("canvas");
+return new THREE.MeshPhysicalMaterial({
 
-canvas.width=512;
-canvas.height=512;
+color:base,
 
-const ctx=canvas.getContext("2d");
+roughness:.88,
 
-/* BASE */
+metalness:0,
 
-ctx.fillStyle=base;
-ctx.fillRect(0,0,512,512);
+clearcoat:.08,
 
-/* VETAS */
+clearcoatRoughness:.9,
 
-for(let i=0;i<220;i++){
-
-ctx.beginPath();
-
-ctx.strokeStyle=`rgba(60,30,10,${Math.random()*0.12})`;
-
-ctx.lineWidth=Math.random()*3;
-
-let y=i*3+Math.random()*20;
-
-ctx.moveTo(0,y);
-
-for(let x=0;x<512;x+=30){
-
-ctx.lineTo(
-x,
-y+Math.sin(x*0.02+i)*8*Math.random()
-);
-
-}
-
-ctx.stroke();
-
-}
-
-/* NUDOS */
-
-for(let i=0;i<12;i++){
-
-const x=Math.random()*512;
-const y=Math.random()*512;
-
-const r=10+Math.random()*30;
-
-const grad=ctx.createRadialGradient(
-x,y,2,
-x,y,r
-);
-
-grad.addColorStop(0,"rgba(70,40,20,.5)");
-grad.addColorStop(1,"rgba(0,0,0,0)");
-
-ctx.fillStyle=grad;
-
-ctx.beginPath();
-
-ctx.arc(x,y,r,0,Math.PI*2);
-
-ctx.fill();
-
-}
-
-const texture=new THREE.CanvasTexture(canvas);
-
-texture.wrapS=THREE.RepeatWrapping;
-texture.wrapT=THREE.RepeatWrapping;
-
-return texture;
-}
-
-/* =========================
-MATERIAL MADERA
-========================= */
-
-function woodMaterial(color1,color2){
-
-return new THREE.MeshStandardMaterial({
-
-map:woodTexture(color1,color2),
-
-roughness:.82,
-
-metalness:.02,
-
-bumpScale:.03
+reflectivity:.15
 
 });
 
 }
 
-/* =========================
+/* =======================
 VISOR REALISTA
-========================= */
+======================= */
 
 function createViewer(id,type){
 
@@ -181,19 +105,21 @@ scene.background=null;
 /* CAMERA */
 
 const camera=new THREE.PerspectiveCamera(
-38,
+40,
 container.clientWidth/container.clientHeight,
 0.1,
 100
 );
 
-camera.position.set(0,0,6);
+camera.position.set(0,0,5);
 
 /* RENDER */
 
 const renderer=new THREE.WebGLRenderer({
+
 antialias:true,
 alpha:true
+
 });
 
 renderer.setSize(
@@ -209,40 +135,52 @@ renderer.outputEncoding=THREE.sRGBEncoding;
 
 renderer.shadowMap.enabled=true;
 
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+
 container.appendChild(renderer.domElement);
 
-/* LIGHTING */
+/* =======================
+LUCES CINEMÁTICAS
+======================= */
 
-const ambient=new THREE.AmbientLight(
+const hemi=new THREE.HemisphereLight(
+0xffffff,
+0xd7c2a3,
+1.5
+);
+
+scene.add(hemi);
+
+const dirLight=new THREE.DirectionalLight(
 0xffffff,
 1.4
 );
 
-scene.add(ambient);
+dirLight.position.set(4,5,6);
 
-const light1=new THREE.DirectionalLight(
-0xfff2dc,
-1.4
+dirLight.castShadow=true;
+
+dirLight.shadow.mapSize.width=2048;
+dirLight.shadow.mapSize.height=2048;
+
+scene.add(dirLight);
+
+const fill=new THREE.PointLight(
+0xfff4dd,
+0.6
 );
 
-light1.position.set(5,8,7);
+fill.position.set(-4,2,3);
 
-scene.add(light1);
+scene.add(fill);
 
-const light2=new THREE.DirectionalLight(
-0xffffff,
-0.5
-);
-
-light2.position.set(-5,-3,5);
-
-scene.add(light2);
-
-/* SOMBRA BASE */
+/* =======================
+SOMBRA SUELO
+======================= */
 
 const floor=new THREE.Mesh(
 
-new THREE.CircleGeometry(2.2,40),
+new THREE.CircleGeometry(5,64),
 
 new THREE.ShadowMaterial({
 opacity:.18
@@ -252,11 +190,15 @@ opacity:.18
 
 floor.rotation.x=-Math.PI/2;
 
-floor.position.y=-1.4;
+floor.position.y=-1.2;
+
+floor.receiveShadow=true;
 
 scene.add(floor);
 
-/* MODELOS */
+/* =======================
+MODELOS
+======================= */
 
 let model;
 
@@ -266,53 +208,55 @@ if(type==="machacada"){
 
 model=new THREE.Group();
 
-for(let i=0;i<13;i++){
+for(let i=0;i<14;i++){
 
-const strip=new THREE.Mesh(
-
-new THREE.BoxGeometry(
-0.12,
+const geo=new THREE.BoxGeometry(
+0.14,
 3,
-0.05
-),
-
-woodMaterial("#9c6d3d","#6b4524")
-
+0.045
 );
 
-strip.position.x=-0.9+(i*0.15);
+const mat=woodMaterial(
+0x9e6a38 + Math.random()*0x111111
+);
 
-strip.rotation.z=(Math.random()-.5)*0.05;
+const strip=new THREE.Mesh(geo,mat);
 
-strip.rotation.x=(Math.random()-.5)*0.02;
+strip.castShadow=true;
 
-model.add(strip);
+strip.position.x=-0.95+(i*0.15);
 
-/* NODOS */
+strip.rotation.z=(Math.random()-.5)*0.06;
+
+strip.rotation.x=(Math.random()-.5)*0.03;
 
 for(let j=-1;j<=1;j++){
 
 const node=new THREE.Mesh(
 
 new THREE.BoxGeometry(
-0.14,
+0.15,
 0.05,
-0.06
+0.05
 ),
 
-woodMaterial("#6f4724","#4b2b12")
+woodMaterial(0x6d4623)
 
 );
 
-node.position.y=j*0.9;
+node.position.y=j*0.95;
+
+node.position.z=0.01;
 
 strip.add(node);
 
 }
 
+model.add(strip);
+
 }
 
-model.rotation.x=.55;
+model.rotation.x=.4;
 
 }
 
@@ -323,44 +267,60 @@ if(type==="tabla"){
 model=new THREE.Mesh(
 
 new THREE.BoxGeometry(
-3,
+3.1,
 0.32,
-0.24
+0.24,
+8,
+2,
+2
 ),
 
-woodMaterial("#a36a3f","#6e4324")
+woodMaterial(0xb57843)
 
 );
 
+model.castShadow=true;
+
 model.rotation.z=.08;
-model.rotation.x=.08;
 
 }
 
-/* GUADUA */
+/* GUADUA NORMAL */
 
 if(type==="guadua"){
 
 model=new THREE.Group();
 
-const body=new THREE.Mesh(
+const bamboo=new THREE.Mesh(
 
 new THREE.CylinderGeometry(
-0.32,
+0.28,
 0.34,
 3.5,
 64,
-32,
+16,
 true
 ),
 
-woodMaterial("#8f9e67","#5f6e44")
+new THREE.MeshPhysicalMaterial({
+
+color:0x95a86b,
+
+roughness:.9,
+
+metalness:0,
+
+clearcoat:.05
+
+})
 
 );
 
-body.rotation.z=Math.PI/2;
+bamboo.rotation.z=Math.PI/2;
 
-model.add(body);
+bamboo.castShadow=true;
+
+model.add(bamboo);
 
 /* NODOS */
 
@@ -369,19 +329,21 @@ for(let i=-1.2;i<=1.2;i+=0.6){
 const ring=new THREE.Mesh(
 
 new THREE.TorusGeometry(
-0.34,
+0.31,
 0.03,
-20,
+24,
 80
 ),
 
-woodMaterial("#c5a06b","#8a6038")
+woodMaterial(0xc9a168)
 
 );
 
 ring.rotation.y=Math.PI/2;
 
 ring.position.x=i;
+
+ring.castShadow=true;
 
 model.add(ring);
 
@@ -396,16 +358,21 @@ if(type==="duela"){
 model=new THREE.Mesh(
 
 new THREE.BoxGeometry(
-3,
-0.18,
-0.15
+3.2,
+0.2,
+0.12,
+10,
+2,
+2
 ),
 
-woodMaterial("#d8b07a","#8e5f33")
+woodMaterial(0xd8b27c)
 
 );
 
-model.rotation.z=.05;
+model.castShadow=true;
+
+model.rotation.z=.04;
 
 }
 
@@ -418,12 +385,17 @@ model=new THREE.Mesh(
 new THREE.BoxGeometry(
 2.8,
 0.75,
-0.75
+0.75,
+5,
+5,
+5
 ),
 
-woodMaterial("#9b6539","#5f381d")
+woodMaterial(0xa27042)
 
 );
+
+model.castShadow=true;
 
 model.rotation.z=.08;
 
@@ -437,16 +409,18 @@ model=new THREE.Mesh(
 
 new THREE.CylinderGeometry(
 0.18,
-0.2,
+0.22,
 3,
 50
 ),
 
-woodMaterial("#d9b37f","#8f643a")
+woodMaterial(0xd2ae7b)
 
 );
 
 model.rotation.z=Math.PI/2;
+
+model.castShadow=true;
 
 }
 
@@ -458,26 +432,26 @@ model=new THREE.Mesh(
 
 new THREE.CylinderGeometry(
 0.32,
-0.34,
-3.2,
+0.36,
+3.3,
 60
 ),
 
-woodMaterial("#c59c68","#6f4727")
+woodMaterial(0xc19761)
 
 );
 
 model.rotation.z=Math.PI/2;
 
-}
-
-/* SOMBRAS */
-
 model.castShadow=true;
+
+}
 
 scene.add(model);
 
-/* ROTACIÓN SUAVE */
+/* =======================
+INTERACCIÓN SUAVE
+======================= */
 
 let down=false;
 
@@ -503,7 +477,7 @@ if(!down)return;
 
 const dx=e.clientX-lastX;
 
-model.rotation.y+=dx*0.01;
+model.rotation.y+=dx*0.008;
 
 lastX=e.clientX;
 
@@ -531,31 +505,15 @@ if(!down)return;
 
 const dx=e.touches[0].clientX-lastX;
 
-model.rotation.y+=dx*0.01;
+model.rotation.y+=dx*0.008;
 
 lastX=e.touches[0].clientX;
 
 });
 
-/* ANIMACIÓN */
-
-function animate(){
-
-requestAnimationFrame(animate);
-
-if(!down){
-
-model.rotation.y+=0.0025;
-
-}
-
-renderer.render(scene,camera);
-
-}
-
-animate();
-
-/* RESPONSIVE */
+/* =======================
+RESPONSIVE
+======================= */
 
 window.addEventListener("resize",()=>{
 
@@ -571,9 +529,34 @@ container.clientHeight
 
 });
 
+/* =======================
+ANIMACIÓN PREMIUM
+======================= */
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+if(!down){
+
+model.rotation.y+=0.0025;
+
 }
 
-/* INIT */
+model.position.y=
+Math.sin(Date.now()*0.001)*0.02;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+}
+
+/* =======================
+INIT
+======================= */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
