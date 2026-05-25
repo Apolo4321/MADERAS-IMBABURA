@@ -3,39 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maderas Imbabura | Exquisitez Forestal</title>
+    <title>Maderas Imbabura | Catálogo Exclusivo</title>
     <style>
         /* Estilo General - Lujo Minimalista Claro */
         body {
             font-family: "Times New Roman", Times, serif;
             margin: 0;
             padding: 0;
-            background-color: #fcfbfa; /* Blanco hueso de alta gama */
-            color: #111111; /* Negro profundo para contraste */
+            background-color: #fcfbfa; /* Blanco hueso premium */
+            color: #111111;
             line-height: 1.6;
         }
 
         /* Encabezado */
         header {
-            padding: 5rem 1rem 3rem 1rem;
+            padding: 4rem 1rem 2.5rem 1rem;
             text-align: center;
             background-color: #fcfbfa;
-            border-bottom: 1px solid #eee;
         }
 
-        /* Contenedor del Logo */
+        /* Espacio para el Logo Familiar */
         .logo-container {
             margin-bottom: 1.5rem;
         }
         .logo-container img {
-            width: 180px;
-            height: auto;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
+            object-fit: cover;
+            background-color: #000000; /* Fondo negro para que tu logo resalte */
+            border: 1px solid #111111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.8rem;
-            letter-spacing: 10px; /* Espaciado premium */
+            font-size: 2.6rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
             margin: 0;
             font-weight: 400;
@@ -43,78 +46,96 @@
         }
 
         header p {
-            letter-spacing: 4px;
-            color: #777;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-top: 12px;
+            letter-spacing: 2px;
+            color: #555;
+            font-size: 1.05rem;
+            margin-top: 15px;
+            font-style: italic;
         }
 
         /* Sección Principal */
         main {
-            max-width: 1100px;
-            margin: 3rem auto;
-            padding: 0 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem 1.5rem;
         }
 
         .intro-text {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem auto;
+            max-width: 650px;
+            margin: 0 auto 3.5rem auto;
             font-style: italic;
             color: #444;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
 
-        /* Catálogo */
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .card-lujo {
+        /* El Recuadro Único de Catálogo */
+        .bloque-catalogo {
             background: #ffffff;
             border: 1px solid #eaeaea;
-            padding: 24px;
-            text-align: left;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            transition: all 0.4s ease;
+            padding: 40px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.02);
+            border-radius: 2px;
         }
 
-        .card-lujo:hover {
-            border-color: #111111;
-            transform: translateY(-5px);
-        }
-
-        .card-lujo img {
+        /* Imagen Principal del Catálogo (Madera Real Estable) */
+        .imagen-catalogo {
             width: 100%;
-            height: 280px;
+            height: 350px;
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border-radius: 1px;
         }
 
-        .card-lujo h3 {
-            font-size: 1.4rem;
-            letter-spacing: 3px;
-            margin: 0 0 12px 0;
+        .bloque-catalogo h2 {
+            font-size: 1.8rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 400;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 12px;
+            margin: 0 0 15px 0;
+            color: #111;
+            border-bottom: 1px solid #111;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .bloque-catalogo .descripcion {
+            color: #444;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Lista Premium de Productos */
+        .lista-productos {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .item-producto {
+            margin-bottom: 20px;
+            list-style-type: square;
             color: #111;
         }
 
-        .card-lujo p {
+        .item-producto strong {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .item-producto p {
+            margin: 5px 0 0 0;
             color: #555;
-            font-size: 0.95rem;
-            margin: 0;
+            font-size: 1rem;
         }
 
         /* Botón de Contacto */
         .cta-container {
             text-align: center;
-            margin-top: 6rem;
+            margin-top: 4rem;
         }
 
         .btn-lujo {
@@ -137,7 +158,7 @@
 
         footer {
             text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
+            padding: 4rem 1rem 2rem 1rem;
             color: #999;
             font-size: 0.75rem;
             letter-spacing: 3px;
@@ -154,7 +175,7 @@
             <img src="logo.png" alt="Maderas Imbabura" onerror="this.style.display='none';">
         </div>
         <h1>Maderas Imbabura</h1>
-        <p>Calidad • Tradición • Exquisitez</p>
+        <p>Elige seguridad y calidad con nosotros.</p>
     </header>
 
     <main>
@@ -162,28 +183,34 @@
             "Seleccionamos las piezas más nobles de nuestra tierra para crear estructuras que trascienden el tiempo."
         </div>
 
-        <div class="grid-productos">
-            <div class="card-lujo">
-                <img src="https://images.pexels.com/photos/1762973/pexels-photo-1762973.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tableros Finos">
-                <h3>Tableros Finos</h3>
-                <p>Cortes seleccionados de seike y pino tratado para acabados arquitectónicos de alta gama.</p>
-            </div>
-
-            <div class="card-lujo">
-                <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vigas Estructurales">
-                <h3>Vigas de Corte</h3>
-                <p>Solidez estructural con una presencia visual impecable para la arquitectura moderna.</p>
-            </div>
-
-            <div class="card-lujo">
-                <img src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Piezas de Autor">
-                <h3>Piezas de Autor</h3>
-                <p>Madera maciza de veta única, estacionada y preparada para mobiliario exclusivo.</p>
-            </div>
+        <div class="bloque-catalogo">
+            <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Variedad de Maderas Solidas">
+            
+            <h2>Nuestro Catálogo de Madera</h2>
+            <p class="descripcion">Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
+            
+            <ul class="lista-productos">
+                <li class="item-producto">
+                    <strong>Tablas de Medida</strong>
+                    <p>Ideales para la construcción y encofrados firmes. Disponibles en pino y eucalipto de gran resistencia.</p>
+                </li>
+                <li class="item-producto">
+                    <strong>Vigas Estructurales</strong>
+                    <p>Soporte macizo y cortes robustos diseñados para soportar techados, pérgolas y grandes obras arquitectónicas.</p>
+                </li>
+                <li class="item-producto">
+                    <strong>Tirantes de Madera</strong>
+                    <p>Líneas de soporte perfectamente alineadas y cepilladas, indispensables para armazones y armados de cubiertas.</p>
+                </li>
+                <li class="item-producto">
+                    <strong>Maderas de Acabado (Seike y Finas)</strong>
+                    <p>Selección veteada de alta elegancia y estacionada, lista para la fabricación de pisos, puertas y muebles de autor.</p>
+                </li>
+            </ul>
         </div>
 
         <div class="cta-container">
-            <a href="https://wa.me/593962746147?text=Deseo%20una%20asesoría%20para%20un%20proyecto%20exclusivo." class="btn-lujo">
+            <a href="https://wa.me/593962746147?text=Hola,%20solicito%20asesoría%20y%20cotización%20sobre%20su%20catálogo%20de%20maderas." class="btn-lujo" target="_blank">
                 Contactar Especialista
             </a>
         </div>
