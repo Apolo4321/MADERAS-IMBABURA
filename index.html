@@ -3,106 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maderas Imbabura | Calidad y Tradición</title>
+    <title>Maderas Imbabura | Exquisitez Forestal</title>
     <style>
+        /* Estilo General - Lujo Monocromático */
         body {
             font-family: "Times New Roman", Times, serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f0ea;
-            color: #333;
+            background-color: #0a0a0a; /* Negro profundo */
+            color: #ffffff;
+            line-height: 1.6;
         }
+
+        /* Encabezado */
         header {
-            background-color: #5c4033;
-            color: white;
+            padding: 4rem 1rem;
             text-align: center;
-            padding: 3rem 1rem;
+            background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+            border-bottom: 1px solid #333;
         }
+
+        /* Contenedor del Logo */
+        .logo-container img {
+            width: 250px; /* Tamaño del logo */
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid #444;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 1.5rem;
+        }
+
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
+            letter-spacing: 8px; /* Espaciado de lujo */
+            text-transform: uppercase;
             margin: 0;
+            font-weight: 400;
         }
+
         header p {
+            letter-spacing: 3px;
+            color: #888;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Sección Principal */
+        main {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
             font-style: italic;
+            color: #ccc;
             font-size: 1.2rem;
         }
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            text-align: center;
+
+        /* Catálogo Exquisito */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
-        h2 {
-            color: #5c4033;
-            border-bottom: 2px solid #8b5a2b;
-            padding-bottom: 0.5rem;
-            display: inline-block;
+
+        .card-lujo {
+            background: #111;
+            border: 1px solid #222;
+            padding: 20px;
+            transition: all 0.4s ease;
+            text-align: left;
         }
-        .productos-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 2.5rem 0;
+
+        .card-lujo:hover {
+            border-color: #ffffff;
+            transform: translateY(-5px);
         }
-        .producto-card {
-            background: white;
-            border: 1px solid #dcd3c1;
-            border-radius: 4px;
-            width: 260px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .producto-card img {
+
+        .card-lujo img {
             width: 100%;
-            height: 180px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 2px;
-            background-color: #e0e0e0;
+            filter: grayscale(100%); /* Todo en blanco y negro */
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
-        .producto-card h3 {
-            margin: 10px 0 5px 0;
-            color: #5c4033;
+
+        .card-lujo h3 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
         }
-        .btn-contacto {
-            background-color: #8b5a2b;
-            color: white;
-            padding: 12px 25px;
+
+        .card-lujo p {
+            color: #999;
+            font-size: 1rem;
+        }
+
+        /* Botón de Contacto */
+        .cta-container {
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .btn-lujo {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 15px 40px;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
             display: inline-block;
-            transition: background 0.3s;
         }
-        .btn-contacto:hover {
-            background-color: #5c4033;
+
+        .btn-lujo:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem;
+            color: #444;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Maderas Imbabura">
+        </div>
         <h1>Maderas Imbabura</h1>
-        <p>Los mejores productos forestales y acabados de la provincia</p>
+        <p>Calidad • Tradición • Exquisitez</p>
     </header>
 
     <main>
-        <h2>Nuestro Catálogo de Productos</h2>
-        <p>Ofrecemos materiales de alta durabilidad y cortes precisos para la construcción y carpintería.</p>
-        
-        <div class="productos-container">
-            <div class="producto-card">
-                <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=500" alt="Tablas de Madera">
-                <h3>Tablas</h3>
-                <p>Cortes a medida en pino, eucalipto y seike, ideales para la construcción y encofrado.</p>
+        <div class="intro-text">
+            "Seleccionamos las piezas más nobles de nuestra tierra para crear estructuras que trascienden el tiempo."
+        </div>
+
+        <div class="grid-productos">
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/16011441010154701021" alt="Tablas de Lujo">
+                <h3>TABLEROS FINOS</h3>
+                <p>Cortes seleccionados de seike y pino tratado para acabados de alta gama.</p>
             </div>
 
-            <div class="producto-card">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500" alt="Tablones y Vigas">
-                <h3>Vigas y Tablones</h3>
-                <p>Madera estructural de gran resistencia para vigas, columnas y techados.</p>
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6216672622663909644" alt="Vigas Estructurales">
+                <h3>VIGAS DE CORTE</h3>
+                <p>Solidez estructural con una estética impecable para arquitectura moderna.</p>
             </div>
 
-            <div class="producto-card">
-                <img src="
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11935685228161519067" alt="Muebles Especiales">
+                <h3>PIEZAS DE AUTOR</h3>
+                <p>Madera maciza preparada para la creación de mobiliario exclusivo.</p>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://wa.me/593962746147?text=Deseo%20una%20asesoría%20para%20un%20proyecto%20exclusivo." class="btn-lujo">
+                Contactar con un Especialista
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        © 2024 MADERAS IMBABURA - OTAVALO, ECUADOR
+    </footer>
+
+</body>
+</html>        }
+
+        .btn-lujo:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem;
+            color: #444;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo Maderas Imbabura">
+        </div>
+        <h1>Maderas Imbabura</h1>
+        <p>Calidad • Tradición • Exquisitez</p>
+    </header>
+
+    <main>
+        <div class="intro-text">
+            "Seleccionamos las piezas más nobles de nuestra tierra para crear estructuras que trascienden el tiempo."
+        </div>
+
+        <div class="grid-productos">
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/16011441010154701021" alt="Tablas de Lujo">
+                <h3>TABLEROS FINOS</h3>
+                <p>Cortes seleccionados de seike y pino tratado para acabados de alta gama.</p>
+            </div>
+
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6216672622663909644" alt="Vigas Estructurales">
+                <h3>VIGAS DE CORTE</h3>
+                <p>Solidez estructural con una estética impecable para arquitectura moderna.</p>
+            </div>
+
+            <div class="card-lujo">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11935685228161519067" alt="Muebles Especiales">
+                <h3>PIEZAS DE AUTOR</h3>
+                <p>Madera maciza preparada para la creación de mobiliario exclusivo.</p>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://wa.me/593962746147?text=Deseo%20una%20asesoría%20para%20un%20proyecto%20exclusivo." class="btn-lujo">
+                Contactar con un Especialista
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        © 2024 MADERAS IMBABURA - OTAVALO, ECUADOR
+    </footer>
+
+</body>
+</html>
