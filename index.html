@@ -1,807 +1,630 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Maderas Imbabura | Catálogo Premium 3D</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#f5f3ef;
-    font-family:'Inter',sans-serif;
-    color:#111;
-    overflow-x:hidden;
-}
-
-/* HERO */
-
-header{
-    padding:90px 20px 60px;
-    text-align:center;
-}
-
-.logo{
-    width:150px;
-    margin-bottom:25px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,.08));
-}
-
-header h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:4rem;
-    letter-spacing:8px;
-    font-weight:500;
-}
-
-header p{
-    margin-top:15px;
-    color:#666;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-size:.9rem;
-}
-
-/* CATALOGO */
-
-.catalogo{
-    max-width:1200px;
-    margin:auto;
-    padding:40px 20px 100px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:40px;
-}
-
-.card{
-
-    background:white;
-
-    border-radius:30px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.04),
-    0 1px 3px rgba(0,0,0,.06);
-
-    transition:.4s ease;
-}
-
-.card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.08),
-    0 3px 6px rgba(0,0,0,.06);
-}
-
-/* CONTENEDOR 3D */
-
-.viewer{
-
-    width:100%;
-    height:300px;
-
-    background:
-    radial-gradient(circle at top,#ffffff,#ece7df);
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.info{
-
-    padding:30px;
-}
-
-.info h2{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:2rem;
-
-    margin-bottom:10px;
-
-    font-weight:600;
-}
-
-.info p{
-
-    color:#666;
-
-    line-height:1.7;
-
-    margin-bottom:25px;
-}
-
-/* CONTROLES */
-
-.controls{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-}
-
-.qty{
-
-    display:flex;
-
-    align-items:center;
-
-    border:1px solid #ddd;
-
-    border-radius:14px;
-
-    overflow:hidden;
-}
-
-.qty button{
-
-    width:42px;
-    height:42px;
-
-    border:none;
-
-    background:white;
-
-    font-size:1.2rem;
-
-    cursor:pointer;
-}
-
-.qty span{
-
-    width:45px;
-    text-align:center;
-    font-weight:600;
-}
-
-.btn{
-
-    background:#111;
-    color:white;
-
-    padding:14px 26px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    border:none;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.btn:hover{
-
-    background:#333;
-}
-
-.cta{
-
-    text-align:center;
-
-    margin-top:70px;
-}
-
-.btn-main{
-
-    background:#111;
-    color:white;
-
-    border:none;
-
-    padding:20px 45px;
-
-    border-radius:18px;
-
-    font-size:1rem;
-
-    letter-spacing:2px;
-
-    cursor:pointer;
-
-    transition:.4s;
-}
-
-.btn-main:hover{
-
-    transform:translateY(-3px);
-
-    background:#222;
-}
-
-footer{
-
-    padding:60px 20px;
-
-    text-align:center;
-
-    color:#888;
-
-    font-size:.8rem;
-
-    letter-spacing:2px;
-}
-
-@media(max-width:768px){
-
-    header h1{
-        font-size:2.7rem;
-    }
-
-    .viewer{
-        height:240px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maderas Imbabura | Catálogo Interactivo 3D Premium</title>
+    <style>
+        /* Estilo General - Lujo Minimalista Claro */
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfbfa;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 4rem 1rem 3rem 1rem;
+            text-align: center;
+            background-color: #fcfbfa;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 400;
+            color: #111;
+        }
+
+        header p {
+            letter-spacing: 2px;
+            color: #555;
+            font-size: 1.05rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem 1.5rem;
+        }
+
+        .bloque-catalogo-interactivo {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            padding: 40px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.02);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .bloque-catalogo-interactivo:hover {
+            border-color: #111111;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-3px);
+        }
+
+        .imagen-catalogo {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+
+        .bloque-catalogo-interactivo h2 {
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin: 0 0 15px 0;
+            color: #111;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .txt-click {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* --- PÁGINA DESPLEGABLE CON ANIMACIÓN DE LUJO --- */
+        .pantalla-desplegable {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fcfbfa;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 3rem 1rem;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px);
+            transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                        visibility 0.5s;
+        }
+
+        .pantalla-desplegable.activa {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .contenido-desplegado {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .btn-cerrar {
+            background: none;
+            border: none;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #111;
+            cursor: pointer;
+            float: right;
+            border-bottom: 1px solid #111;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .titulo-interno {
+            font-size: 2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin: 40px 0 20px 0;
+            border-bottom: 1px solid #111;
+            padding-bottom: 10px;
+        }
+
+        .producto-item-premium {
+            margin-bottom: 50px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Contenedor 3D de alta tasa de refresco */
+        .contenedor-3d {
+            width: 100%;
+            height: 320px;
+            background-color: #faf9f6;
+            border: 1px solid #f2efea;
+            margin-bottom: 20px;
+            position: relative;
+            cursor: grab;
+            overflow: hidden;
+            touch-action: none; /* Previene retrasos por gestos nativos en móvil */
+        }
+
+        .contenedor-3d:active {
+            cursor: grabbing;
+        }
+
+        .indicador-3d {
+            position: absolute;
+            bottom: 12px;
+            right: 15px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #aaa;
+            pointer-events: none;
+            font-style: italic;
+        }
+
+        .producto-item-premium h3 {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin: 15px 0 10px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .producto-item-premium p {
+            color: #444;
+            font-size: 1.05rem;
+            margin: 0 0 25px 0;
+            text-align: left;
+        }
+
+        /* Selectores de Cantidad Estilo Minimalista */
+        .interaccion-compra {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #faf9f6;
+            border: 1px solid #e5e5e5;
+            padding: 12px 20px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .label-cantidad {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .selector-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-cantidad {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #111;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        .numero-unidades {
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .btn-lujo {
+            background: #111111;
+            color: #ffffff;
+            border: 1px solid #111111;
+            padding: 16px 45px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-lujo:hover {
+            background: transparent;
+            color: #111111;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem 2rem 1rem;
+            color: #999;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 5rem;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
 <body>
 
-<header>
+    <header>
+        <h1>Maderas Imbabura</h1>
+        <p>Elige seguridad y calidad con nosotros.</p>
+    </header>
 
-<img src="https://i.imgur.com/YOURLOGO.png" class="logo">
+    <main>
+        <div class="bloque-catalogo-interactivo" onclick="abrirCatalogo()">
+            <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Maderas de Calidad">
+            <h2>Nuestro Catálogo de Madera</h2>
+            <p>Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
+            <p class="txt-click">Presione aquí para visualizar el catálogo interactivo 3D</p>
+        </div>
 
-<h1>MADERAS IMBABURA</h1>
+        <div class="cta-container">
+            <a href="https://wa.me/593962746147?text=Hola,%20solicito%20asesoría%20y%20cotización%20sobre%20su%20catálogo%20de%20maderas." class="btn-lujo" target="_blank">
+                Contactar Especialista
+            </a>
+        </div>
+    </main>
 
-<p>Calidad estructural premium</p>
+    <div id="miCatalogo" class="pantalla-desplegable">
+        <div class="contenido-desplegado">
+            <button class="btn-cerrar" onclick="cerrarCatalogo()">Volver al Inicio ✕</button>
+            
+            <h2 class="titulo-interno">Línea de Productos 3D</h2>
+            
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-guadua-machacada" data-wood="guadua_machacada">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Guadua Machacada (Esterilla Única)</h3>
+                <p>Pieza individual de caña guadua abierta mediante cortes longitudinales uniformes. Conserva la corteza verde protectora en su exterior y expone su cara interna de fibra amarillo natural.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-machacada', -1)">−</button>
+                        <span class="numero-unidades" id="cant-machacada">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-machacada', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-</header>
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-tabla-monte" data-wood="tabla_monte">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Tabla de Monte</h3>
+                <p>Tabla de corte rústico y estructural extraída de maderas nativas locales. Presenta un tono rojizo denso y alta resistencia física para encofrados exigentes.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-monte', -1)">−</button>
+                        <span class="numero-unidades" id="cant-monte">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-monte', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<section class="catalogo">
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-guadua-normal" data-wood="guadua_normal">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Guadua Normal (Caña)</h3>
+                <p>Cilindro tubular natural y hueco de caña guadua seleccionada. Color verde vivo uniforme con nudos estructurales auténticos, ideal para soportes verticales y bioconstrucción.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-guadua', -1)">−</button>
+                        <span class="numero-unidades" id="cant-guadua">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-guadua', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="grid">
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-duela-eucalipto" data-wood="duela_eucalipto">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Duela de Eucalipto</h3>
+                <p>Listón de madera maciza cepillada, de líneas completamente rectas y caras lisas cuadradas sin relieves laterales. Color amarillo pálido ideal para acabados pulidos.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-duela', -1)">−</button>
+                        <span class="numero-unidades" id="cant-duela">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-duela', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<!-- GUADUA -->
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-viga-madera" data-wood="viga_madera">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Viga de Madera</h3>
+                <p>Bloque masivo de sección cuadrada estructural. Diseñado para recibir cargas pesadas en techados principales y marcos arquitectónicos expuestos.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-viga', -1)">−</button>
+                        <span class="numero-unidades" id="cant-viga">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-viga', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="card">
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-pingo" data-wood="pingo">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Pingo</h3>
+                <p>Tronco cilíndrico uniforme de eucalipto. Su color es amarillo pálido natural, con un maquinado que remata en puntas totalmente planas pero de bordes redondeados.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-pingo', -1)">−</button>
+                        <span class="numero-unidades" id="cant-pingo">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-pingo', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="viewer" id="viewer-guadua"></div>
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="3d-tirante" data-wood="tirante">
+                    <span class="indicador-3d">Girar pieza 3D ↺</span>
+                </div>
+                <h3>Tirante</h3>
+                <p>Pieza cilíndrica de madera de gran alcance. Se caracteriza por un diámetro robusto y mucho más ancho que el de un pingo estándar, ideal para contenciones estructurales.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-tirante', -1)">−</button>
+                        <span class="numero-unidades" id="cant-tirante">0</span>
+                        <button class="btn-cantidad" onclick="cambiarCant('cant-tirante', 1)">+</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="info">
+            <center style="margin-top: 40px;">
+                <button class="btn-lujo" onclick="enviarPedidoWhatsApp()">Cotizar Pedido Seleccionado</button>
+            </center>
+        </div>
+    </div>
 
-<h2>Guadua Natural</h2>
+    <footer>
+        © 2026 MADERAS IMBABURA — OTAVALO, ECUADOR
+    </footer>
 
-<p>
-Caña estructural premium de guadua seleccionada.
-Acabado natural con relieve realista y nodos orgánicos.
-</p>
-
-<div class="controls">
-
-<div class="qty">
-<button onclick="changeQty('q1',-1)">−</button>
-<span id="q1">0</span>
-<button onclick="changeQty('q1',1)">+</button>
-</div>
-
-</div>
-
-</div>
-</div>
-
-<!-- TABLA -->
-
-<div class="card">
-
-<div class="viewer" id="viewer-tabla"></div>
-
-<div class="info">
-
-<h2>Tabla de Monte</h2>
-
-<p>
-Madera estructural rústica con vetas naturales,
-acabado orgánico y volumen realista.
-</p>
-
-<div class="controls">
-
-<div class="qty">
-<button onclick="changeQty('q2',-1)">−</button>
-<span id="q2">0</span>
-<button onclick="changeQty('q2',1)">+</button>
-</div>
-
-</div>
-
-</div>
-</div>
-
-<!-- VIGA -->
-
-<div class="card">
-
-<div class="viewer" id="viewer-viga"></div>
-
-<div class="info">
-
-<h2>Viga Maciza</h2>
-
-<p>
-Bloque estructural de madera premium con
-bordes suavizados y profundidad cinematográfica.
-</p>
-
-<div class="controls">
-
-<div class="qty">
-<button onclick="changeQty('q3',-1)">−</button>
-<span id="q3">0</span>
-<button onclick="changeQty('q3',1)">+</button>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-<div class="cta">
-
-<button class="btn-main" onclick="sendWhatsApp()">
-COTIZAR PEDIDO
-</button>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 MADERAS IMBABURA — OTAVALO ECUADOR
-</footer>
-
-<!-- THREE JS -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/geometries/RoundedBoxGeometry.js"></script>
-
-<script>
-
-/* ===========================
-CANTIDADES
-=========================== */
-
-function changeQty(id,val){
-
-    const el=document.getElementById(id);
-
-    let num=parseInt(el.innerText)+val;
-
-    if(num<0) num=0;
-
-    el.innerText=num;
-}
-
-/* ===========================
-WHATSAPP
-=========================== */
-
-function sendWhatsApp(){
-
-    let msg="Hola, deseo cotizar:\n\n";
-
-    const products=[
-        ["Guadua Natural","q1"],
-        ["Tabla de Monte","q2"],
-        ["Viga Maciza","q3"]
-    ];
-
-    let has=false;
-
-    products.forEach(p=>{
-
-        const q=parseInt(document.getElementById(p[1]).innerText);
-
-        if(q>0){
-
-            msg+=`• ${p[0]}: ${q}\n`;
-
-            has=true;
+    <script>
+        function abrirCatalogo() {
+            document.getElementById("miCatalogo").classList.add("activa");
+            document.body.style.overflow = "hidden";
         }
-    });
-
-    if(!has){
-
-        alert("Seleccione al menos un producto");
-
-        return;
-    }
-
-    window.open(
-        "https://wa.me/593962746147?text="+encodeURIComponent(msg),
-        "_blank"
-    );
-}
-
-/* ===========================
-TEXTURAS
-=========================== */
-
-const loader=new THREE.TextureLoader();
-
-const woodTexture=loader.load(
-'https://threejs.org/examples/textures/hardwood2_diffuse.jpg'
-);
-
-const woodNormal=loader.load(
-'https://threejs.org/examples/textures/hardwood2_bump.jpg'
-);
-
-const bambooTexture=loader.load(
-'https://threejs.org/examples/textures/uv_grid_opengl.jpg'
-);
-
-/* ===========================
-CREADOR ESCENAS
-=========================== */
-
-function createScene(containerId,type){
-
-    const container=document.getElementById(containerId);
-
-    const scene=new THREE.Scene();
-
-    scene.fog=new THREE.Fog(0xf5f3ef,6,12);
-
-    const camera=new THREE.PerspectiveCamera(
-        40,
-        container.clientWidth/container.clientHeight,
-        0.1,
-        100
-    );
-
-    camera.position.set(0,0,5);
-
-    const renderer=new THREE.WebGLRenderer({
-        antialias:true,
-        alpha:true
-    });
-
-    renderer.setSize(
-        container.clientWidth,
-        container.clientHeight
-    );
-
-    renderer.setPixelRatio(
-        Math.min(window.devicePixelRatio,2)
-    );
-
-    renderer.shadowMap.enabled=true;
-
-    renderer.shadowMap.type=
-    THREE.PCFSoftShadowMap;
-
-    container.appendChild(renderer.domElement);
-
-    /* LIGHTING */
-
-    const hemi=new THREE.HemisphereLight(
-        0xffffff,
-        0x444444,
-        1.5
-    );
-
-    scene.add(hemi);
-
-    const keyLight=new THREE.DirectionalLight(
-        0xffffff,
-        2
-    );
-
-    keyLight.position.set(5,8,5);
-
-    keyLight.castShadow=true;
-
-    scene.add(keyLight);
-
-    const rim=new THREE.DirectionalLight(
-        0xffffff,
-        1
-    );
-
-    rim.position.set(-5,2,-5);
-
-    scene.add(rim);
-
-    /* MATERIAL */
-
-    const woodMaterial=
-    new THREE.MeshPhysicalMaterial({
-
-        map:woodTexture,
-
-        bumpMap:woodNormal,
-
-        bumpScale:0.05,
-
-        roughness:.85,
-
-        metalness:.02,
-
-        clearcoat:.05,
-
-        clearcoatRoughness:.8
-    });
-
-    const bambooMaterial=
-    new THREE.MeshPhysicalMaterial({
-
-        color:0x7c8f62,
-
-        roughness:.8,
-
-        metalness:.02
-    });
-
-    let mesh;
-
-    /* MODELOS */
-
-    if(type==="tabla"){
-
-        const geo=new THREE.RoundedBoxGeometry(
-            3,
-            .5,
-            .18,
-            8,
-            .03
-        );
-
-        const pos=geo.attributes.position;
-
-        for(let i=0;i<pos.count;i++){
-
-            const y=pos.getY(i);
-
-            pos.setY(
-                i,
-                y+(Math.random()-.5)*0.015
-            );
+        function cerrarCatalogo() {
+            document.getElementById("miCatalogo").classList.remove("activa");
+            document.body.style.overflow = "auto";
         }
 
-        geo.computeVertexNormals();
-
-        mesh=new THREE.Mesh(
-            geo,
-            woodMaterial
-        );
-    }
-
-    if(type==="viga"){
-
-        const geo=new THREE.RoundedBoxGeometry(
-            2.8,
-            .7,
-            .7,
-            8,
-            .05
-        );
-
-        mesh=new THREE.Mesh(
-            geo,
-            woodMaterial
-        );
-    }
-
-    if(type==="guadua"){
-
-        mesh=new THREE.Group();
-
-        const geo=
-        new THREE.CylinderGeometry(
-            .22,
-            .25,
-            3,
-            48,
-            10,
-            true
-        );
-
-        const cyl=
-        new THREE.Mesh(
-            geo,
-            bambooMaterial
-        );
-
-        cyl.rotation.z=Math.PI/2;
-
-        mesh.add(cyl);
-
-        for(let i=-1;i<=1;i++){
-
-            const ringGeo=
-            new THREE.TorusGeometry(
-                .23,
-                .02,
-                16,
-                50
-            );
-
-            const ring=
-            new THREE.Mesh(
-                ringGeo,
-                bambooMaterial
-            );
-
-            ring.rotation.y=Math.PI/2;
-
-            ring.position.x=i*.9;
-
-            mesh.add(ring);
-        }
-    }
-
-    mesh.rotation.x=.4;
-    mesh.rotation.y=.5;
-
-    scene.add(mesh);
-
-    /* SOMBRA SUELO */
-
-    const floorGeo=
-    new THREE.PlaneGeometry(10,10);
-
-    const floorMat=
-    new THREE.ShadowMaterial({
-        opacity:.15
-    });
-
-    const floor=
-    new THREE.Mesh(
-        floorGeo,
-        floorMat
-    );
-
-    floor.rotation.x=-Math.PI/2;
-
-    floor.position.y=-1;
-
-    floor.receiveShadow=true;
-
-    scene.add(floor);
-
-    mesh.castShadow=true;
-
-    /* INTERACCION */
-
-    let down=false;
-
-    let lastX=0;
-
-    container.addEventListener("mousedown",(e)=>{
-
-        down=true;
-
-        lastX=e.clientX;
-    });
-
-    window.addEventListener("mouseup",()=>{
-
-        down=false;
-    });
-
-    container.addEventListener("mousemove",(e)=>{
-
-        if(!down) return;
-
-        const dx=e.clientX-lastX;
-
-        mesh.rotation.y+=dx*.01;
-
-        lastX=e.clientX;
-    });
-
-    /* MOBILE */
-
-    container.addEventListener("touchstart",(e)=>{
-
-        down=true;
-
-        lastX=e.touches[0].clientX;
-    });
-
-    window.addEventListener("touchend",()=>{
-
-        down=false;
-    });
-
-    container.addEventListener("touchmove",(e)=>{
-
-        if(!down) return;
-
-        const dx=e.touches[0].clientX-lastX;
-
-        mesh.rotation.y+=dx*.01;
-
-        lastX=e.touches[0].clientX;
-    });
-
-    /* ANIMACION */
-
-    function animate(){
-
-        requestAnimationFrame(animate);
-
-        if(!down){
-
-            mesh.rotation.y+=0.002;
-
-            mesh.rotation.x=
-            .35+
-            Math.sin(Date.now()*.001)*.03;
+        function cambiarCant(id, delta) {
+            const el = document.getElementById(id);
+            let val = parseInt(el.innerText) + delta;
+            if (val >= 0) el.innerText = val;
         }
 
-        renderer.render(scene,camera);
-    }
+        function enviarPedidoWhatsApp() {
+            let msg = "Hola Maderas Imbabura. Solicito la cotización del siguiente listado:\n\n";
+            const items = [
+                { n: "Guadua Machacada", id: "cant-machacada" },
+                { n: "Tabla de Monte", id: "cant-monte" },
+                { n: "Guadua Normal", id: "cant-guadua" },
+                { n: "Duela de Eucalipto", id: "cant-duela" },
+                { n: "Viga de Madera", id: "cant-viga" },
+                { n: "Pingo", id: "cant-pingo" },
+                { n: "Tirante", id: "cant-tirante" }
+            ];
+            let check = false;
+            items.forEach(p => {
+                let c = parseInt(document.getElementById(p.id).innerText);
+                if (c > 0) { msg += `• ${p.n}: ${c} unidades\n`; check = true; }
+            });
+            if (!check) { alert("Por favor, selecciona al menos 1 unidad de algún artículo."); return; }
+            window.open("https://wa.me/593962746147?text=" + encodeURIComponent(msg), "_blank");
+        }
 
-    animate();
+        // --- MOTOR INTERACTIVO WEBGL OPTIMIZADO (60 FPS FIXED) ---
+        function crearVisorMadera3D(idContenedor, tipoMadera) {
+            const cont = document.getElementById(idContenedor);
+            if (!cont) return;
 
-    /* RESPONSIVE */
+            const escena = new THREE.Scene();
+            escena.background = new THREE.Color(0xfaf9f6);
 
-    window.addEventListener("resize",()=>{
+            const camara = new THREE.PerspectiveCamera(40, cont.clientWidth / cont.clientHeight, 0.1, 100);
+            camara.position.set(0, 0, 4.5);
 
-        camera.aspect=
-        container.clientWidth/
-        container.clientHeight;
+            const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+            renderer.setSize(cont.clientWidth, cont.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Fluidez extrema sin saturar GPU
+            cont.appendChild(renderer.domElement);
 
-        camera.updateProjectionMatrix();
+            // Iluminación Premium de Estudio
+            const luzA = new THREE.AmbientLight(0xffffff, 0.8);
+            escena.add(luzA);
+            const luzD = new THREE.DirectionalLight(0xfffbf2, 0.5);
+            luzD.position.set(4, 6, 3);
+            escena.add(luzD);
 
-        renderer.setSize(
-            container.clientWidth,
-            container.clientHeight
-        );
-    });
-}
+            let mallaPrincipal;
 
-/* ===========================
-INICIALIZAR
-=========================== */
+            // Modelado Geométrico y Paleta de Colores de Precisión
+            if (tipoMadera === 'guadua_machacada') {
+                // Grupo para combinar el exterior verde y el interior amarillo con hendiduras
+                mallaPrincipal = new THREE.Group();
+                
+                // Base interna (Amarillo Bambú Natural Abierto)
+                const geoInt = new THREE.BoxGeometry(2.2, 0.9, 0.08);
+                const matInt = new THREE.MeshStandardMaterial({ color: 0xdfcb90, roughness: 0.5 });
+                const baseInt = new THREE.Mesh(geoInt, matInt);
+                mallaPrincipal.add(baseInt);
 
-window.addEventListener("DOMContentLoaded",()=>{
+                // Listones simuladores de fisuras rectas (Corteza exterior verde)
+                const numTiras = 8;
+                const anchoTira = 0.9 / numTiras;
+                for(let i=0; i<numTiras; i++) {
+                    const geoTira = new THREE.BoxGeometry(2.202, anchoTira - 0.02, 0.02);
+                    const matTira = new THREE.MeshStandardMaterial({ color: 0x6e7e55, roughness: 0.6 });
+                    const tira = new THREE.Mesh(geoTira, matTira);
+                    // Desplazamos las tiras al frente para simular el relieve de la caña machacada
+                    tira.position.set(0, -0.45 + (anchoTira*i) + (anchoTira/2), 0.05);
+                    mallaPrincipal.add(tira);
+                }
+            } 
+            else if (tipoMadera === 'tabla_monte') {
+                // Tabla estructural de color rojo denso
+                const geo = new THREE.BoxGeometry(2.3, 0.65, 0.12);
+                const mat = new THREE.MeshStandardMaterial({ color: 0x935143, roughness: 0.7 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'guadua_normal') {
+                // Cilindro hueco y completamente verde
+                const geo = new THREE.CylinderGeometry(0.18, 0.18, 2.5, 24, 1, true);
+                const mat = new THREE.MeshStandardMaterial({ color: 0x5a6d41, roughness: 0.5, side: THREE.DoubleSide });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+                mallaPrincipal.rotation.z = Math.PI / 2;
+            } 
+            else if (tipoMadera === 'duela_eucalipto') {
+                // Rectangular, lisa y perfectamente recta. Amarillo pálido.
+                const geo = new THREE.BoxGeometry(2.4, 0.38, 0.09);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xf3eac2, roughness: 0.4 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'viga_madera') {
+                // Bloque de sección gruesa y cuadrada
+                const geo = new THREE.BoxGeometry(2.2, 0.45, 0.45);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xbc986a, roughness: 0.6 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+            } 
+            else if (tipoMadera === 'pingo') {
+                // Cilindro uniforme, amarillo pálido, puntas planas pero bordes curvos
+                mallaPrincipal = new THREE.Group();
+                const geoCil = new THREE.CylinderGeometry(0.13, 0.13, 2.4, 24);
+                const matPingo = new THREE.MeshStandardMaterial({ color: 0xeedfa4, roughness: 0.5 });
+                const cilindro = new THREE.Mesh(geoCil, matPingo);
+                cilindro.rotation.z = Math.PI / 2;
+                mallaPrincipal.add(cilindro);
 
-    createScene(
-        "viewer-guadua",
-        "guadua"
-    );
+                // Bordes suavizados en las puntas (Toros planos)
+                const geoBorde = new THREE.TorusGeometry(0.11, 0.02, 8, 24);
+                const borde1 = new THREE.Mesh(geoBorde, matPingo);
+                borde1.position.set(-1.2, 0, 0); borde1.rotation.y = Math.PI / 2;
+                const borde2 = new THREE.Mesh(geoBorde, matPingo);
+                borde2.position.set(1.2, 0, 0); borde2.rotation.y = Math.PI / 2;
+                mallaPrincipal.add(borde1, borde2);
+            } 
+            else if (tipoMadera === 'tirante') {
+                // Cilindro redondo de diámetro muy ancho (más grueso que el pingo)
+                const geo = new THREE.CylinderGeometry(0.25, 0.25, 2.4, 24);
+                const mat = new THREE.MeshStandardMaterial({ color: 0xd0b382, roughness: 0.5 });
+                mallaPrincipal = new THREE.Mesh(geo, mat);
+                mallaPrincipal.rotation.z = Math.PI / 2;
+            }
 
-    createScene(
-        "viewer-tabla",
-        "tabla"
-    );
+            // Inclinación inicial estética de exhibición
+            mallaPrincipal.rotation.set(0.3, 0.6, 0);
+            escena.add(mallaPrincipal);
 
-    createScene(
-        "viewer-viga",
-        "viga"
-    );
-});
+            // Interacción táctil de fricción cero (Ultra Fluida)
+            let presionado = false;
+            let antX = 0, antY = 0;
 
-</script>
+            cont.addEventListener('mousedown', (e) => { presionado = true; antX = e.clientX; antY = e.clientY; });
+            cont.addEventListener('touchstart', (e) => { presionado = true; antX = e.touches[0].clientX; antY = e.touches[0].clientY; }, {passive: true});
+            
+            window.addEventListener('mouseup', () => presionado = false);
+            window.addEventListener('touchend', () => presionado = false);
 
+            cont.addEventListener('mousemove', (e) => {
+                if (!presionado) return;
+                let dx = e.clientX - antX;
+                let dy = e.clientY - antY;
+                mallaPrincipal.rotation.y += dx * 0.007;
+                mallaPrincipal.rotation.x += dy * 0.007;
+                antX = e.clientX; antY = e.clientY;
+            });
+
+            cont.addEventListener('touchmove', (e) => {
+                if (!presionado) return;
+                let dx = e.touches[0].clientX - antX;
+                let dy = e.touches[0].clientY - antY;
+                mallaPrincipal.rotation.y += dx * 0.009;
+                mallaPrincipal.rotation.x += dy * 0.009;
+                antX = e.touches[0].clientX; antY = e.touches[0].clientY;
+            }, {passive: true});
+
+            // Bucle de animación optimizado
+            function renderizar() {
+                requestAnimationFrame(renderizar);
+                if (!presionado) {
+                    mallaPrincipal.rotation.y += 0.004; // Rotación inercial continua suave
+                }
+                renderer.render(escena, camara);
+            }
+            renderizar();
+
+            // Ajuste automático al cambiar tamaño de pantalla
+            window.addEventListener('resize', () => {
+                if(cont.clientWidth > 0){
+                    camara.aspect = cont.clientWidth / cont.clientHeight;
+                    camara.updateProjectionMatrix();
+                    renderer.setSize(cont.clientWidth, cont.clientHeight);
+                }
+            });
+        }
+
+            // Inicializar las piezas de manera asíncrona al cargar la página
+            window.addEventListener('DOMContentLoaded', () => {
+                crearVisorMadera3D('3d-guadua-machacada', 'guadua_machacada');
+                crearVisorMadera3D('3d-tabla-monte', 'tabla_monte');
+                crearVisorMadera3D('3d-guadua-normal', 'guadua_normal');
+                crearVisorMadera3D('3d-duela-eucalipto', 'duela_eucalipto');
+                crearVisorMadera3D('3d-viga-madera', 'viga_madera');
+                crearVisorMadera3D('3d-pingo', 'pingo');
+                crearVisorMadera3D('3d-tirante', 'tirante');
+            });
+    </script>
 </body>
 </html>
