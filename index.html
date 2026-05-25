@@ -19,29 +19,31 @@ box-sizing:border-box;
 
 body{
 
-background:#f3f0eb;
+background:#f2efe9;
 
 font-family:'Inter',sans-serif;
 
-color:#111;
-
 overflow-x:hidden;
+
+color:#1d1d1d;
 }
 
 /* HEADER */
 
 header{
 
-padding:90px 20px 70px;
+padding:70px 20px 60px;
 
 text-align:center;
 }
 
 .logo{
 
-width:120px;
+width:150px;
 
 margin-bottom:25px;
+
+object-fit:contain;
 }
 
 header h1{
@@ -50,16 +52,16 @@ font-family:'Cormorant Garamond',serif;
 
 font-size:4rem;
 
-letter-spacing:12px;
+letter-spacing:10px;
 
 font-weight:500;
 
-color:#2a211b;
+color:#2b2118;
 }
 
 header p{
 
-margin-top:15px;
+margin-top:10px;
 
 letter-spacing:4px;
 
@@ -67,14 +69,14 @@ font-size:.9rem;
 
 text-transform:uppercase;
 
-color:#8a8178;
+color:#8a7d70;
 }
 
 /* GRID */
 
 .catalogo{
 
-max-width:1600px;
+max-width:1700px;
 
 margin:auto;
 
@@ -94,13 +96,13 @@ gap:30px;
 
 .card{
 
-background:#faf8f5;
+background:#f8f5f0;
 
 border-radius:24px;
 
 overflow:hidden;
 
-border:1px solid rgba(0,0,0,.04);
+border:1px solid rgba(0,0,0,.05);
 
 transition:.4s;
 }
@@ -112,9 +114,9 @@ transform:translateY(-6px);
 
 .viewer{
 
-height:300px;
+height:280px;
 
-background:#f6f2ec;
+background:#f5f1ea;
 
 position:relative;
 }
@@ -130,9 +132,7 @@ font-family:'Cormorant Garamond',serif;
 
 font-size:2rem;
 
-margin-bottom:12px;
-
-font-weight:600;
+margin-bottom:10px;
 
 color:#2a211b;
 }
@@ -145,7 +145,7 @@ color:#666;
 
 font-size:.95rem;
 
-min-height:120px;
+min-height:110px;
 }
 
 /* QTY */
@@ -161,13 +161,15 @@ display:flex;
 
 align-items:center;
 
+width:130px;
+
 border:1px solid rgba(0,0,0,.1);
 
 border-radius:14px;
 
 overflow:hidden;
 
-width:130px;
+background:white;
 }
 
 .qty button{
@@ -180,9 +182,9 @@ border:none;
 
 background:white;
 
-font-size:1.2rem;
-
 cursor:pointer;
+
+font-size:1.2rem;
 }
 
 .qty span{
@@ -194,7 +196,7 @@ text-align:center;
 font-weight:600;
 }
 
-/* BUTTON */
+/* CTA */
 
 .cta{
 
@@ -220,13 +222,6 @@ letter-spacing:4px;
 font-size:.9rem;
 
 cursor:pointer;
-
-transition:.3s;
-}
-
-.btn-main:hover{
-
-transform:translateY(-4px);
 }
 
 /* FOOTER */
@@ -250,14 +245,14 @@ color:#888;
 
 header h1{
 
-font-size:2.3rem;
+font-size:2.4rem;
 
 letter-spacing:5px;
 }
 
 .viewer{
 
-height:240px;
+height:220px;
 }
 
 }
@@ -270,7 +265,13 @@ height:240px;
 
 <header>
 
-<img class="logo" src="https://i.imgur.com/YOURLOGO.png">
+<!-- LOGO CORREGIDO -->
+
+<img 
+class="logo" 
+src="https://raw.githubusercontent.com/apolo4321/MADERAS-IMBABURA/main/logo.png"
+onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg'"
+>
 
 <h1>MADERAS IMBABURA</h1>
 
@@ -293,8 +294,8 @@ height:240px;
 <h2>Guadua Machacada</h2>
 
 <p>
-Guadua abierta manualmente con divisiones naturales,
-fibras visibles y textura auténtica ecuatoriana.
+Guadua abierta artesanalmente con textura natural,
+fibras visibles y nudos reales ecuatorianos.
 </p>
 
 <div class="controls">
@@ -315,7 +316,7 @@ fibras visibles y textura auténtica ecuatoriana.
 
 </div>
 
-<!-- TABLA -->
+<!-- TABLA DE MONTE -->
 
 <div class="card">
 
@@ -326,8 +327,8 @@ fibras visibles y textura auténtica ecuatoriana.
 <h2>Tabla de Monte</h2>
 
 <p>
-Tabla rústica estructural con vetas profundas
-y acabado natural premium.
+Tabla estructural rústica con vetas profundas
+y acabado orgánico natural.
 </p>
 
 <div class="controls">
@@ -356,11 +357,11 @@ y acabado natural premium.
 
 <div class="info">
 
-<h2>Guadua Natural</h2>
+<h2>Guadua Normal</h2>
 
 <p>
-Caña estructural premium con divisiones horizontales
-naturales y acabado orgánico realista.
+Caña tubular natural con nudos horizontales
+cada 30 centímetros y acabado realista.
 </p>
 
 <div class="controls">
@@ -392,8 +393,8 @@ naturales y acabado orgánico realista.
 <h2>Duela de Eucalipto</h2>
 
 <p>
-Madera cepillada de acabado fino
-ideal para estructuras y acabados premium.
+Duela cepillada premium de color natural
+con líneas suaves y acabado fino.
 </p>
 
 <div class="controls">
@@ -422,11 +423,11 @@ ideal para estructuras y acabados premium.
 
 <div class="info">
 
-<h2>Viga Maciza</h2>
+<h2>Viga de Madera</h2>
 
 <p>
-Bloque estructural robusto con acabado
-arquitectónico y volumen realista.
+Viga maciza estructural de alta resistencia
+con volumen arquitectónico natural.
 </p>
 
 <div class="controls">
@@ -459,7 +460,7 @@ arquitectónico y volumen realista.
 
 <p>
 Tronco cilíndrico uniforme de eucalipto
-con tono natural amarillo madera.
+con color natural amarillo madera.
 </p>
 
 <div class="controls">
@@ -492,7 +493,7 @@ con tono natural amarillo madera.
 
 <p>
 Madera cilíndrica de gran diámetro
-para soporte estructural pesado.
+ideal para soporte estructural pesado.
 </p>
 
 <div class="controls">
@@ -529,17 +530,13 @@ COTIZAR PEDIDO
 © 2026 MADERAS IMBABURA — OTAVALO ECUADOR
 </footer>
 
-<!-- THREE -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/geometries/RoundedBoxGeometry.js"></script>
 
 <script>
 
-/* =========================
+/* =======================
 CANTIDADES
-========================= */
+======================= */
 
 function qty(id,val){
 
@@ -552,9 +549,9 @@ if(n<0)n=0;
 el.innerText=n;
 }
 
-/* =========================
+/* =======================
 WHATSAPP
-========================= */
+======================= */
 
 function cotizar(){
 
@@ -564,9 +561,9 @@ const items=[
 
 ["Guadua Machacada","q1"],
 ["Tabla de Monte","q2"],
-["Guadua Natural","q3"],
+["Guadua Normal","q3"],
 ["Duela de Eucalipto","q4"],
-["Viga Maciza","q5"],
+["Viga de Madera","q5"],
 ["Pingo","q6"],
 ["Tirante","q7"]
 
@@ -589,7 +586,7 @@ ok=true;
 
 if(!ok){
 
-alert("Seleccione al menos un producto");
+alert("Seleccione un producto");
 
 return;
 }
@@ -603,9 +600,9 @@ window.open(
 
 }
 
-/* =========================
-ESCENA 3D NATURAL
-========================= */
+/* =======================
+VISOR 3D NATURAL
+======================= */
 
 function createViewer(id,type){
 
@@ -622,7 +619,7 @@ container.clientWidth/container.clientHeight,
 
 );
 
-camera.position.set(0,0,5);
+camera.position.z=5;
 
 const renderer=new THREE.WebGLRenderer({
 
@@ -646,20 +643,20 @@ Math.min(window.devicePixelRatio,2)
 
 container.appendChild(renderer.domElement);
 
-/* LUZ SUAVE NATURAL */
+/* LUZ SUAVE */
 
 const ambient=new THREE.AmbientLight(
 
 0xffffff,
-1.4
+1.2
 
 );
 
 scene.add(ambient);
 
-/* MATERIAL */
+/* MATERIAL NATURAL */
 
-function wood(color){
+function mat(color){
 
 return new THREE.MeshStandardMaterial({
 
@@ -683,24 +680,17 @@ model=new THREE.Group();
 
 for(let i=0;i<13;i++){
 
-const geo=new THREE.BoxGeometry(
-
-0.14,
-3,
-0.03
-
-);
-
 const strip=new THREE.Mesh(
 
-geo,
-wood(0x9f6d38)
+new THREE.BoxGeometry(0.13,3,0.03),
+
+mat(0x9c6b36)
 
 );
 
-strip.position.x=-0.95+(i*0.16);
+strip.position.x=-0.9+(i*0.15);
 
-strip.rotation.z=(Math.random()-.5)*0.03;
+strip.rotation.z=(Math.random()-.5)*0.02;
 
 model.add(strip);
 
@@ -710,8 +700,9 @@ for(let j=-1;j<=1;j++){
 
 const line=new THREE.Mesh(
 
-new THREE.BoxGeometry(0.15,0.03,0.04),
-wood(0x7a522c)
+new THREE.BoxGeometry(0.14,0.03,0.04),
+
+mat(0x6f4a24)
 
 );
 
@@ -731,18 +722,11 @@ model.rotation.x=.55;
 
 if(type==="tabla"){
 
-const geo=new THREE.BoxGeometry(
-
-3,
-0.4,
-0.2
-
-);
-
 model=new THREE.Mesh(
 
-geo,
-wood(0xb67a43)
+new THREE.BoxGeometry(3,0.35,0.22),
+
+mat(0xb77a45)
 
 );
 
@@ -758,15 +742,15 @@ model=new THREE.Group();
 const tube=new THREE.Mesh(
 
 new THREE.CylinderGeometry(
-0.32,
-0.35,
+0.30,
+0.34,
 3.5,
 50,
 10,
 true
 ),
 
-wood(0x91a56d)
+mat(0x91a56d)
 
 );
 
@@ -781,13 +765,13 @@ for(let i=-1.2;i<=1.2;i+=0.6){
 const ring=new THREE.Mesh(
 
 new THREE.TorusGeometry(
-0.34,
+0.33,
 0.025,
 16,
-60
+50
 ),
 
-wood(0xc3a06b)
+mat(0xc89d63)
 
 );
 
@@ -805,18 +789,11 @@ model.rotation.x=.2;
 
 if(type==="duela"){
 
-const geo=new THREE.BoxGeometry(
-
-3,
-0.25,
-0.15
-
-);
-
 model=new THREE.Mesh(
 
-geo,
-wood(0xd3b07d)
+new THREE.BoxGeometry(3,0.22,0.16),
+
+mat(0xd7b37a)
 
 );
 
@@ -827,18 +804,11 @@ model.rotation.z=.08;
 
 if(type==="viga"){
 
-const geo=new THREE.BoxGeometry(
-
-2.6,
-0.7,
-0.7
-
-);
-
 model=new THREE.Mesh(
 
-geo,
-wood(0xa87649)
+new THREE.BoxGeometry(2.7,0.7,0.7),
+
+mat(0xa87648)
 
 );
 
@@ -849,19 +819,16 @@ model.rotation.z=.08;
 
 if(type==="pingo"){
 
-const geo=new THREE.CylinderGeometry(
+model=new THREE.Mesh(
 
+new THREE.CylinderGeometry(
 0.18,
 0.18,
 3,
 40
+),
 
-);
-
-model=new THREE.Mesh(
-
-geo,
-wood(0xd7b37f)
+mat(0xd8b27d)
 
 );
 
@@ -872,19 +839,16 @@ model.rotation.z=Math.PI/2;
 
 if(type==="tirante"){
 
-const geo=new THREE.CylinderGeometry(
-
-0.28,
-0.28,
-3.2,
-40
-
-);
-
 model=new THREE.Mesh(
 
-geo,
-wood(0xcaa16f)
+new THREE.CylinderGeometry(
+0.30,
+0.30,
+3.2,
+40
+),
+
+mat(0xc59d68)
 
 );
 
@@ -955,32 +919,13 @@ requestAnimationFrame(animate);
 
 if(!down){
 
-model.rotation.y+=0.003;
+model.rotation.y+=0.002;
 }
 
 renderer.render(scene,camera);
 }
 
 animate();
-
-/* RESPONSIVE */
-
-window.addEventListener("resize",()=>{
-
-camera.aspect=
-
-container.clientWidth/container.clientHeight;
-
-camera.updateProjectionMatrix();
-
-renderer.setSize(
-
-container.clientWidth,
-container.clientHeight
-
-);
-
-});
 
 }
 
