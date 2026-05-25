@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maderas Imbabura | Exclusividad Forestal</title>
+    <title>Maderas Imbabura | Catálogo Interactivo 3D</title>
     <style>
         /* Estilo General - Lujo Minimalista Claro */
         body {
@@ -103,19 +103,14 @@
             overflow-y: auto;
             padding: 3rem 1rem;
             box-sizing: border-box;
-            
-            /* Estado oculto por defecto (invisible y desplazado hacia abajo) */
             opacity: 0;
             visibility: hidden;
             transform: translateY(30px);
-            
-            /* Transición armónica y ligera */
             transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
                         transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
                         visibility 0.5s;
         }
 
-        /* Estado activo (cuando se abre mágicamente) */
         .pantalla-desplegable.activa {
             opacity: 1;
             visibility: visible;
@@ -144,11 +139,6 @@
             border-bottom: 1px solid #111;
             padding-bottom: 5px;
             margin-bottom: 20px;
-            transition: opacity 0.3s;
-        }
-
-        .btn-cerrar:hover {
-            opacity: 0.6;
         }
 
         .titulo-interno {
@@ -161,32 +151,103 @@
             padding-bottom: 10px;
         }
 
-        /* Lista de productos dentro del despliegue */
+        /* Estructura de cada uno de los 7 Artículos */
         .producto-item-premium {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
+            text-align: center;
         }
 
-        .producto-item-premium img {
+        /* Contenedor interactivo del render 3D */
+        .contenedor-3d {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
-            margin-bottom: 15px;
+            height: 300px;
+            background-color: #fcfbfa;
+            border: 1px solid #f0eeeb;
+            margin-bottom: 20px;
+            position: relative;
+            cursor: grab;
+            overflow: hidden;
+        }
+
+        .contenedor-3d:active {
+            cursor: grabbing;
+        }
+
+        .indicador-3d {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #999;
+            pointer-events: none;
+            font-style: italic;
         }
 
         .producto-item-premium h3 {
             font-size: 1.4rem;
             letter-spacing: 2px;
-            margin: 10px 0;
+            margin: 15px 0 10px 0;
             text-transform: uppercase;
             font-weight: bold;
+            text-align: left;
         }
 
         .producto-item-premium p {
             color: #444;
             font-size: 1.05rem;
-            margin: 0;
+            margin: 0 0 25px 0;
+            text-align: left;
+        }
+
+        /* --- CONTROLADORES DE CANTIDAD AL ESTILO COMPRA DE LUJO --- */
+        .interaccion-compra {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fcfbfa;
+            border: 1px solid #e5e5e5;
+            padding: 12px 20px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .label-cantidad {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .selector-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-cantidad {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #111;
+            cursor: pointer;
+            padding: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .btn-cantidad:hover {
+            color: #888;
+        }
+
+        .numero-unidades {
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
         }
 
         /* Botón de Contacto */
@@ -224,6 +285,7 @@
             margin-top: 5rem;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -237,7 +299,7 @@
             <img class="imagen-catalogo" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Variedad de Maderas Solidas">
             <h2>Nuestro Catálogo de Madera</h2>
             <p>Procesamos materiales óptimos con cortes de alta precisión para encofrado, carpintería y acabados estructurales.</p>
-            <p class="txt-click">Presione aquí para visualizar el catálogo completo</p>
+            <p class="txt-click">Presione aquí para visualizar el catálogo interactivo 3D</p>
         </div>
 
         <div class="cta-container">
@@ -251,36 +313,122 @@
         <div class="contenido-desplegado">
             <button class="btn-cerrar" onclick="cerrarCatalogo()">Volver al Inicio ✕</button>
             
-            <h2 class="titulo-interno">Línea de Productos</h2>
+            <h2 class="titulo-interno">Línea de Productos 3D</h2>
             
             <div class="producto-item-premium">
-                <img src="https://images.pexels.com/photos/1762973/pexels-photo-1762973.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tablas de Medida">
-                <h3>Tablas de Medida</h3>
-                <p>Cortes ideales para la construcción y sistemas de encofrados firmes. Disponibles en pino seleccionado y eucalipto de alta resistencia ante la humedad y la carga.</p>
+                <div class="contenedor-3d" id="canvas-tabla-monte" data-tipo="tabla_ancha">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Tabla de Monte</h3>
+                <p>Madera rústica y sumamente resistente extraída de bosques locales, ideal para cimbras, encofrados pesados y obras estructurales rudas.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-monte', -1)">−</button>
+                        <span class="numero-unidades" id="cant-monte">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-monte', 1)">+</button>
+                    </div>
+                </div>
             </div>
 
             <div class="producto-item-premium">
-                <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vigas Estructurales">
-                <h3>Vigas Estructurales</h3>
-                <p>Soporte macizo y robusto diseñado rigurosamente para soportar techados pesados, pórticos, pérgolas residenciales y grandes obras de arquitectura.</p>
+                <div class="contenedor-3d" id="canvas-guadua-machacada" data-tipo="esterilla">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Guadua Machacada (Esterilla)</h3>
+                <p>Paneles flexibles de bambú guadua procesado. Excelentes para revestimientos orgánicos, tumbados, bioconstrucción y refuerzo de paredes.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-machacada', -1)">−</button>
+                        <span class="numero-unidades" id="cant-machacada">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-machacada', 1)">+</button>
+                    </div>
+                </div>
             </div>
 
             <div class="producto-item-premium">
-                <img src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tirantes de Madera">
+                <div class="contenedor-3d" id="canvas-guadua-normal" data-tipo="cilindro_vacio">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Guadua Normal (Cáliz/Poste)</h3>
+                <p>Cañas estructurales seleccionadas por su grosor y madurez. El acero vegetal de la construcción, ideal para columnas, vigas estructurales y diseño rústico.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-guadua', -1)">−</button>
+                        <span class="numero-unidades" id="cant-guadua">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-guadua', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="canvas-duela-eucalipto" data-tipo="tabla_delgada">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Duela de Eucalipto</h3>
+                <p>Madera machihembrada, pulida y secada al horno. Perfecta para la instalación de pisos elegantes de alta resistencia al tráfico peatonal.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-duela', -1)">−</button>
+                        <span class="numero-unidades" id="cant-duela">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-duela', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="canvas-vigas-madera" data-tipo="viga_gruesa">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Vigas de Madera</h3>
+                <p>Cortes rectangulares masivos de gran calibre. Soportes ideales para techados expuestos, pérgolas residenciales y altillos.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-vigas', -1)">−</button>
+                        <span class="numero-unidades" id="cant-vigas">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-vigas', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="canvas-pingos" data-tipo="cilindro_lleno">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
+                <h3>Pingos / Puntales</h3>
+                <p>Postes circulares de eucalipto ideales para soporte vertical temporal en losas de hormigón, puntales de construcción y cercados de linderos.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-pingos', -1)">−</button>
+                        <span class="numero-unidades" id="cant-pingos">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-pingos', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-item-premium">
+                <div class="contenedor-3d" id="canvas-tirantes" data-tipo="tirante">
+                    <span class="indicador-3d">Deslice para rotar 3D ↺</span>
+                </div>
                 <h3>Tirantes de Madera</h3>
-                <p>Líneas de soporte perfectamente alineadas, niveladas y cepilladas. Piezas indispensables para armazones internos, techos falsos y cubiertas expuestas.</p>
+                <p>Listones cuadrados y cepillados de sección uniforme, indispensables para clavar tejas, armados de techos falsos y subdivisiones.</p>
+                <div class="interaccion-compra">
+                    <span class="label-cantidad">Cantidad</span>
+                    <div class="selector-cantidad">
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-tirantes', -1)">−</button>
+                        <span class="numero-unidades" id="cant-tirantes">0</span>
+                        <button class="btn-cantidad" onclick="modificarCantidad('cant-tirantes', 1)">+</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="producto-item-premium">
-                <img src="https://images.pexels.com/photos/5411234/pexels-photo-5411234.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Maderas de Acabado">
-                <h3>Maderas de Acabado (Seike y Finas)</h3>
-                <p>Selección premium de veta fina y madera noble estacionada. El material perfecto y predilecto para carpintería residencial, fabricación de pisos residenciales, puertas señoriales y muebles de autor.</p>
-            </div>
-
-            <center style="margin-top: 30px;">
-                <a href="https://wa.me/593962746147?text=Hola,%20me%20interesa%20un%20producto%20de%20su%20catálogo%20desplegable." class="btn-lujo" target="_blank">
-                    Cotizar este Catálogo
-                </a>
+            <center style="margin-top: 40px;">
+                <button class="btn-lujo" onclick="enviarPedidoWhatsApp()">Enviar Pedido Seleccionado</button>
             </center>
         </div>
     </div>
@@ -290,18 +438,164 @@
     </footer>
 
     <script>
+        // Funciones del Desplegable
         function abrirCatalogo() {
-            const catalogo = document.getElementById("miCatalogo");
-            catalogo.classList.add("activa"); // Añade la clase que activa la animación suave
-            document.body.style.overflow = "hidden"; 
+            document.getElementById("miCatalogo").classList.add("activa");
+            document.body.style.overflow = "hidden";
         }
-
         function cerrarCatalogo() {
-            const catalogo = document.getElementById("miCatalogo");
-            catalogo.classList.remove("activa"); // Quita la clase para desvanecer suavemente
-            document.body.style.overflow = "auto"; 
+            document.getElementById("miCatalogo").classList.remove("activa");
+            document.body.style.overflow = "auto";
         }
-    </script>
 
+        // Lógica de Cantidades (+ / -)
+        function modificarCantidad(id, cambio) {
+            let elemento = document.getElementById(id);
+            let valorActual = parseInt(elemento.innerText);
+            let nuevoValor = valorActual + cambio;
+            if (nuevoValor >= 0) {
+                elemento.innerText = nuevoValor;
+            }
+        }
+
+        // Envío Inteligente de Pedidos a WhatsApp
+        function enviarPedidoWhatsApp() {
+            let mensaje = "Hola Maderas Imbabura. Me interesa cotizar el siguiente pedido:\n\n";
+            let productos = [
+                { nombre: "Tabla de Monte", id: "cant-monte" },
+                { nombre: "Guadua Machacada", id: "cant-machacada" },
+                { nombre: "Guadua Normal", id: "cant-guadua" },
+                { nombre: "Duela de Eucalipto", id: "cant-duela" },
+                { nombre: "Vigas de Madera", id: "cant-vigas" },
+                { nombre: "Pingos", id: "cant-pingos" },
+                { nombre: "Tirantes de Madera", id: "cant-tirantes" }
+            ];
+            
+            let tieneItems = false;
+            productos.forEach(p => {
+                let cant = parseInt(document.getElementById(p.id).innerText);
+                if (cant > 0) {
+                    mensaje += `• ${p.nombre}: ${cant} unidades\n`;
+                    tieneItems = true;
+                }
+            });
+
+            if (!tieneItems) {
+                alert("Por favor, aumente la cantidad de al menos un artículo antes de enviar.");
+                return;
+            }
+
+            window.open("https://wa.me/593962746147?text=" + encodeURIComponent(mensaje), "_blank");
+        }
+
+        // --- MOTOR INTERACTIVO DE RENDERS 3D REALES ---
+        function inicializarMundo3D(idContenedor, tipoGeometria) {
+            const contenedor = document.getElementById(idContenedor);
+            if (!contenedor) return;
+
+            // Escena y Cámara
+            const escena = new THREE.Scene();
+            escena.background = new THREE.Color(0xfcfbfa);
+            const camara = new THREE.PerspectiveCamera(45, contenedor.clientWidth / contenedor.clientHeight, 0.1, 1000);
+            camara.position.set(0, 0, 5);
+
+            // Renderizador
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(contenedor.clientWidth, contenedor.clientHeight);
+            contenedor.appendChild(renderer.domElement);
+
+            // Iluminación
+            const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.7);
+            escena.add(luzAmbiente);
+            const luzDireccional = new THREE.DirectionalLight(0xfff5ea, 0.6);
+            luzDireccional.position.set(5, 5, 4);
+            escena.add(luzDireccional);
+
+            // Modelado de Piezas de Madera de Acuerdo a su Naturaleza Real
+            let geometria;
+            if (tipoGeometria === 'tabla_ancha') geometria = new THREE.BoxGeometry(2.4, 0.8, 0.15);
+            else if (tipoGeometria === 'tabla_delgada') geometria = new THREE.BoxGeometry(2.4, 0.4, 0.1);
+            else if (tipoGeometria === 'viga_gruesa') geometria = new THREE.BoxGeometry(2.5, 0.5, 0.5);
+            else if (tipoGeometria === 'tirante') geometria = new THREE.BoxGeometry(2.5, 0.2, 0.2);
+            else if (tipoGeometria === 'esterilla') geometria = new THREE.BoxGeometry(2.0, 1.2, 0.05);
+            else if (tipoGeometria === 'cilindro_lleno') geometria = new THREE.CylinderGeometry(0.18, 0.18, 2.6, 16);
+            else if (tipoGeometria === 'cilindro_vacio') geometria = new THREE.CylinderGeometry(0.2, 0.2, 2.6, 16, 1, true);
+
+            // Generación de Textura Orgánica de Madera Real mediante Algoritmo de Vetas
+            const canvasTextura = document.createElement('canvas');
+            canvasTextura.width = 256; canvasTextura.height = 256;
+            const ctx = canvasTextura.getContext('2d');
+            ctx.fillStyle = tipoGeometria.includes('guadua') ? '#c2b280' : '#b08d57'; 
+            ctx.fillRect(0, 0, 256, 256);
+            ctx.fillStyle = tipoGeometria.includes('guadua') ? '#a39360' : '#8a6532';
+            for (let i = 0; i < 256; i += 4) {
+                if (Math.random() > 0.3) ctx.fillRect(0, i, 256, Math.random() * 2);
+            }
+            const texturaGenerada = new THREE.CanvasTexture(canvasTextura);
+
+            // Material
+            const material = new THREE.MeshStandardMaterial({
+                map: texturaGenerada,
+                roughness: 0.6,
+                metalness: 0.1,
+                side: THREE.DoubleSide
+            });
+
+            const piezaMadera = new THREE.Mesh(geometria, material);
+            piezaMadera.rotation.set(0.4, 0.5, 0);
+            escena.add(piezaMadera);
+
+            // Animación e Interacción Táctil / Mouse
+            let mouseApretado = false;
+            let coordXAnterior = 0;
+            let coordYAnterior = 0;
+
+            contenedor.addEventListener('mousedown', (e) => { mouseApretado = true; coordXAnterior = e.clientX; coordYAnterior = e.clientY; });
+            contenedor.addEventListener('touchstart', (e) => { mouseApretado = true; coordXAnterior = e.touches[0].clientX; coordYAnterior = e.touches[0].clientY; });
+            
+            window.addEventListener('mouseup', () => mouseApretado = false);
+            window.addEventListener('touchend', () => mouseApretado = false);
+
+            contenedor.addEventListener('mousemove', (e) => {
+                if (!mouseApretado) return;
+                let deltaX = e.clientX - coordXAnterior;
+                let deltaY = e.clientY - coordYAnterior;
+                piezaMadera.rotation.y += deltaX * 0.01;
+                piezaMadera.rotation.x += deltaY * 0.01;
+                coordXAnterior = e.clientX;
+                coordYAnterior = e.clientY;
+            });
+
+            contenedor.addEventListener('touchmove', (e) => {
+                if (!mouseApretado) return;
+                let deltaX = e.touches[0].clientX - coordXAnterior;
+                let deltaY = e.touches[0].clientY - coordYAnterior;
+                piezaMadera.rotation.y += deltaX * 0.01;
+                piezaMadera.rotation.x += deltaY * 0.01;
+                coordXAnterior = e.touches[0].clientX;
+                coordYAnterior = e.touches[0].clientY;
+            });
+
+            function animar() {
+                requestAnimationFrame(animar);
+                if (!mouseApretado) {
+                    piezaMadera.rotation.y += 0.003; // Rotación automática sutil si no se toca
+                }
+                renderer.render(escena, camara);
+            }
+            animar();
+        }
+
+        // Inicializar los 7 Canvas al cargar el sitio
+        window.addEventListener('load', () => {
+            inicializarMundo3D('canvas-tabla-monte', 'tabla_ancha');
+            inicializarMundo3D('canvas-guadua-machacada', 'esterilla');
+            inicializarMundo3D('canvas-guadua-normal', 'cilindro_vacio');
+            inicializarMundo3D('canvas-duela-eucalipto', 'tabla_delgada');
+            inicializarMundo3D('canvas-vigas-madera', 'viga_gruesa');
+            inicializarMundo3D('canvas-pingos', 'cilindro_lleno');
+            inicializarMundo3D('canvas-tirantes', 'tirante');
+        });
+    </script>
 </body>
 </html>
