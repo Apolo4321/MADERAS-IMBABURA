@@ -63,6 +63,7 @@
             height: 280px;
             object-fit: cover;
             margin-bottom: 25px;
+            background-color: #eee;
         }
 
         .bloque-catalogo-principal h2 {
@@ -81,7 +82,7 @@
             font-weight: bold;
         }
 
-        /* --- PANTALLA DESPLEGABLE DE ALTA FLUIDEZ (CSS HARDWARE ACCELERATED) --- */
+        /* --- PANTALLA DESPLEGABLE DE ALTA FLUIDEZ --- */
         .pantalla-desplegable {
             position: fixed;
             top: 0;
@@ -93,7 +94,7 @@
             overflow-y: auto;
             opacity: 0;
             visibility: hidden;
-            transform: translateZ(0); /* Forzar uso de GPU para evitar trabas */
+            transform: translateZ(0);
             transition: opacity 0.35s ease, visibility 0.35s ease;
         }
 
@@ -158,7 +159,7 @@
             }
         }
 
-        /* Contenedor Isométrico de la Imagen */
+        /* Contenedor de la Imagen */
         .visualizador-imagen-real {
             width: 180px;
             height: 140px;
@@ -173,8 +174,7 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            /* Suave sombra para simular relieve sobre el fondo claro */
-            filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.12));
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.08));
         }
 
         .detalles-producto {
@@ -201,7 +201,7 @@
             margin: 0;
         }
 
-        /* Selectores de Cantidad Laterales Uniformes */
+        /* Selectores de Cantidad */
         .control-pedido {
             display: flex;
             align-items: center;
@@ -287,7 +287,7 @@
 
     <main>
         <div class="bloque-catalogo-principal" onclick="verCatalogoRealista()">
-            <img class="banner-madera" src="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Maderas Premium">
+            <img class="banner-madera" src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1200&auto=format&fit=crop" alt="Maderas Premium">
             <h2>Ver Catálogo Comercial</h2>
             <p>Explora nuestras piezas listas para distribución con sus acabados, medidas y tonalidades reales de fábrica.</p>
             <p class="txt-accion">Abrir Lista de Productos Realistas ➔</p>
@@ -300,18 +300,21 @@
         </div>
     </main>
 
+    <!-- INTERFAZ DEL CATÁLOGO REALISTA FIJO -->
     <div id="pantallaCatalogo" class="pantalla-desplegable">
         <div class="contenido-catalogo">
             <button class="btn-cerrar" onclick="ocultarCatalogo()">Cerrar ✕</button>
             <div style="clear: both;"></div>
 
+            <!-- Logo corporativo centralizado -->
             <div class="logo-contenedor">
-                <img src="https://images2.imgbox.com/60/7b/0PclwA7e_o.png" class="logo-sierra" alt="Logo Maderas Imbabura">
+                <img src="https://i.ibb.co/3YvW9vK/logo-sierra.png" class="logo-sierra" alt="Logo Maderas Imbabura" onerror="this.src='https://placehold.co/160x160?text=Maderas+Imbabura'">
             </div>
 
+            <!-- ITEM 1: GUADUA MACHACADA -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/39/e7/ZzVepjMh_o.png" alt="Guadua Machacada Real">
+                    <img src="https://i.ibb.co/Xz9kHwT/guadua-machacada.png" alt="Guadua Machacada Real" onerror="this.src='https://placehold.co/180x140?text=Guadua+Machacada'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Guadua Machacada</h3>
@@ -324,9 +327,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 2: TABLA DE MONTE -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/97/bd/00I7K2A0_o.png" alt="Tabla de Monte Real">
+                    <img src="https://i.ibb.co/M9XmPpx/tabla-monte.png" alt="Tabla de Monte Real" onerror="this.src='https://placehold.co/180x140?text=Tabla+de+Monte'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Tabla de Monte</h3>
@@ -339,9 +343,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 3: GUADUA NORMAL -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/66/38/B86T8UuW_o.png" alt="Guadua Normal Real">
+                    <img src="https://i.ibb.co/hVbyg60/guadua-normal.png" alt="Guadua Normal Real" onerror="this.src='https://placehold.co/180x140?text=Guadua+Normal'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Guadua Normal (Caña)</h3>
@@ -354,9 +359,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 4: DUELA DE EUCALIPTO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/71/3b/bXQYqXG3_o.png" alt="Duela de Eucalipto Real">
+                    <img src="https://i.ibb.co/k2m3C0s/duela-eucalipto.png" alt="Duela de Eucalipto Real" onerror="this.src='https://placehold.co/180x140?text=Duela+Eucalipto'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Duela de Eucalipto</h3>
@@ -369,9 +375,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 5: VIGA DE MADERA -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/cb/d8/hV2M7Qo0_o.png" alt="Viga de Madera Real">
+                    <img src="https://i.ibb.co/gSTC5by/viga-madera.png" alt="Viga de Madera Real" onerror="this.src='https://placehold.co/180x140?text=Viga+de+Madera'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Viga de Madera</h3>
@@ -384,9 +391,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 6: PINGO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/6c/ca/T5q5DAsy_o.png" alt="Pingo Real">
+                    <img src="https://i.ibb.co/hZbyN8m/pingo.png" alt="Pingo Real" onerror="this.src='https://placehold.co/180x140?text=Pingo'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Pingo</h3>
@@ -399,9 +407,10 @@
                 </div>
             </div>
 
+            <!-- ITEM 7: TIRANTE -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
-                    <img src="https://images2.imgbox.com/f0/69/4UatX0V3_o.png" alt="Tirante Real">
+                    <img src="https://i.ibb.co/2Zf9MWR/tirante.png" alt="Tirante Real" onerror="this.src='https://placehold.co/180x140?text=Tirante'">
                 </div>
                 <div class="detalles-producto">
                     <h3>Tirante</h3>
