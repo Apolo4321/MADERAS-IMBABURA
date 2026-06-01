@@ -165,7 +165,7 @@
             position: relative;
             cursor: grab;
             overflow: hidden;
-            touch-action: none; /* Previene retrasos por gestos nativos en móvil */
+            touch-action: none;
         }
 
         .contenedor-3d:active {
@@ -465,47 +465,110 @@
             window.open("https://wa.me/593962746147?text=" + encodeURIComponent(msg), "_blank");
         }
 
-        // --- GENERADOR DE TEXTURAS PROCEDIMENTALES REALISTAS DE MADERA ---
-        function generarTexturaMaderaProcedimental(colorBaseHex, colorVetaHex, esBambu = false) {
+        // --- GENERADOR DE TEXTURAS PROCEDIMENTALES TOSCAS Y DESORDENADAS ---
+        function generarTexturaMaderaTosca(colorBaseHex, colorVetaHex, esBambu = false) {
             const canvas = document.createElement('canvas');
             canvas.width = 512;
             canvas.height = 512;
             const ctx = canvas.getContext('2d');
 
+            // Color base con ligeras manchas de humedad o aserrín
             ctx.fillStyle = colorBaseHex;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = colorVetaHex;
-            ctx.globalAlpha = esBambu ? 0.15 : 0.07;
+            // Añadir manchas de variaciones tonales de fondo (madera sucia/tosca)
+            ctx.globalAlpha = 0.15;
+            for(let i=0; i<8; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? colorVetaHex : "#4a3b2c";
+                ctx.beginPath();
+                ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, Math.random()*120 + 40, 0, Math.PI*2);
+                ctx.fill();
+            }
 
             if (esBambu) {
-                // Vetas lineales y estiradas propias del bambú/guadua
-                for (let i = 0; i < canvas.width; i += 2) {
-                    if (Math.random() > 0.4) {
-                        ctx.fillRect(i, 0, Math.random() * 3, canvas.height);
+                // Vetas de caña guadua salvaje: irregulares y con marcas axiales fuertes
+                ctx.fillStyle = colorVetaHex;
+                for (let i = 0; i < canvas.width; i += 3) {
+                    if (Math.random() > 0.35) {
+                        ctx.globalAlpha = Math.random() * 0.3 + 0.05;
+                        let ancho = Math.random() * 4 + 1;
+                        ctx.fillRect(i, 0, ancho, canvas.height);
                     }
                 }
+                // Marcas o raspaduras oscuras horizontales
+                ctx.fillStyle = "#2d361e";
+                ctx.globalAlpha = 0.2;
+                for (let i = 0; i < 15; i++) {
+                    ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, Math.random()*60 + 20, Math.random()*4 + 2);
+                }
             } else {
-                // Vetas concéntricas y onduladas de madera nativa
-                for (let i = 0; i < 300; i++) {
+                // Vetas de madera de monte desordenada con cortes rústicos
+                ctx.strokeStyle = colorVetaHex;
+                for (let i = -100; i < canvas.width + 100; i += 6) {
+                    ctx.globalAlpha = Math.random() * 0.4 + 0.1;
                     ctx.beginPath();
-                    let x = Math.random() * canvas.width;
-                    let y = 0;
-                    ctx.moveTo(x, y);
-                    for (let j = 0; j < canvas.height; j += 10) {
-                        x += Math.sin(j * 0.05 + i) * 1.5 + (Math.random() - 0.5) * 0.5;
+                    let x = i;
+                    ctx.moveTo(x, 0);
+                    
+                    // Ondulaciones asimétricas y caóticas
+                    let distorsion = Math.random() * 30 + 10;
+                    for (let j = 0; j < canvas.height; j += 15) {
+                        x += Math.sin(j * 0.02 + distorsion) * 2.5 + (Math.random() - 0.5) * 2;
                         ctx.lineTo(x, j);
                     }
-                    ctx.lineWidth = Math.random() * 2 + 1;
+                    ctx.lineWidth = Math.random() * 3 + 1;
                     ctx.stroke();
+                }
+
+                // Simulación de nudos rústicos desordenados en las tablas
+                for (let n = 0; n < 3; n++) {
+                    if (Math.random() > 0.3) {
+                        ctx.globalAlpha = 0.4;
+                        ctx.fillStyle = colorVetaHex;
+                        let nudoX = Math.random() * canvas.width;
+                        let nudoY = Math.random() * canvas.height;
+                        
+                        for(let r=5; r<35; r+=6) {
+                            ctx.beginPath();
+                            ctx.arc(nudoX + (Math.random()-0.5)*5, nudoY + (Math.random()-0.5)*5, r, 0, Math.PI*2);
+                            ctx.lineWidth = Math.random()*3 + 1;
+                            ctx.strokeStyle = colorVetaHex;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Grietas longitudinales de contracción de la madera seca/tosca
+                ctx.strokeStyle = "#231510";
+                for(let g=0; g<4; g++) {
+                    if(Math.random() > 0.4) {
+                        ctx.globalAlpha = 0.6;
+                        ctx.beginPath();
+                        let gx = Math.random() * canvas.width;
+                        let gy = Math.random() * (canvas.height/2);
+                        ctx.moveTo(gx, gy);
+                        for(let l=0; l<120; l+=10) {
+                            gx += (Math.random() - 0.5) * 4;
+                            gy += 10;
+                            ctx.lineTo(gx, gy);
+                        }
+                        ctx.lineWidth = Math.random()*2 + 1;
+                        ctx.stroke();
+                    }
                 }
             }
 
-            // Añadir un ligero ruido para simular rugosidad táctil y porosidad
-            ctx.globalAlpha = 0.04;
+            // Ruido masivo texturizado para simular astillado y aspereza sin pulir
+            ctx.globalAlpha = 0.12;
             ctx.fillStyle = "#000000";
+            for (let i = 0; i < 45000; i++) {
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, Math.random()*2+1, Math.random()*2+1);
+            }
+            
+            ctx.globalAlpha = 0.08;
+            ctx.fillStyle = "#ffffff";
             for (let i = 0; i < 20000; i++) {
-                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 2);
             }
 
             const textura = new THREE.CanvasTexture(canvas);
@@ -514,7 +577,7 @@
             return textura;
         }
 
-        // --- MOTOR INTERACTIVO WEBGL PREMIUM ---
+        // --- MOTOR INTERACTIVO WEBGL PREMIUM (MADERA RÚSTICA MATE) ---
         function crearVisorMadera3D(idContenedor, tipoMadera) {
             const cont = document.getElementById(idContenedor);
             if (!cont) return;
@@ -529,68 +592,70 @@
             renderer.setSize(cont.clientWidth, cont.clientHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.0;
+            renderer.toneMappingExposure = 0.95;
             cont.appendChild(renderer.domElement);
 
-            // Iluminación de Estudio de Alta Definición
-            const luzAmbiental = new THREE.AmbientLight(0xffffff, 0.65);
+            // Iluminación Contrastada para marcar relieves y grietas rústicas
+            const luzAmbiental = new THREE.AmbientLight(0xffffff, 0.55);
             escena.add(luzAmbiental);
 
-            const luzDirectaPrincipal = new THREE.DirectionalLight(0xfffdf6, 0.95);
-            luzDirectaPrincipal.position.set(5, 8, 5);
+            const luzDirectaPrincipal = new THREE.DirectionalLight(0xfffbf2, 1.1);
+            luzDirectaPrincipal.position.set(6, 7, 4);
             escena.add(luzDirectaPrincipal);
 
-            const luzRellenoSuave = new THREE.DirectionalLight(0xdee9ff, 0.4);
-            luzRellenoSuave.position.set(-5, -3, 2);
-            escena.add(luzRellenoSuave);
+            const luzContraluzRelleno = new THREE.DirectionalLight(0xcce2ff, 0.35);
+            luzContraluzRelleno.position.set(-6, -4, 2);
+            escena.add(luzContraluzRelleno);
 
             let mallaPrincipal;
 
-            // Modelado Físico y Paleta de Colores de Precisión
+            // Modelado y Materiales con rugosidad máxima (Sin Brillo, Aspecto Tosco)
             if (tipoMadera === 'guadua_machacada') {
                 mallaPrincipal = new THREE.Group();
-                const texInt = generarTexturaMaderaProcedimental('#e2ce97', '#bcab74', true);
-                const texExt = generarTexturaMaderaProcedimental('#64774a', '#4a5933', true);
+                const texInt = generarTexturaMaderaTosca('#ccb67c', '#9c8855', true);
+                const texExt = generarTexturaMaderaTosca('#58683f', '#3f4b2a', true);
 
-                // Base interna
+                // Fibra interior abierta
                 const geoInt = new THREE.BoxGeometry(2.2, 0.9, 0.08);
-                const matInt = new THREE.MeshStandardMaterial({ map: texInt, roughness: 0.6, metalness: 0.05 });
+                const matInt = new THREE.MeshStandardMaterial({ map: texInt, roughness: 0.85, metalness: 0.0 });
                 const baseInt = new THREE.Mesh(geoInt, matInt);
                 mallaPrincipal.add(baseInt);
 
-                // Listones de relieve exterior verde rústico
-                const numTiras = 10;
+                // Tiras irregulares astilladas de la corteza exterior machacada
+                const numTiras = 11;
                 const anchoTira = 0.9 / numTiras;
                 for(let i=0; i<numTiras; i++) {
-                    const geoTira = new THREE.BoxGeometry(2.202, anchoTira - 0.03, 0.03);
-                    const matTira = new THREE.MeshStandardMaterial({ map: texExt, roughness: 0.5, metalness: 0.05 });
+                    // Variación de grosor e irregularidad en los listones
+                    let desalineacion = (Math.random() - 0.5) * 0.015;
+                    const geoTira = new THREE.BoxGeometry(2.205, anchoTira - 0.035, 0.035);
+                    const matTira = new THREE.MeshStandardMaterial({ map: texExt, roughness: 0.8, metalness: 0.0 });
                     const tira = new THREE.Mesh(geoTira, matTira);
-                    tira.position.set(0, -0.45 + (anchoTira*i) + (anchoTira/2), 0.045);
+                    tira.position.set(0, -0.45 + (anchoTira*i) + (anchoTira/2) + desalineacion, 0.045);
                     mallaPrincipal.add(tira);
                 }
             } 
             else if (tipoMadera === 'tabla_monte') {
-                const tex = generarTexturaMaderaProcedimental('#9a5344', '#6b342a');
+                const tex = generarTexturaMaderaTosca('#8d4638', '#5e2b21');
                 const geo = new THREE.BoxGeometry(2.3, 0.65, 0.12);
-                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.82, metalness: 0.02 });
+                // Alta rugosidad para simular el corte de sierra de monte
+                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.95, metalness: 0.0 });
                 mallaPrincipal = new THREE.Mesh(geo, mat);
             } 
             else if (tipoMadera === 'guadua_normal') {
                 mallaPrincipal = new THREE.Group();
-                const texBambu = generarTexturaMaderaProcedimental('#5e7243', '#455430', true);
+                const texBambu = generarTexturaMaderaTosca('#53663b', '#3b4b27', true);
                 
-                // Segmento cilíndrico realista
                 const geoCil = new THREE.CylinderGeometry(0.18, 0.18, 2.5, 32, 1, true);
-                const matCil = new THREE.MeshStandardMaterial({ map: texBambu, roughness: 0.45, metalness: 0.08, side: THREE.DoubleSide });
+                const matCil = new THREE.MeshStandardMaterial({ map: texBambu, roughness: 0.65, metalness: 0.02, side: THREE.DoubleSide });
                 const cilindro = new THREE.Mesh(geoCil, matCil);
                 cilindro.rotation.z = Math.PI / 2;
                 mallaPrincipal.add(cilindro);
 
-                // Anillos/Nudos auténticos de la caña guadua
-                const posicionesNudos = [-0.8, 0, 0.8];
+                // Nudos estructurales toscos marcados
+                const posicionesNudos = [-0.75, 0.05, 0.85];
                 posicionesNudos.forEach(pos => {
-                    const geoNudo = new THREE.TorusGeometry(0.181, 0.012, 12, 32);
-                    const matNudo = new THREE.MeshStandardMaterial({ color: 0x43522d, roughness: 0.6 });
+                    const geoNudo = new THREE.TorusGeometry(0.181, 0.015, 10, 32);
+                    const matNudo = new THREE.MeshStandardMaterial({ color: 0x364223, roughness: 0.75 });
                     const nudo = new THREE.Mesh(geoNudo, matNudo);
                     nudo.position.set(pos, 0, 0);
                     nudo.rotation.y = Math.PI / 2;
@@ -598,29 +663,29 @@
                 });
             } 
             else if (tipoMadera === 'duela_eucalipto') {
-                const tex = generarTexturaMaderaProcedimental('#f5eca8', '#dbcf81');
+                const tex = generarTexturaMaderaTosca('#ebdfa0', '#cfbf7a');
                 const geo = new THREE.BoxGeometry(2.4, 0.38, 0.09);
-                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.4, metalness: 0.01 });
+                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75, metalness: 0.0 });
                 mallaPrincipal = new THREE.Mesh(geo, mat);
             } 
             else if (tipoMadera === 'viga_madera') {
-                const tex = generarTexturaMaderaProcedimental('#be9b6c', '#917147');
+                const tex = generarTexturaMaderaTosca('#b59263', '#85663f');
                 const geo = new THREE.BoxGeometry(2.2, 0.45, 0.45);
-                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75, metalness: 0.02 });
+                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, metalness: 0.0 });
                 mallaPrincipal = new THREE.Mesh(geo, mat);
             } 
             else if (tipoMadera === 'pingo') {
                 mallaPrincipal = new THREE.Group();
-                const tex = generarTexturaMaderaProcedimental('#efe1a7', '#d3c383');
+                const tex = generarTexturaMaderaTosca('#e8d999', '#cbb977');
                 
                 const geoCil = new THREE.CylinderGeometry(0.13, 0.13, 2.4, 32);
-                const matPingo = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.65, metalness: 0.01 });
+                const matPingo = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.88, metalness: 0.0 });
                 const cilindro = new THREE.Mesh(geoCil, matPingo);
                 cilindro.rotation.z = Math.PI / 2;
                 mallaPrincipal.add(cilindro);
 
-                // Bordes pulidos suavizados en los extremos del pingo
-                const geoBorde = new THREE.TorusGeometry(0.11, 0.02, 12, 32);
+                // Remates rústicos sin lijar
+                const geoBorde = new THREE.TorusGeometry(0.11, 0.02, 10, 32);
                 const borde1 = new THREE.Mesh(geoBorde, matPingo);
                 borde1.position.set(-1.2, 0, 0); borde1.rotation.y = Math.PI / 2;
                 const borde2 = new THREE.Mesh(geoBorde, matPingo);
@@ -628,18 +693,18 @@
                 mallaPrincipal.add(borde1, borde2);
             } 
             else if (tipoMadera === 'tirante') {
-                const tex = generarTexturaMaderaProcedimental('#cca974', '#9e7d4c');
+                const tex = generarTexturaMaderaTosca('#c4a06c', '#947547');
                 const geo = new THREE.CylinderGeometry(0.25, 0.25, 2.4, 32);
-                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.7, metalness: 0.02 });
+                const mat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9, metalness: 0.0 });
                 mallaPrincipal = new THREE.Mesh(geo, mat);
                 mallaPrincipal.rotation.z = Math.PI / 2;
             }
 
-            // Ajuste estético de exhibición inicial
+            // Ángulo de visualización inicial
             mallaPrincipal.rotation.set(0.35, 0.65, 0);
             escena.add(mallaPrincipal);
 
-            // Interacción Táctil y Ratón de Alta Precisión
+            // Interacción táctil
             let presionado = false;
             let antX = 0, antY = 0;
 
@@ -667,17 +732,16 @@
                 antX = e.touches[0].clientX; antY = e.touches[0].clientY;
             }, {passive: true});
 
-            // Bucle Continuo de Animación
+            // Bucle inercial de renderizado
             function renderizar() {
                 requestAnimationFrame(renderizar);
                 if (!presionado) {
-                    mallaPrincipal.rotation.y += 0.0035; // Rotación inercial elegante
+                    mallaPrincipal.rotation.y += 0.003;
                 }
                 renderer.render(escena, camara);
             }
             renderizar();
 
-            // Auto-ajuste de proporciones responsivo
             window.addEventListener('resize', () => {
                 if(cont.clientWidth > 0){
                     camara.aspect = cont.clientWidth / cont.clientHeight;
@@ -687,7 +751,7 @@
             });
         }
 
-        // Inicializar vistas al cargar la página
+        // Inicializar vistas automáticas
         window.addEventListener('DOMContentLoaded', () => {
             crearVisorMadera3D('3d-guadua-machacada', 'guadua_machacada');
             crearVisorMadera3D('3d-tabla-monte', 'tabla_monte');
