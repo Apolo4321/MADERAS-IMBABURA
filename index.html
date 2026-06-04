@@ -285,19 +285,9 @@
             border-bottom: 1px solid #efebe4;
         }
 
-        /* Variante para items sin imagen (como las tiras actuales) */
-        .fila-producto-premium.sin-imagen {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
         @media (max-width: 680px) {
             .fila-producto-premium {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .fila-producto-premium.sin-imagen {
                 align-items: center;
                 text-align: center;
             }
@@ -678,8 +668,11 @@
                 </div>
             </div>
 
-            <!-- ITEM 6: TIRAS CUADRADAS (REESTRUCTURADO SIN IMAGEN Y CON SUBMEDIDAS 2X Y 4X) -->
-            <div class="fila-producto-premium sin-imagen">
+            <!-- ITEM 6: TIRAS CUADRADAS (RESTABLECIDA IMAGEN Y DESPLIEGUE COMPLETO LATERAL) -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_tiras.png" alt="Tiras Cuadradas">
+                </div>
                 <div class="detalles-producto">
                     <h3>Tiras Cuadradas</h3>
                     <p>Tiras de madera cortadas con precisión y sección cuadrada limpia, perfectas para acabados, listonados y carpintería fina.</p>
