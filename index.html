@@ -18,6 +18,25 @@
             color: #111111;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            position: relative; /* Necesario para posicionar el fondo */
+        }
+
+        /* EFECTO DE LOGO SUBLIMINAL SUTIL EN EL FONDO */
+        body::before {
+            content: "";
+            position: fixed; /* Mantiene el logo estático al hacer scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Ruta exacta de tu logotipo de ChatGPT */
+            background-image: url('imagenes/ChatGPT Image Jun 4, 2026, 01_42_39 PM.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 45%; /* Ajusta el tamaño del logo en pantalla (45% es elegante) */
+            opacity: 0.05; /* 0.05 equivale al 5% de visibilidad: ultra sutil e inconsciente */
+            z-index: -1; /* Lo coloca por detrás de todos los textos y botones */
+            pointer-events: none; /* Evita que estorbe al hacer clic en la pantalla */
         }
 
         header {
@@ -50,10 +69,12 @@
             max-width: 850px;
             margin: 0 auto;
             padding: 0 1.5rem 4rem 1.5rem;
+            position: relative;
+            z-index: 1; /* Asegura el contenido sobre el fondo */
         }
 
         .bloque-catalogo-principal {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9); /* Ligeramente translúcido para fundirse con el fondo */
             border: 1px solid #ebebeb;
             padding: 45px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.01);
@@ -109,7 +130,7 @@
         /* --- SECCIÓN: DÓNDE ENCONTRARNOS --- */
         .seccion-ubicacion {
             margin-top: 4.5rem;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #ebebeb;
             padding: 45px;
             text-align: center;
@@ -148,6 +169,7 @@
             background: #111111;
             color: #ffffff;
             border: 1px solid #111111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             padding: 16px 45px;
             text-decoration: none;
             text-transform: uppercase;
@@ -162,12 +184,14 @@
         .btn-lujo:hover {
             background: transparent;
             color: #111111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.0);
         }
 
         .btn-secundario {
             background: transparent;
             color: #111111;
             border: 1px solid #111111;
+            box-shadow: none;
         }
 
         .btn-secundario:hover {
@@ -443,6 +467,8 @@
             border-top: 1px solid #f2f2f2;
             margin-top: 5rem;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
@@ -495,7 +521,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Guadua Machacada</h3>
-                    <p>Ideal para revestimientos decorativos exteriores, artesanías premium y cerramientos estéticos de alta resistencia climática.</p>
+                    <p>Ejemplo único abierto con fisuras rectas y uniformes. Exterior verde, interior amarillo natural.</p>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-machacada', -1)">−</button>
@@ -510,7 +536,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Tablas de Monte</h3>
-                    <p>Diseñadas especialmente para encofrados firmes en hormigón, armado de estructuras temporales y soporte estructural rústico.</p>
+                    <p>Tablas aserradas rústicas de tono rojizo característico, ideales para encofrados y soporte estructural.</p>
                     
                     <div class="opciones-preparado">
                         <label class="control-checkbox">
@@ -538,7 +564,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Guadua Normal (Caña)</h3>
-                    <p>Excelente como caña estructural cilíndrica. Es perfecta para andamios de carga pesada e invernaderos de gran escala.</p>
+                    <p>Caña estructural cilíndrica de sección uniforme y alta resistencia con acabado verde natural vivo.</p>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-guadua', -1)">−</button>
@@ -553,7 +579,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Duelas de Eucalipto</h3>
-                    <p>Ideales para la instalación de pisos elegantes, revestimientos de paredes interiores y cielos rasos pulidos de calidad artesanal.</p>
+                    <p>Piezas de madera lisas y cuadradas, de líneas rectas y limpias en color amarillo pálido.</p>
                     
                     <div class="opciones-preparado">
                         <label class="control-checkbox">
@@ -581,7 +607,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Vigas Cuadradas</h3>
-                    <p>Vigas masivas ideales para soportar cargas pesadas de techos principales, dinteles y bases estructurales definitivas.</p>
+                    <p>Vigas masivas de sección cuadrada uniforme, ideales para cargas pesadas y estructuras principales.</p>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-vigas', -1)">−</button>
@@ -596,7 +622,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Pingos</h3>
-                    <p>Troncos cilíndricos de eucalipto ideales para sostener losas durante el fundido, puntales de construcción y obras civiles firmes.</p>
+                    <p>Troncos cilíndricos de eucalipto uniformes, tonalidad amarillo pálido con base limpia y punta plana.</p>
                     
                     <div class="contenedor-submedidas">
                         <div class="bloque-submedida">
@@ -625,7 +651,7 @@
                 </div>
                 <div class="detalles-producto">
                     <h3>Tirantes Redondos</h3>
-                    <p>Ideales para amarres estables en cubiertas rústicas, uniones de techos artesanales y estructuras de soporte secundario.</p>
+                    <p>Tirantes de madera cilíndricos perfectos, de diámetro grueso y gran longitud para amarres estables.</p>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-tirante', -1)">−</button>
