@@ -189,7 +189,6 @@
             }
         }
 
-        /* Letras de artículos grandes y vistosas */
         .detalles-producto h3 {
             font-size: 1.7rem;
             letter-spacing: 1px;
@@ -202,6 +201,60 @@
             color: #555;
             font-size: 1rem;
             margin: 0 0 20px 0;
+        }
+
+        /* --- NUEVO ESTILO: FORMULARIO DE PERSONALIZACIÓN PARA TABLAS Y DUELAS --- */
+        .opciones-preparado {
+            background-color: #fbfbfa;
+            border: 1px dashed #cccccc;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .control-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .control-checkbox input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #aa8866;
+            cursor: pointer;
+        }
+
+        .txt-explicativo {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 12px;
+            font-style: italic;
+            display: block;
+            line-height: 1.3;
+        }
+
+        .contenedor-ancho-personalizado {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .input-ancho {
+            width: 70px;
+            padding: 6px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
         }
 
         /* Contenedor Grid para Subcategorías Vistosas */
@@ -235,7 +288,6 @@
             }
         }
 
-        /* Etiquetas de subsecciones llamativas e identificables */
         .etiqueta-submedida {
             font-size: 0.85rem;
             font-weight: bold;
@@ -372,7 +424,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 2: TABLAS -->
+            <!-- ITEM 2: TABLAS DE MONTE (CON ACABADOS PERSONALIZADOS) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_yx0vtkyx0vtkyx0v.png" alt="Tablas de Madera">
@@ -380,6 +432,20 @@
                 <div class="detalles-producto">
                     <h3>Tablas de Monte</h3>
                     <p>Diseñadas especialmente para encofrados firmes en hormigón, armado de estructuras temporales y soporte estructural rústico.</p>
+                    
+                    <!-- Apartado de Preparado y Ancho -->
+                    <div class="opciones-preparado">
+                        <label class="control-checkbox">
+                            <input type="checkbox" id="prep-tablas"> Solicitar Tabla Preparada
+                        </label>
+                        <span class="txt-explicativo">Se cantean los cantos para que la pieza salga recta y se cepilla la superficie para un acabado más fino y suave.</span>
+                        
+                        <div class="contenedor-ancho-personalizado">
+                            <span>Ancho deseado canteado:</span>
+                            <input type="number" id="ancho-tablas" class="input-ancho" placeholder="Ej. 18" min="1">
+                            <span>cm</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-tablas', -1)">−</button>
@@ -404,7 +470,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 4: DUELAS -->
+            <!-- ITEM 4: DUELAS DE EUCALIPTO (CON ACABADOS PERSONALIZADOS) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/images (5).jpeg" alt="Duelas">
@@ -412,6 +478,20 @@
                 <div class="detalles-producto">
                     <h3>Duelas de Eucalipto</h3>
                     <p>Ideales para la instalación de pisos elegantes, revestimientos de paredes interiores y cielos rasos pulidos de calidad artesanal.</p>
+                    
+                    <!-- Apartado de Preparado y Ancho -->
+                    <div class="opciones-preparado">
+                        <label class="control-checkbox">
+                            <input type="checkbox" id="prep-duelas"> Solicitar Duela Preparada
+                        </label>
+                        <span class="txt-explicativo">Se cantean los cantos para que la pieza salga recta y se cepilla la superficie para un acabado más fino y suave.</span>
+                        
+                        <div class="contenedor-ancho-personalizado">
+                            <span>Ancho deseado canteado:</span>
+                            <input type="number" id="ancho-duelas" class="input-ancho" placeholder="Ej. 12" min="1">
+                            <span>cm</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="control-pedido" style="align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-duelas', -1)">−</button>
@@ -507,7 +587,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 9: NUEVO APARTADO - TIRAS CUADRADAS (GROSOR: 4 CM) -->
+            <!-- ITEM 9: TIRAS CUADRADAS (GROSOR: 4 CM) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/ChatGPT Image Jun 3, 2026, 07_59_50 AM.png" alt="Tiras Cuadradas 4cm">
@@ -581,24 +661,50 @@
             let mensajeWhatsApp = "Hola Maderas Imbabura. Deseo cotizar los siguientes productos de su catálogo:\n\n";
             let tieneElementos = false;
 
-            const productosFijos = [
-                { nombre: "Guadua Machacada", id: "cant-machacada" },
-                { nombre: "Tablas de Monte", id: "cant-tablas" },
-                { nombre: "Guadua Normal", id: "cant-guadua" },
-                { nombre: "Duelas de Eucalipto", id: "cant-duelas" },
-                { nombre: "Vigas Cuadradas", id: "cant-vigas" },
-                { nombre: "Tirantes Redondos", id: "cant-tirante" },
-                { nombre: "Estructuras para Techos", id: "cant-techos" }
-            ];
+            // Guadua Machacada
+            let cantMachacada = parseInt(document.getElementById('cant-machacada').innerText);
+            if (cantMachacada > 0) {
+                mensajeWhatsApp += `• Guadua Machacada: ${cantMachacada} unidades\n`;
+                tieneElementos = true;
+            }
 
-            productosFijos.forEach(prod => {
-                let cantidad = parseInt(document.getElementById(prod.id).innerText);
-                if (cantidad > 0) {
-                    mensajeWhatsApp += `• ${prod.nombre}: ${cantidad} unidades\n`;
-                    tieneElementos = true;
-                }
-            });
+            // Tablas de Monte (Con lógica de preparado/ancho)
+            let cantTablas = parseInt(document.getElementById('cant-tablas').innerText);
+            if (cantTablas > 0) {
+                let prep = document.getElementById('prep-tablas').checked ? "SÍ" : "NO";
+                let ancho = document.getElementById('ancho-tablas').value;
+                mensajeWhatsApp += `• Tablas de Monte: ${cantTablas} unidades (Preparada/Canteada: ${prep}`;
+                if (ancho) { mensajeWhatsApp += `, Ancho: ${ancho}cm`; }
+                mensajeWhatsApp += `)\n`;
+                tieneElementos = true;
+            }
 
+            // Guadua Normal
+            let cantGuadua = parseInt(document.getElementById('cant-guadua').innerText);
+            if (cantGuadua > 0) {
+                mensajeWhatsApp += `• Guadua Normal (Caña): ${cantGuadua} unidades\n`;
+                tieneElementos = true;
+            }
+
+            // Duelas de Eucalipto (Con lógica de preparado/ancho)
+            let cantDuelas = parseInt(document.getElementById('cant-duelas').innerText);
+            if (cantDuelas > 0) {
+                let prep = document.getElementById('prep-duelas').checked ? "SÍ" : "NO";
+                let ancho = document.getElementById('ancho-duelas').value;
+                mensajeWhatsApp += `• Duelas de Eucalipto: ${cantDuelas} unidades (Preparada/Canteada: ${prep}`;
+                if (ancho) { mensajeWhatsApp += `, Ancho: ${ancho}cm`; }
+                mensajeWhatsApp += `)\n`;
+                tieneElementos = true;
+            }
+
+            // Vigas Cuadradas
+            let cantVigas = parseInt(document.getElementById('cant-vigas').innerText);
+            if (cantVigas > 0) {
+                mensajeWhatsApp += `• Vigas Cuadradas: ${cantVigas} unidades\n`;
+                tieneElementos = true;
+            }
+
+            // Sub Pingos
             const subPingos = [
                 { medida: "2,5 Metros", id: "cant-pingo-25" },
                 { medida: "3 Metros", id: "cant-pingo-3" }
@@ -610,6 +716,13 @@
                     tieneElementos = true;
                 }
             });
+
+            // Tirantes Redondos
+            let cantTirante = parseInt(document.getElementById('cant-tirante').innerText);
+            if (cantTirante > 0) {
+                mensajeWhatsApp += `• Tirantes Redondos: ${cantTirante} unidades\n`;
+                tieneElementos = true;
+            }
 
             // Tiras 2cm
             const subTiras2 = ["2x1", "2x2", "2x3", "2x4", "2x5", "2x6", "2x7", "2x8", "2x9", "2x10"];
@@ -630,6 +743,13 @@
                     tieneElementos = true;
                 }
             });
+
+            // Estructuras para Techos
+            let cantTechos = parseInt(document.getElementById('cant-techos').innerText);
+            if (cantTechos > 0) {
+                mensajeWhatsApp += `• Estructuras para Techos: ${cantTechos} unidades\n`;
+                tieneElementos = true;
+            }
 
             if (!tieneElementos) {
                 alert("Por favor, aumente al menos a 1 la cantidad de un artículo para cotizar.");
