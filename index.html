@@ -22,8 +22,6 @@
             position: relative;
         }
 
-        /* SE ELIMINÓ EL LOGO SUBLIMINAL DEL FONDO DEL BODY */
-
         header {
             padding: 5rem 1rem 3rem 1rem;
             text-align: center;
@@ -649,7 +647,37 @@
                 </div>
             </div>
 
-            <!-- ITEM 6: PINGOS -->
+            <!-- ITEM 6: TIRAS CUADRADAS (2 Y 4 DE GROSOR) -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_4v6n1p4v6n1p4v6n.png" alt="Tiras Cuadradas">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Tiras Cuadradas</h3>
+                    <p>Tiras de madera cortadas con precisión y sección cuadrada limpia, perfectas para acabados, listonados y carpintería fina.</p>
+                    
+                    <div class="contenedor-submedidas">
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">2 CM GROSOR</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-tira-2', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-tira-2">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-tira-2', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">4 CM GROSOR</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-tira-4', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-tira-4">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-tira-4', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 7: PINGOS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
@@ -679,7 +707,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 7: TIRANTE REDONDO -->
+            <!-- ITEM 8: TIRANTE REDONDO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_et1hwaet1hwaet1h.png" alt="Tirante Redondo">
@@ -741,6 +769,9 @@
                 tieneElementos = true;
             }
 
+            let cantGuadua = parseInt(document.getElementById('cant-guadua').innerText);
+            if (cantGuadua > 0) { mensajeWhatsApp += `• Guadua Normal (Caña): ${cantGuadua} unidades\n`; tieneElementos = true; }
+
             let cantDuelas = parseInt(document.getElementById('cant-duelas').innerText);
             if (cantDuelas > 0) {
                 let prep = document.getElementById('prep-duelas').checked ? "SÍ" : "NO";
@@ -753,6 +784,12 @@
 
             let cantVigas = parseInt(document.getElementById('cant-vigas').innerText);
             if (cantVigas > 0) { mensajeWhatsApp += `• Vigas Cuadradas: ${cantVigas} unidades\n`; tieneElementos = true; }
+
+            let cantTira2 = parseInt(document.getElementById('cant-tira-2').innerText);
+            if (cantTira2 > 0) { mensajeWhatsApp += `• Tiras Cuadradas (2cm grosor): ${cantTira2} unidades\n`; tieneElementos = true; }
+
+            let cantTira4 = parseInt(document.getElementById('cant-tira-4').innerText);
+            if (cantTira4 > 0) { mensajeWhatsApp += `• Tiras Cuadradas (4cm grosor): ${cantTira4} unidades\n`; tieneElementos = true; }
 
             let cantPingo25 = parseInt(document.getElementById('cant-pingo-25').innerText);
             if (cantPingo25 > 0) { mensajeWhatsApp += `• Pingos (2.5m): ${cantPingo25} unidades\n`; tieneElementos = true; }
