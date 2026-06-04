@@ -22,27 +22,32 @@
             position: relative;
         }
 
-        /* EFECTO DE LOGO SUBLIMINAL SUTIL EN EL FONDO */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* RUTA CORREGIDA: Espacios web codificados con %20 para asegurar la carga en GitHub Pages */
-            background-image: url('imagenes/ChatGPT%20Image%20Jun%204,%202026,%2001_42_39%20PM.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 45%; 
-            opacity: 0.06; /* Subido ligeramente a 6% para mejorar la presencia sutil en dispositivos móviles */
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* SE ELIMINÓ EL LOGO SUBLIMINAL DEL FONDO DEL BODY */
 
         header {
-            padding: 5.5rem 1rem 3rem 1rem;
+            padding: 5rem 1rem 3rem 1rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contenedor alineado para el Logo y el Título Principal */
+        .contenedor-titulo-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Espacio elegante entre el logo y el texto */
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Ajuste del logo para que mantenga proporción junto al texto */
+        .logo-cabecera {
+            height: 75px; /* Altura ideal y refinada en armonía con la tipografía */
+            width: auto;
+            object-fit: contain;
         }
 
         /* Tipografía de Título: Más Grande, Ancha y Lujosa (Playfair Display) */
@@ -64,6 +69,21 @@
             font-size: 1.15rem;
             margin-top: 18px;
             font-style: italic;
+        }
+
+        /* Adaptación responsiva para pantallas móviles pequeñas */
+        @media (max-width: 768px) {
+            .contenedor-titulo-logo {
+                flex-direction: column; /* Se apila verticalmente de forma ordenada en celulares */
+                gap: 15px;
+            }
+            header h1 {
+                font-size: 2.3rem; /* Tamaño optimizado para pantallas pequeñas */
+                letter-spacing: 3px;
+            }
+            .logo-cabecera {
+                height: 65px;
+            }
         }
 
         main {
@@ -289,7 +309,7 @@
             border-radius: 2px;
             overflow: hidden;
             border: 1px solid #ededed;
-        }
+         }
 
         .visualizador-imagen-real img {
             width: 100%;
@@ -476,7 +496,11 @@
 <body>
 
     <header>
-        <h1>Maderas Imbabura</h1>
+        <!-- Contenedor premium que junta el logotipo y el nombre de la empresa de forma simétrica -->
+        <div class="contenedor-titulo-logo">
+            <img src="imagenes/ChatGPT%20Image%20Jun%204%2C%202026%2C%2001_42_39%20PM.png" alt="Logo Maderas Imbabura" class="logo-cabecera">
+            <h1>Maderas Imbabura</h1>
+        </div>
         <p>Elige seguridad y calidad con nosotros.</p>
     </header>
 
