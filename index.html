@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maderas Imbabura | Catálogo Comercial Premium</title>
+    <!-- Importación de Tipografías de Lujo desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,25 +19,25 @@
             color: #111111;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            position: relative; /* Necesario para posicionar el fondo */
+            position: relative;
         }
 
         /* EFECTO DE LOGO SUBLIMINAL SUTIL EN EL FONDO */
         body::before {
             content: "";
-            position: fixed; /* Mantiene el logo estático al hacer scroll */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Ruta exacta de tu logotipo de ChatGPT */
-            background-image: url('imagenes/ChatGPT Image Jun 4, 2026, 01_42_39 PM.png');
+            /* RUTA CORREGIDA: Espacios web codificados con %20 para asegurar la carga en GitHub Pages */
+            background-image: url('imagenes/ChatGPT%20Image%20Jun%204,%202026,%2001_42_39%20PM.png');
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: 45%; /* Ajusta el tamaño del logo en pantalla (45% es elegante) */
-            opacity: 0.05; /* 0.05 equivale al 5% de visibilidad: ultra sutil e inconsciente */
-            z-index: -1; /* Lo coloca por detrás de todos los textos y botones */
-            pointer-events: none; /* Evita que estorbe al hacer clic en la pantalla */
+            background-size: 45%; 
+            opacity: 0.06; /* Subido ligeramente a 6% para mejorar la presencia sutil en dispositivos móviles */
+            z-index: -1;
+            pointer-events: none;
         }
 
         header {
@@ -70,11 +71,11 @@
             margin: 0 auto;
             padding: 0 1.5rem 4rem 1.5rem;
             position: relative;
-            z-index: 1; /* Asegura el contenido sobre el fondo */
+            z-index: 1;
         }
 
         .bloque-catalogo-principal {
-            background: rgba(255, 255, 255, 0.9); /* Ligeramente translúcido para fundirse con el fondo */
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #ebebeb;
             padding: 45px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.01);
@@ -480,6 +481,7 @@
     </header>
 
     <main>
+        <!-- SECCIÓN DEL CATÁLOGO PRINCIPAL -->
         <div class="bloque-catalogo-principal" onclick="verCatalogoRealista()">
             <img class="banner-madera" src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop" alt="Catálogo de Maderas Premium Finas">
             <h2>Ver Catálogo Comercial</h2>
@@ -487,6 +489,7 @@
             <span class="txt-accion">Abrir Lista de Productos ➔</span>
         </div>
 
+        <!-- SECCIÓN: DÓNDE ENCONTRARNOS CON ENLACE EXACTO -->
         <div class="seccion-ubicacion">
             <span class="icon-maps">📍</span>
             <h2>Dónde Encontrarnos</h2>
@@ -506,6 +509,7 @@
         </div>
     </main>
 
+    <!-- INTERFAZ DEL CATÁLOGO DESPLEGABLE -->
     <div id="pantallaCatalogo" class="pantalla-desplegable">
         <div class="contenido-catalogo">
             <button class="btn-cerrar" onclick="ocultarCatalogo()">Cerrar ✕</button>
@@ -515,6 +519,7 @@
                 <img src="imagenes/logo-sierra.png" class="logo-sierra" alt="Logo Maderas Imbabura" onerror="this.src='imagenes/logo-sierra.jpg';">
             </div>
 
+            <!-- ITEM 1: GUADUA MACHACADA -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_zcrp12zcrp12zcrp.png" alt="Guadua Machacada">
@@ -530,6 +535,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 2: TABLAS DE MONTE -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_yx0vtkyx0vtkyx0v.png" alt="Tablas de Madera">
@@ -558,6 +564,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 3: GUADUA NORMAL -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/62f0ae24-04a2-46a1-84d4-0f0189b2ecac.jpeg" alt="Guadua Normal">
@@ -573,6 +580,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 4: DUELAS DE EUCALIPTO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/images (5).jpeg" alt="Duelas">
@@ -601,6 +609,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 5: VIGAS CUADRADAS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_tkc4xltkc4xltkc4.png" alt="Vigas Cuadradas">
@@ -616,6 +625,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 6: PINGOS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
@@ -645,6 +655,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 7: TIRANTE REDONDO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_et1hwaet1hwaet1h.png" alt="Tirante Redondo">
