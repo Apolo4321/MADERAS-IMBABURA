@@ -157,7 +157,6 @@
             }
         }
 
-        /* Proporción simétrica fija y más grande para todas las imágenes */
         .visualizador-imagen-real {
             width: 220px;
             height: 220px;
@@ -202,25 +201,38 @@
             margin: 0 0 15px 0;
         }
 
-        /* Estilo para los Selectores de Medidas Corporativos */
-        .selector-medida-lujo {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            border: 1px solid #111;
-            background-color: #ffffff;
-            color: #111;
+        /* Contenedor Grid para Subcategorías Independientes */
+        .contenedor-submedidas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 680px) {
+            .contenedor-submedidas {
+                justify-content: center;
+            }
+        }
+
+        .bloque-submedida {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 680px) {
+            .bloque-submedida {
+                align-items: center;
+            }
+        }
+
+        .etiqueta-submedida {
+            font-size: 0.8rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            outline: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 200px;
-            border-radius: 0;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%23111'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            padding-right: 30px;
+            color: #333;
         }
 
         .control-pedido {
@@ -284,7 +296,7 @@
         }
 
         .btn-whatsapp-flotante {
-            margin-top: 25px;
+            margin-top: 40px;
         }
 
         footer {
@@ -412,7 +424,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 6: PINGOS (CON SUBCATEGORÍA) -->
+            <!-- ITEM 6: PINGOS (SUBCATEGORÍAS TOTALMENTE INDEPENDIENTES) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
@@ -420,15 +432,25 @@
                 <div class="detalles-producto">
                     <h3>Pingos</h3>
                     <p>Troncos cilíndricos de eucalipto uniformes, tonalidad amarillo pálido con base limpia y punta plana.</p>
-                    <select id="medida-pingo" class="selector-medida-lujo">
-                        <option value="2.5 Metros">Dimensión: 2,5 Metros</option>
-                        <option value="3 Metros">Dimensión: 3 Metros</option>
-                    </select>
-                </div>
-                <div class="control-pedido">
-                    <button class="btn-modificador" onclick="modificar('cant-pingos', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-pingos">0</div>
-                    <button class="btn-modificador" onclick="modificar('cant-pingos', 1)">+</button>
+                    
+                    <div class="contenedor-submedidas">
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">2,5 Metros</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-25', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-pingo-25">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-25', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">3 Metros</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-3', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-pingo-3">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-3', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -448,7 +470,7 @@
                 </div>
             </div>
 
-            <!-- ITEM 8: TIRAS CUADRADAS (CON SUBCATEGORÍAS 2X1 HASTA 2X10) -->
+            <!-- ITEM 8: TIRAS CUADRADAS (DESGLOSE INDEPENDIENTE DEL 2X1 AL 2X10) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/ChatGPT Image Jun 3, 2026, 07_59_50 AM.png" alt="Tiras Cuadradas">
@@ -456,23 +478,21 @@
                 <div class="detalles-producto">
                     <h3>Tiras Cuadradas</h3>
                     <p>Listones delgados de sección precisa para acabados carpinteros, estructuras ligeras y paneles.</p>
-                    <select id="medida-tira" class="selector-medida-lujo">
-                        <option value="2x1">Medida: 2x1</option>
-                        <option value="2x2">Medida: 2x2</option>
-                        <option value="2x3">Medida: 2x3</option>
-                        <option value="2x4">Medida: 2x4</option>
-                        <option value="2x5">Medida: 2x5</option>
-                        <option value="2x6">Medida: 2x6</option>
-                        <option value="2x7">Medida: 2x7</option>
-                        <option value="2x8">Medida: 2x8</option>
-                        <option value="2x9">Medida: 2x9</option>
-                        <option value="2x10">Medida: 2x10</option>
-                    </select>
-                </div>
-                <div class="control-pedido">
-                    <button class="btn-modificador" onclick="modificar('cant-tiras', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-tiras">0</div>
-                    <button class="btn-modificador" onclick="modificar('cant-tiras', 1)">+</button>
+                    
+                    <div class="contenedor-submedidas">
+                        <!-- 2x1 a 2x5 -->
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x1</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x1', -1)">−</button><div class="valor-cantidad" id="tira-2x1">0</div><button class="btn-modificador" onclick="modificar('tira-2x1', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x2</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x2', -1)">−</button><div class="valor-cantidad" id="tira-2x2">0</div><button class="btn-modificador" onclick="modificar('tira-2x2', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x3</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x3', -1)">−</button><div class="valor-cantidad" id="tira-2x3">0</div><button class="btn-modificador" onclick="modificar('tira-2x3', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x4</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x4', -1)">−</button><div class="valor-cantidad" id="tira-2x4">0</div><button class="btn-modificador" onclick="modificar('tira-2x4', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x5</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x5', -1)">−</button><div class="valor-cantidad" id="tira-2x5">0</div><button class="btn-modificador" onclick="modificar('tira-2x5', 1)">+</button></div></div>
+                        <!-- 2x6 a 2x10 -->
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x6</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x6', -1)">−</button><div class="valor-cantidad" id="tira-2x6">0</div><button class="btn-modificador" onclick="modificar('tira-2x6', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x7</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x7', -1)">−</button><div class="valor-cantidad" id="tira-2x7">0</div><button class="btn-modificador" onclick="modificar('tira-2x7', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x8</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x8', -1)">−</button><div class="valor-cantidad" id="tira-2x8">0</div><button class="btn-modificador" onclick="modificar('tira-2x8', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x9</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x9', -1)">−</button><div class="valor-cantidad" id="tira-2x9">0</div><button class="btn-modificador" onclick="modificar('tira-2x9', 1)">+</button></div></div>
+                        <div class="bloque-submedida"><span class="etiqueta-submedida">M. 2x10</span><div class="control-pedido"><button class="btn-modificador" onclick="modificar('tira-2x10', -1)">−</button><div class="valor-cantidad" id="tira-2x10">0</div><button class="btn-modificador" onclick="modificar('tira-2x10', 1)">+</button></div></div>
+                    </div>
                 </div>
             </div>
 
@@ -523,8 +543,9 @@
 
         function enviarPresupuestoWhatsApp() {
             let mensajeWhatsApp = "Hola Maderas Imbabura. Deseo cotizar los siguientes productos de su catálogo:\n\n";
-            
-            // Productos fijos tradicionales
+            let tieneElementos = false;
+
+            // 1. Procesar Productos tradicionales simples
             const productosFijos = [
                 { nombre: "Guadua Machacada", id: "cant-machacada" },
                 { nombre: "Tablas de Monte", id: "cant-tablas" },
@@ -534,8 +555,6 @@
                 { nombre: "Tirantes Redondos", id: "cant-tirante" },
                 { nombre: "Estructuras para Techos", id: "cant-techos" }
             ];
-            
-            let tieneElementos = false;
 
             productosFijos.forEach(prod => {
                 let cantidad = parseInt(document.getElementById(prod.id).innerText);
@@ -545,21 +564,28 @@
                 }
             });
 
-            // Procesado Dinámico de la subcategoría de Pingos
-            let cantPingos = parseInt(document.getElementById('cant-pingos').innerText);
-            if (cantPingos > 0) {
-                let medidaPingoSeleccionada = document.getElementById('medida-pingo').value;
-                mensajeWhatsApp += `• Pingos (De ${medidaPingoSeleccionada}): ${cantPingos} unidades\n`;
-                tieneElementos = true;
-            }
+            // 2. Procesar Subcategorías de Pingos de forma totalmente independiente
+            const subPingos = [
+                { medida: "2,5 Metros", id: "cant-pingo-25" },
+                { medida: "3 Metros", id: "cant-pingo-3" }
+            ];
+            subPingos.forEach(pingo => {
+                let cantidad = parseInt(document.getElementById(pingo.id).innerText);
+                if (cantidad > 0) {
+                    mensajeWhatsApp += `• Pingos (${pingo.medida}): ${cantidad} unidades\n`;
+                    tieneElementos = true;
+                }
+            });
 
-            // Procesado Dinámico de la subcategoría de Tiras Cuadradas
-            let cantTiras = parseInt(document.getElementById('cant-tiras').innerText);
-            if (cantTiras > 0) {
-                let medidaTiraSeleccionada = document.getElementById('medida-tira').value;
-                mensajeWhatsApp += `• Tiras Cuadradas (Medida ${medidaTiraSeleccionada}): ${cantTiras} unidades\n`;
-                tieneElementos = true;
-            }
+            // 3. Procesar Subcategorías de Tiras Cuadradas (2x1 a 2x10) de forma independiente
+            const subTiras = ["2x1", "2x2", "2x3", "2x4", "2x5", "2x6", "2x7", "2x8", "2x9", "2x10"];
+            subTiras.forEach(medida => {
+                let cantidad = parseInt(document.getElementById(`tira-${medida}`).innerText);
+                if (cantidad > 0) {
+                    mensajeWhatsApp += `• Tiras Cuadradas (Medida ${medida}): ${cantidad} unidades\n`;
+                    tieneElementos = true;
+                }
+            });
 
             if (!tieneElementos) {
                 alert("Por favor, aumente al menos a 1 la cantidad de un artículo para cotizar.");
