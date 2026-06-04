@@ -104,7 +104,7 @@
         }
 
         .contenido-catalogo {
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
             background: #ffffff;
             padding: 30px;
@@ -146,32 +146,35 @@
             align-items: center;
             justify-content: space-between;
             gap: 30px;
-            padding: 30px 0;
+            padding: 35px 0;
             border-bottom: 1px solid #f2efea;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
             .fila-producto-premium {
                 flex-direction: column;
                 text-align: center;
             }
         }
 
+        /* Proporción simétrica fija y más grande para todas las imágenes */
         .visualizador-imagen-real {
-            width: 180px;
-            height: 140px;
+            width: 220px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            background-color: #faf9f6;
             flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #f0ede6;
         }
 
         .visualizador-imagen-real img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.08));
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .detalles-producto {
@@ -179,23 +182,45 @@
             text-align: left;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
             .detalles-producto {
                 text-align: center;
+                width: 100%;
             }
         }
 
         .detalles-producto h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             letter-spacing: 1px;
-            margin: 0 0 6px 0;
+            margin: 0 0 8px 0;
             color: #111;
         }
 
         .detalles-producto p {
             color: #666;
             font-size: 0.95rem;
-            margin: 0;
+            margin: 0 0 15px 0;
+        }
+
+        /* Estilo para los Selectores de Medidas Corporativos */
+        .selector-medida-lujo {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border: 1px solid #111;
+            background-color: #ffffff;
+            color: #111;
+            letter-spacing: 1px;
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            border-radius: 0;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%23111'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
         }
 
         .control-pedido {
@@ -206,6 +231,7 @@
             background: #ffffff;
             overflow: hidden;
             flex-shrink: 0;
+            height: 38px;
         }
 
         .btn-modificador {
@@ -214,8 +240,8 @@
             font-size: 1.2rem;
             color: #111;
             cursor: pointer;
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -230,11 +256,11 @@
             font-family: Arial, sans-serif;
             font-size: 1rem;
             font-weight: bold;
-            width: 35px;
+            width: 38px;
             text-align: center;
             border-left: 1px solid #111;
             border-right: 1px solid #111;
-            line-height: 35px;
+            line-height: 38px;
             background: #faf9f6;
         }
 
@@ -317,7 +343,7 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-machacada', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-machacada">1</div>
+                    <div class="valor-cantidad" id="cant-machacada">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-machacada', 1)">+</button>
                 </div>
             </div>
@@ -333,7 +359,7 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-tablas', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-tablas">1</div>
+                    <div class="valor-cantidad" id="cant-tablas">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-tablas', 1)">+</button>
                 </div>
             </div>
@@ -349,7 +375,7 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-guadua', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-guadua">1</div>
+                    <div class="valor-cantidad" id="cant-guadua">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-guadua', 1)">+</button>
                 </div>
             </div>
@@ -365,7 +391,7 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-duelas', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-duelas">1</div>
+                    <div class="valor-cantidad" id="cant-duelas">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-duelas', 1)">+</button>
                 </div>
             </div>
@@ -381,12 +407,12 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-vigas', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-vigas">1</div>
+                    <div class="valor-cantidad" id="cant-vigas">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-vigas', 1)">+</button>
                 </div>
             </div>
 
-            <!-- ITEM 6: PINGOS -->
+            <!-- ITEM 6: PINGOS (CON SUBCATEGORÍA) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
@@ -394,10 +420,14 @@
                 <div class="detalles-producto">
                     <h3>Pingos</h3>
                     <p>Troncos cilíndricos de eucalipto uniformes, tonalidad amarillo pálido con base limpia y punta plana.</p>
+                    <select id="medida-pingo" class="selector-medida-lujo">
+                        <option value="2.5 Metros">Dimensión: 2,5 Metros</option>
+                        <option value="3 Metros">Dimensión: 3 Metros</option>
+                    </select>
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-pingos', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-pingos">1</div>
+                    <div class="valor-cantidad" id="cant-pingos">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-pingos', 1)">+</button>
                 </div>
             </div>
@@ -413,28 +443,40 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-tirante', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-tirante">1</div>
+                    <div class="valor-cantidad" id="cant-tirante">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-tirante', 1)">+</button>
                 </div>
             </div>
 
-            <!-- ITEM 8: TIRAS CUADRADAS (NUEVO) -->
+            <!-- ITEM 8: TIRAS CUADRADAS (CON SUBCATEGORÍAS 2X1 HASTA 2X10) -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/ChatGPT Image Jun 3, 2026, 07_59_50 AM.png" alt="Tiras Cuadradas">
                 </div>
                 <div class="detalles-producto">
                     <h3>Tiras Cuadradas</h3>
-                    <p>Listones delgados de sección cuadrada precisa para acabados carpinteros, estructuras ligeras y paneles.</p>
+                    <p>Listones delgados de sección precisa para acabados carpinteros, estructuras ligeras y paneles.</p>
+                    <select id="medida-tira" class="selector-medida-lujo">
+                        <option value="2x1">Medida: 2x1</option>
+                        <option value="2x2">Medida: 2x2</option>
+                        <option value="2x3">Medida: 2x3</option>
+                        <option value="2x4">Medida: 2x4</option>
+                        <option value="2x5">Medida: 2x5</option>
+                        <option value="2x6">Medida: 2x6</option>
+                        <option value="2x7">Medida: 2x7</option>
+                        <option value="2x8">Medida: 2x8</option>
+                        <option value="2x9">Medida: 2x9</option>
+                        <option value="2x10">Medida: 2x10</option>
+                    </select>
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-tiras', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-tiras">1</div>
+                    <div class="valor-cantidad" id="cant-tiras">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-tiras', 1)">+</button>
                 </div>
             </div>
 
-            <!-- ITEM 9: TECHOS (NUEVO) -->
+            <!-- ITEM 9: TECHOS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_a716cza716cza716.png" alt="Techos">
@@ -445,7 +487,7 @@
                 </div>
                 <div class="control-pedido">
                     <button class="btn-modificador" onclick="modificar('cant-techos', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-techos">1</div>
+                    <div class="valor-cantidad" id="cant-techos">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-techos', 1)">+</button>
                 </div>
             </div>
@@ -481,26 +523,43 @@
 
         function enviarPresupuestoWhatsApp() {
             let mensajeWhatsApp = "Hola Maderas Imbabura. Deseo cotizar los siguientes productos de su catálogo:\n\n";
-            const productos = [
+            
+            // Productos fijos tradicionales
+            const productosFijos = [
                 { nombre: "Guadua Machacada", id: "cant-machacada" },
                 { nombre: "Tablas de Monte", id: "cant-tablas" },
                 { nombre: "Guadua Normal", id: "cant-guadua" },
                 { nombre: "Duelas de Eucalipto", id: "cant-duelas" },
                 { nombre: "Vigas Cuadradas", id: "cant-vigas" },
-                { nombre: "Pingos", id: "cant-pingos" },
                 { nombre: "Tirantes Redondos", id: "cant-tirante" },
-                { nombre: "Tiras Cuadradas", id: "cant-tiras" },
                 { nombre: "Estructuras para Techos", id: "cant-techos" }
             ];
             
             let tieneElementos = false;
-            productos.forEach(prod => {
+
+            productosFijos.forEach(prod => {
                 let cantidad = parseInt(document.getElementById(prod.id).innerText);
                 if (cantidad > 0) {
                     mensajeWhatsApp += `• ${prod.nombre}: ${cantidad} unidades\n`;
                     tieneElementos = true;
                 }
             });
+
+            // Procesado Dinámico de la subcategoría de Pingos
+            let cantPingos = parseInt(document.getElementById('cant-pingos').innerText);
+            if (cantPingos > 0) {
+                let medidaPingoSeleccionada = document.getElementById('medida-pingo').value;
+                mensajeWhatsApp += `• Pingos (De ${medidaPingoSeleccionada}): ${cantPingos} unidades\n`;
+                tieneElementos = true;
+            }
+
+            // Procesado Dinámico de la subcategoría de Tiras Cuadradas
+            let cantTiras = parseInt(document.getElementById('cant-tiras').innerText);
+            if (cantTiras > 0) {
+                let medidaTiraSeleccionada = document.getElementById('medida-tira').value;
+                mensajeWhatsApp += `• Tiras Cuadradas (Medida ${medidaTiraSeleccionada}): ${cantTiras} unidades\n`;
+                tieneElementos = true;
+            }
 
             if (!tieneElementos) {
                 alert("Por favor, aumente al menos a 1 la cantidad de un artículo para cotizar.");
