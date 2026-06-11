@@ -31,6 +31,7 @@
             justify-content: center;
         }
 
+        /* Contenedor alineado para el Logo y el Título Principal */
         .contenedor-titulo-logo {
             display: flex;
             align-items: center;
@@ -40,12 +41,14 @@
             margin: 0 auto;
         }
 
+        /* Ajuste del logo para que mantenga proporción junto al texto */
         .logo-cabecera {
             height: 75px;
             width: auto;
             object-fit: contain;
         }
 
+        /* Tipografía de Título: Más Grande, Ancha y Lujosa */
         header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
@@ -66,6 +69,7 @@
             font-style: italic;
         }
 
+        /* Adaptación responsiva para pantallas móviles */
         @media (max-width: 768px) {
             .contenedor-titulo-logo {
                 flex-direction: column;
@@ -104,23 +108,23 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.04);
         }
 
-        /* NUEVA PORTADA: TEXTURA DE MADERA NATURAL */
+        /* CONTENEDOR DE PORTADA ESTILO EDITORIAL (Inspirado en Portada_Catalogo_ROMS_640.jpg) */
         .contenedor-portada-editorial {
             position: relative;
             width: 100%;
             height: 380px;
             margin-bottom: 35px;
             overflow: hidden;
-            /* Se utiliza una textura de madera natural para un look orgánico */
-            background-image: url('https://images.unsplash.com/photo-1517832207067-4db24a2ae467?q=80&w=1200&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=1200&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2); /* Oscurecimiento suave para resaltar el texto */
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.15); /* Capa sutil para contraste */
         }
 
+        /* Texto "CATÁLOGO" integrado sobre la madera */
         .texto-portada-catalogo {
             font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
@@ -128,10 +132,10 @@
             font-weight: 400;
             letter-spacing: 12px;
             text-transform: uppercase;
-            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.4);
             user-select: none;
             margin: 0;
-            padding-left: 12px;
+            padding-left: 12px; /* Compensa el letter-spacing del final */
         }
 
         @media (max-width: 600px) {
@@ -213,6 +217,7 @@
             background: #111111;
             color: #ffffff;
             border: 1px solid #111111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             padding: 16px 45px;
             text-decoration: none;
             text-transform: uppercase;
@@ -227,12 +232,14 @@
         .btn-lujo:hover {
             background: transparent;
             color: #111111;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.0);
         }
 
         .btn-secundario {
             background: transparent;
             color: #111111;
             border: 1px solid #111111;
+            box-shadow: none;
         }
 
         .btn-secundario:hover {
@@ -240,10 +247,12 @@
             color: #ffffff;
         }
 
+        /* BOTÓN EXCLUSIVO DE WHATSAPP CON IDENTIDAD DE MARCA OPTIMIZADA */
         .btn-whatsapp {
             background: #25D366;
             color: #ffffff;
             border: 1px solid #25D366;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -256,6 +265,8 @@
         .btn-whatsapp:hover {
             background: #20ba5a;
             border-color: #20ba5a;
+            color: #ffffff;
+            box-shadow: 0 6px 25px rgba(32, 186, 90, 0.4);
             transform: translateY(-2px);
         }
 
@@ -277,6 +288,7 @@
             overflow-y: auto;
             opacity: 0;
             visibility: hidden;
+            transform: translateZ(0);
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
@@ -290,6 +302,8 @@
             margin: 0 auto;
             background: #ffffff;
             padding: 40px 30px;
+            box-shadow: 0 12px 45px rgba(0,0,0,0.02);
+            box-sizing: border-box;
         }
 
         .logo-contenedor {
@@ -315,6 +329,12 @@
             float: right;
             border-bottom: 1px solid #cccccc;
             padding-bottom: 4px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .btn-cerrar:hover {
+            color: #111111;
+            border-color: #111111;
         }
 
         .fila-producto-premium {
@@ -326,6 +346,29 @@
             border-bottom: 1px solid #efebe4;
         }
 
+        @media (max-width: 680px) {
+            .fila-producto-premium {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        .sub-fila-premium {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 680px) {
+            .sub-fila-premium {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         .visualizador-imagen-real {
             width: 220px;
             height: 220px;
@@ -334,6 +377,8 @@
             justify-content: center;
             background-color: #fafafa;
             flex-shrink: 0;
+            border-radius: 2px;
+            overflow: hidden;
             border: 1px solid #ededed;
          }
 
@@ -346,6 +391,13 @@
         .detalles-producto {
             flex-grow: 1;
             text-align: left;
+            width: 100%;
+        }
+
+        @media (max-width: 680px) {
+            .detalles-producto {
+                text-align: center;
+            }
         }
 
         .detalles-producto h3 {
@@ -354,6 +406,14 @@
             letter-spacing: 1px;
             margin: 0 0 12px 0;
             color: #111111;
+            font-weight: 700;
+        }
+
+        .detalles-producto p {
+            color: #555555;
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin: 0 0 20px 0;
         }
 
         .opciones-preparado {
@@ -361,46 +421,171 @@
             border: 1px dashed #cccccc;
             padding: 16px;
             margin-top: 18px;
+            border-radius: 4px;
             font-size: 0.85rem;
+            color: #333333;
+        }
+
+        .control-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+
+        .control-checkbox input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #111111;
+            cursor: pointer;
+        }
+
+        .txt-explicativo {
+            font-size: 0.8rem;
+            color: #666666;
+            margin-bottom: 12px;
+            font-style: italic;
+            display: block;
+            line-height: 1.4;
+        }
+
+        .contenedor-ancho-personalizado {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .input-ancho {
+            width: 75px;
+            padding: 6px;
+            border: 1px solid #111111;
+            border-radius: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .bloque-grupo-medidas {
+            width: 100%;
+        }
+
+        .titulo-grupo-medidas {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #555555;
+            margin-bottom: 14px;
+            text-align: left;
+            border-bottom: 1px solid #ebebeb;
+            padding-bottom: 6px;
+        }
+
+        @media (max-width: 680px) {
+            .titulo-grupo-medidas {
+                text-align: center;
+            }
+        }
+
+        .contenedor-submedidas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 680px) {
+            .contenedor-submedidas {
+                justify-content: center;
+            }
+        }
+
+        .bloque-submedida {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+            background: #fbfbfa;
+            padding: 10px;
+            border: 1px solid #eaeaea;
+            border-radius: 2px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 680px) {
+            .bloque-submedida {
+                align-items: center;
+            }
+        }
+
+        .etiqueta-submedida {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #111111;
+            border-bottom: 2px solid #111111;
+            padding-bottom: 2px;
+            margin-bottom: 2px;
         }
 
         .control-pedido {
             display: flex;
             align-items: center;
             border: 1px solid #111111;
+            border-radius: 2px;
+            background: #ffffff;
+            overflow: hidden;
+            flex-shrink: 0;
             height: 34px;
-            width: auto;
+            width: 100%;
         }
 
         .btn-modificador {
             background: none;
             border: none;
             font-size: 1rem;
+            color: #111111;
             cursor: pointer;
             width: 34px;
             height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .btn-modificador:hover {
+            background-color: #f5f5f5;
         }
 
         .valor-cantidad {
             font-size: 0.85rem;
             font-weight: 600;
+            flex-grow: 1;
             text-align: center;
             border-left: 1px solid #111111;
             border-right: 1px solid #111111;
-            width: 40px;
             line-height: 34px;
             background: #fafafa;
         }
 
         footer {
             text-align: center;
-            padding: 3.5rem 1rem;
+            padding: 3.5rem 1rem 2.5rem 1rem;
             color: #aaaaaa;
             font-size: 0.75rem;
             letter-spacing: 2.5px;
             text-transform: uppercase;
             border-top: 1px solid #f2f2f2;
             margin-top: 5rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
@@ -415,7 +600,7 @@
     </header>
 
     <main>
-        <!-- SECCIÓN DEL CATÁLOGO PRINCIPAL (PORTADA MADERA) -->
+        <!-- SECCIÓN DEL CATÁLOGO PRINCIPAL CON DISEÑO EDITORIAL INSPIRADO EN PORTADA_CATALOGO_ROMS_640.JPG -->
         <div class="bloque-catalogo-principal" onclick="verCatalogoRealista()">
             <div class="contenedor-portada-editorial">
                 <h3 class="texto-portada-catalogo">Catálogo</h3>
@@ -425,60 +610,354 @@
             <span class="txt-accion">Abrir Lista de Productos ➔</span>
         </div>
 
+        <!-- SECCIÓN: DÓNDE ENCONTRARNOS -->
         <div class="seccion-ubicacion">
             <span class="icon-maps">📍</span>
             <h2>Dónde Encontrarnos</h2>
-            <p class="direccion-texto">Panamericana Norte Km 2 y 1/2, Otavalo, Ecuador.</p>
-            <a href="https://maps.app.goo.gl/SnzwXHjeD2xkCZiB8?g_st=ac" class="btn-lujo btn-secundario" target="_blank">Ver en Google Maps ➔</a>
+            <p class="direccion-texto">
+                Panamericana Norte Km 2 y 1/2, Otavalo, Provincia de Imbabura, Ecuador. <br>
+                <span style="font-size: 0.85rem; color: #777777; font-style: italic; display: inline-block; margin-top: 6px;">(Frente al ingreso principal de distribución de maderas estructurales)</span>
+            </p>
+            <a href="https://maps.app.goo.gl/SnzwXHjeD2xkCZiB8?g_st=ac" class="btn-lujo btn-secundario" target="_blank">
+                Ver en Google Maps ➔
+            </a>
+        </div>
+
+        <!-- BOTÓN DE WHATSAPP -->
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="https://wa.me/593962746147?text=Hola,%20solicito%20asesoría%20comercial%20sobre%20su%20catálogo%20de%20maderas." class="btn-lujo btn-whatsapp" target="_blank">
+                <svg viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Contactar Asesor
+            </a>
         </div>
     </main>
 
-    <!-- INTERFAZ DEL CATÁLOGO DESPLEGABLE (PRODUCTOS INTACTOS) -->
+    <!-- INTERFAZ DEL CATÁLOGO DESPLEGABLE -->
     <div id="pantallaCatalogo" class="pantalla-desplegable">
         <div class="contenido-catalogo">
             <button class="btn-cerrar" onclick="ocultarCatalogo()">Cerrar ✕</button>
             <div style="clear: both;"></div>
 
-            <!-- PRODUCTOS -->
+            <div class="logo-contenedor">
+                <img src="imagenes/logo-sierra.png" class="logo-sierra" alt="Logo Maderas Imbabura" onerror="this.src='imagenes/logo-sierra.jpg';">
+            </div>
+
+            <!-- ITEM 1: GUADUA MACHACADA -->
             <div class="fila-producto-premium">
-                <div class="visualizador-imagen-real"><img src="imagenes/Gemini_Generated_Image_zcrp12zcrp12zcrp.png" alt="Guadua"></div>
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_zcrp12zcrp12zcrp.png" alt="Guadua Machacada">
+                </div>
                 <div class="detalles-producto">
                     <h3>Guadua Machacada</h3>
-                    <p>Ejemplo único abierto con fisuras rectas y uniformes.</p>
+                    <p>Ejemplo único abierto con fisuras rectas y uniformes. Exterior verde, interior amarillo natural.</p>
                 </div>
-                <div class="control-pedido">
+                <div class="control-pedido" style="width: auto; align-self: center;">
                     <button class="btn-modificador" onclick="modificar('cant-machacada', -1)">−</button>
-                    <div class="valor-cantidad" id="cant-machacada">0</div>
+                    <div class="valor-cantidad" id="cant-machacada" style="width: 40px;">0</div>
                     <button class="btn-modificador" onclick="modificar('cant-machacada', 1)">+</button>
                 </div>
             </div>
 
-            <!-- (Se mantienen todos los productos anteriores...) -->
-            <!-- Puedes añadir el resto de los productos aquí con la misma estructura -->
-            
+            <!-- ITEM 2: TABLAS DE MONTE -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_yx0vtkyx0vtkyx0v.png" alt="Tablas de Madera">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Tablas de Monte</h3>
+                    <p>Tablas aserradas rústicas de tono rojizo característico, ideales para encofrados y soporte estructural.</p>
+                    
+                    <div class="opciones-preparado">
+                        <label class="control-checkbox">
+                            <input type="checkbox" id="prep-tablas"> Solicitar Tabla Preparada
+                        </label>
+                        <span class="txt-explicativo">Se cantean los cantos para que la pieza salga recta y se cepilla la superficie para un acabado más fino y suave.</span>
+                        
+                        <div class="contenedor-ancho-personalizado">
+                            <span>Ancho deseado canteado:</span>
+                            <input type="number" id="ancho-tablas" class="input-ancho" placeholder="Ej. 18" min="1">
+                            <span>cm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-pedido" style="width: auto; align-self: center;">
+                    <button class="btn-modificador" onclick="modificar('cant-tablas', -1)">−</button>
+                    <div class="valor-cantidad" id="cant-tablas" style="width: 40px;">0</div>
+                    <button class="btn-modificador" onclick="modificar('cant-tablas', 1)">+</button>
+                </div>
+            </div>
+
+            <!-- ITEM 3: GUADUA NORMAL -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/62f0ae24-04a2-46a1-84d4-0f0189b2ecac.jpeg" alt="Guadua Normal">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Guadua Normal (Caña)</h3>
+                    <p>Caña estructural cilíndrica de sección uniforme y alta resistencia con acabado verde natural vivo.</p>
+                </div>
+                <div class="control-pedido" style="width: auto; align-self: center;">
+                    <button class="btn-modificador" onclick="modificar('cant-guadua', -1)">−</button>
+                    <div class="valor-cantidad" id="cant-guadua" style="width: 40px;">0</div>
+                    <button class="btn-modificador" onclick="modificar('cant-guadua', 1)">+</button>
+                </div>
+            </div>
+
+            <!-- ITEM 4: DUELAS DE EUCALIPTO -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/images (5).jpeg" alt="Duelas">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Duelas de Eucalipto</h3>
+                    <p>Piezas de madera lisas y cuadradas, de líneas rectas y limpias en color amarillo pálido.</p>
+                    
+                    <div class="opciones-preparado">
+                        <label class="control-checkbox">
+                            <input type="checkbox" id="prep-duelas"> Solicitar Duela Preparada
+                        </label>
+                        <span class="txt-explicativo">Se cantean los cantos para que la pieza salga recta y se cepilla la superficie para un acabado más fino y suave.</span>
+                        
+                        <div class="contenedor-ancho-personalizado">
+                            <span>Ancho deseado canteado:</span>
+                            <input type="number" id="ancho-duelas" class="input-ancho" placeholder="Ej. 12" min="1">
+                            <span>cm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-pedido" style="width: auto; align-self: center;">
+                    <button class="btn-modificador" onclick="modificar('cant-duelas', -1)">−</button>
+                    <div class="valor-cantidad" id="cant-duelas" style="width: 40px;">0</div>
+                    <button class="btn-modificador" onclick="modificar('cant-duelas', 1)">+</button>
+                </div>
+            </div>
+
+            <!-- ITEM 5: VIGAS CUADRADAS -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_tkc4xltkc4xltkc4.png" alt="Vigas Cuadradas">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Vigas Cuadradas</h3>
+                    <p>Vigas masivas de sección cuadrada uniforme, ideales para cargas pesadas y estructuras principales.</p>
+                </div>
+                <div class="control-pedido" style="width: auto; align-self: center;">
+                    <button class="btn-modificador" onclick="modificar('cant-vigas', -1)">−</button>
+                    <div class="valor-cantidad" id="cant-vigas" style="width: 40px;">0</div>
+                    <button class="btn-modificador" onclick="modificar('cant-vigas', 1)">+</button>
+                </div>
+            </div>
+
+            <!-- ITEM 6: TIRAS CUADRADAS -->
+            <div class="fila-producto-premium" style="flex-direction: column; align-items: flex-start; gap: 15px;">
+                <div style="width: 100%;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; letter-spacing: 1px; margin: 0 0 12px 0; color: #111111; font-weight: 700;">Tiras Cuadradas</h3>
+                    <p style="color: #555555; font-size: 0.95rem; font-weight: 300; margin: 0 0 25px 0;">Tiras de madera cortadas con precisión y sección cuadrada limpia, perfectas para acabados, listonados y carpintería fina.</p>
+                </div>
+                
+                <!-- Sub-Bloque para Grosor 2x -->
+                <div class="sub-fila-premium">
+                    <div class="visualizador-imagen-real">
+                        <img src="imagenes/ChatGPT%20Image%20Jun%203%2C%202026%2C%2007_59_50%20AM.png" alt="Tiras Cuadradas Grosor 2">
+                    </div>
+                    <div class="bloque-grupo-medidas">
+                        <div class="titulo-grupo-medidas">Medidas de 2 de Grosor (2x1 a 2x10)</div>
+                        <div class="contenedor-submedidas">
+                            <script>
+                                for(let i=1; i<=10; i++) {
+                                    document.write(`
+                                        <div class="bloque-submedida">
+                                            <span class="etiqueta-submedida">2 x ${i}</span>
+                                            <div class="control-pedido">
+                                                <button class="btn-modificador" onclick="modificar('cant-tira-2-${i}', -1)">−</button>
+                                                <div class="valor-cantidad" id="cant-tira-2-${i}">0</div>
+                                                <button class="btn-modificador" onclick="modificar('cant-tira-2-${i}', 1)">+</button>
+                                            </div>
+                                        </div>
+                                    `);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-Bloque para Grosor 4x -->
+                <div class="sub-fila-premium" style="margin-top: 30px; border-top: 1px dashed #efebe4; padding-top: 30px;">
+                    <div class="visualizador-imagen-real">
+                        <img src="imagenes/ChatGPT%20Image%20Jun%203%2C%202026%2C%2007_59_50%20AM.png" alt="Tiras Cuadradas Grosor 4">
+                    </div>
+                    <div class="bloque-grupo-medidas">
+                        <div class="titulo-grupo-medidas">Medidas de 4 de Grosor (4x1 a 4x10)</div>
+                        <div class="contenedor-submedidas">
+                            <script>
+                                for(let i=1; i<=10; i++) {
+                                    document.write(`
+                                        <div class="bloque-submedida">
+                                            <span class="etiqueta-submedida">4 x ${i}</span>
+                                            <div class="control-pedido">
+                                                <button class="btn-modificador" onclick="modificar('cant-tira-4-${i}', -1)">−</button>
+                                                <div class="valor-cantidad" id="cant-tira-4-${i}">0</div>
+                                                <button class="btn-modificador" onclick="modificar('cant-tira-4-${i}', 1)">+</button>
+                                            </div>
+                                        </div>
+                                    `);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 7: PINGOS -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Pingos</h3>
+                    <p>Troncos cilíndricos de eucalipto uniformes, tonalidad amarillo pálido con base limpia y punta plana.</p>
+                    
+                    <div class="contenedor-submedidas">
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">2,5 METROS</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-25', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-pingo-25">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-25', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bloque-submedida">
+                            <span class="etiqueta-submedida">3 METROS</span>
+                            <div class="control-pedido">
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-3', -1)">−</button>
+                                <div class="valor-cantidad" id="cant-pingo-3">0</div>
+                                <button class="btn-modificador" onclick="modificar('cant-pingo-3', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 8: TIRANTE REDONDO -->
+            <div class="fila-producto-premium">
+                <div class="visualizador-imagen-real">
+                    <img src="imagenes/Gemini_Generated_Image_et1hwaet1hwaet1h.png" alt="Tirante Redondo">
+                </div>
+                <div class="detalles-producto">
+                    <h3>Tirantes Redondos</h3>
+                    <p>Tirantes de madera cilíndricos perfectos, de diámetro grueso y gran longitud para amarres estables.</p>
+                </div>
+                <div class="control-pedido" style="width: auto; align-self: center;">
+                    <button class="btn-modificador" onclick="modificar('cant-tirante', -1)">−</button>
+                    <div class="valor-cantidad" id="cant-tirante" style="width: 40px;">0</div>
+                    <button class="btn-modificador" onclick="modificar('cant-tirante', 1)">+</button>
+                </div>
+            </div>
+
+            <!-- BOTÓN INTERNO COTIZAR PEDIDO -->
             <div style="text-align: center; margin-top: 45px;">
-                <button class="btn-lujo btn-whatsapp" onclick="enviarPresupuestoWhatsApp()">Cotizar Pedido</button>
+                <button class="btn-lujo btn-whatsapp" onclick="enviarPresupuestoWhatsApp()">
+                    <svg viewBox="0 0 448 512">
+                        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                    </svg>
+                    Cotizar Pedido
+                </button>
             </div>
         </div>
     </div>
+
+    <footer>
+        © 2026 MADERAS IMBABURA — OTAVALO, ECUADOR
+    </footer>
 
     <script>
         function verCatalogoRealista() {
             document.getElementById("pantallaCatalogo").classList.add("activa");
             document.body.style.overflow = "hidden";
         }
+
         function ocultarCatalogo() {
             document.getElementById("pantallaCatalogo").classList.remove("activa");
             document.body.style.overflow = "auto";
         }
+
         function modificar(id, incremento) {
             const casilla = document.getElementById(id);
             if (casilla) {
                 let actual = parseInt(casilla.innerText) + incremento;
-                if (actual >= 0) casilla.innerText = actual;
+                if (actual >= 0) {
+                    casilla.innerText = actual;
+                }
             }
         }
-        // ... (Mantener la función enviarPresupuestoWhatsApp completa)
+
+        function enviarPresupuestoWhatsApp() {
+            let mensajeWhatsApp = "Hola Maderas Imbabura. Deseo cotizar los siguientes productos de su catálogo:\n\n";
+            let tieneElementos = false;
+
+            let cantMachacada = parseInt(document.getElementById('cant-machacada').innerText);
+            if (cantMachacada > 0) { mensajeWhatsApp += `• Guadua Machacada: ${cantMachacada} unidades\n`; tieneElementos = true; }
+
+            let cantTablas = parseInt(document.getElementById('cant-tablas').innerText);
+            if (cantTablas > 0) {
+                let prep = document.getElementById('prep-tablas').checked ? "SÍ" : "NO";
+                let ancho = document.getElementById('ancho-tablas').value;
+                mensajeWhatsApp += `• Tablas de Monte: ${cantTablas} unidades (Preparada/Canteada: ${prep}`;
+                if (ancho) { mensajeWhatsApp += `, Ancho: ${ancho}cm`; }
+                mensajeWhatsApp += `)\n`;
+                tieneElementos = true;
+            }
+
+            let cantGuadua = parseInt(document.getElementById('cant-guadua').innerText);
+            if (cantGuadua > 0) { mensajeWhatsApp += `• Guadua Normal (Caña): ${cantGuadua} unidades\n`; tieneElementos = true; }
+
+            let cantDuelas = parseInt(document.getElementById('cant-duelas').innerText);
+            if (cantDuelas > 0) {
+                let prep = document.getElementById('prep-duelas').checked ? "SÍ" : "NO";
+                let ancho = document.getElementById('ancho-duelas').value;
+                mensajeWhatsApp += `• Duelas de Eucalipto: ${cantDuelas} unidades (Preparada/Canteada: ${prep}`;
+                if (ancho) { mensajeWhatsApp += `, Ancho: ${ancho}cm`; }
+                mensajeWhatsApp += `)\n`;
+                tieneElementos = true;
+            }
+
+            let cantVigas = parseInt(document.getElementById('cant-vigas').innerText);
+            if (cantVigas > 0) { mensajeWhatsApp += `• Vigas Cuadradas: ${cantVigas} unidades\n`; tieneElementos = true; }
+
+            for (let i = 1; i <= 10; i++) {
+                let cant = parseInt(document.getElementById(`cant-tira-2-${i}`).innerText);
+                if (cant > 0) {
+                    mensajeWhatsApp += `• Tiras Cuadradas (2x${i}): ${cant} unidades\n`;
+                    tieneElementos = true;
+                }
+            }
+
+            for (let i = 1; i <= 10; i++) {
+                let cant = parseInt(document.getElementById(`cant-tira-4-${i}`).innerText);
+                if (cant > 0) {
+                    mensajeWhatsApp += `• Tiras Cuadradas (4x${i}): ${cant} unidades\n`;
+                    tieneElementos = true;
+                }
+            }
+
+            let cantPingo25 = parseInt(document.getElementById('cant-pingo-25').innerText);
+            if (cantPingo25 > 0) { mensajeWhatsApp += `• Pingos (2.5m): ${cantPingo25} unidades\n`; tieneElementos = true; }
+
+            let cantPingo3 = parseInt(document.getElementById('cant-pingo-3').innerText);
+            if (cantPingo3 > 0) { mensajeWhatsApp += `• Pingos (3m): ${cantPingo3} unidades\n`; tieneElementos = true; }
+
+            let cantTirante = parseInt(document.getElementById('cant-tirante').innerText);
+            if (cantTirante > 0) { mensajeWhatsApp += `• Tirantes Redondos: ${cantTirante} unidades\n`; tieneElementos = true; }
+
+            if (!tieneElementos) {
+                alert("Por favor, aumente al menos a 1 la cantidad de un artículo para cotizar.");
+                return;
+            }
+
+            window.open("https://wa.me/593962746147?text=" + encodeURIComponent(mensajeWhatsApp), "_blank");
+        }
     </script>
 </body>
 </html>
