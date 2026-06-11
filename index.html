@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maderas Imbabura | Catálogo Comercial Premium</title>
+    <!-- Importación de Tipografías de Lujo desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -107,12 +108,44 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.04);
         }
 
-        .banner-madera {
+        /* CONTENEDOR DE PORTADA ESTILO EDITORIAL (Inspirado en Portada_Catalogo_ROMS_640.jpg) */
+        .contenedor-portada-editorial {
+            position: relative;
             width: 100%;
-            height: 350px;
-            object-fit: cover;
+            height: 380px;
             margin-bottom: 35px;
-            background-color: #f5f3ef;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.15); /* Capa sutil para contraste */
+        }
+
+        /* Texto "CATÁLOGO" integrado sobre la madera */
+        .texto-portada-catalogo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.4);
+            user-select: none;
+            margin: 0;
+            padding-left: 12px; /* Compensa el letter-spacing del final */
+        }
+
+        @media (max-width: 600px) {
+            .contenedor-portada-editorial {
+                height: 280px;
+            }
+            .texto-portada-catalogo {
+                font-size: 3rem;
+                letter-spacing: 6px;
+            }
         }
 
         .bloque-catalogo-principal h2 {
@@ -567,13 +600,17 @@
     </header>
 
     <main>
+        <!-- SECCIÓN DEL CATÁLOGO PRINCIPAL CON DISEÑO EDITORIAL INSPIRADO EN PORTADA_CATALOGO_ROMS_640.JPG -->
         <div class="bloque-catalogo-principal" onclick="verCatalogoRealista()">
-            <img class="banner-madera" src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=1200&auto=format&fit=crop" alt="Catálogo de Maderas Estructurales e Industriales">
+            <div class="contenedor-portada-editorial">
+                <h3 class="texto-portada-catalogo">Catálogo</h3>
+            </div>
             <h2>Ver Catálogo Comercial</h2>
             <p>Explora nuestras piezas listas para distribución con sus acabados, medidas y tonalidades reales de fábrica.</p>
             <span class="txt-accion">Abrir Lista de Productos ➔</span>
         </div>
 
+        <!-- SECCIÓN: DÓNDE ENCONTRARNOS -->
         <div class="seccion-ubicacion">
             <span class="icon-maps">📍</span>
             <h2>Dónde Encontrarnos</h2>
@@ -586,6 +623,7 @@
             </a>
         </div>
 
+        <!-- BOTÓN DE WHATSAPP -->
         <div style="text-align: center; margin-top: 4rem;">
             <a href="https://wa.me/593962746147?text=Hola,%20solicito%20asesoría%20comercial%20sobre%20su%20catálogo%20de%20maderas." class="btn-lujo btn-whatsapp" target="_blank">
                 <svg viewBox="0 0 448 512">
@@ -596,6 +634,7 @@
         </div>
     </main>
 
+    <!-- INTERFAZ DEL CATÁLOGO DESPLEGABLE -->
     <div id="pantallaCatalogo" class="pantalla-desplegable">
         <div class="contenido-catalogo">
             <button class="btn-cerrar" onclick="ocultarCatalogo()">Cerrar ✕</button>
@@ -605,6 +644,7 @@
                 <img src="imagenes/logo-sierra.png" class="logo-sierra" alt="Logo Maderas Imbabura" onerror="this.src='imagenes/logo-sierra.jpg';">
             </div>
 
+            <!-- ITEM 1: GUADUA MACHACADA -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_zcrp12zcrp12zcrp.png" alt="Guadua Machacada">
@@ -620,6 +660,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 2: TABLAS DE MONTE -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_yx0vtkyx0vtkyx0v.png" alt="Tablas de Madera">
@@ -648,6 +689,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 3: GUADUA NORMAL -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/62f0ae24-04a2-46a1-84d4-0f0189b2ecac.jpeg" alt="Guadua Normal">
@@ -663,6 +705,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 4: DUELAS DE EUCALIPTO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/images (5).jpeg" alt="Duelas">
@@ -691,6 +734,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 5: VIGAS CUADRADAS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_tkc4xltkc4xltkc4.png" alt="Vigas Cuadradas">
@@ -706,12 +750,14 @@
                 </div>
             </div>
 
+            <!-- ITEM 6: TIRAS CUADRADAS -->
             <div class="fila-producto-premium" style="flex-direction: column; align-items: flex-start; gap: 15px;">
                 <div style="width: 100%;">
                     <h3 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; letter-spacing: 1px; margin: 0 0 12px 0; color: #111111; font-weight: 700;">Tiras Cuadradas</h3>
                     <p style="color: #555555; font-size: 0.95rem; font-weight: 300; margin: 0 0 25px 0;">Tiras de madera cortadas con precisión y sección cuadrada limpia, perfectas para acabados, listonados y carpintería fina.</p>
                 </div>
                 
+                <!-- Sub-Bloque para Grosor 2x -->
                 <div class="sub-fila-premium">
                     <div class="visualizador-imagen-real">
                         <img src="imagenes/ChatGPT%20Image%20Jun%203%2C%202026%2C%2007_59_50%20AM.png" alt="Tiras Cuadradas Grosor 2">
@@ -737,6 +783,7 @@
                     </div>
                 </div>
 
+                <!-- Sub-Bloque para Grosor 4x -->
                 <div class="sub-fila-premium" style="margin-top: 30px; border-top: 1px dashed #efebe4; padding-top: 30px;">
                     <div class="visualizador-imagen-real">
                         <img src="imagenes/ChatGPT%20Image%20Jun%203%2C%202026%2C%2007_59_50%20AM.png" alt="Tiras Cuadradas Grosor 4">
@@ -763,6 +810,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 7: PINGOS -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_u6wcpfu6wcpfu6wc.png" alt="Pingos">
@@ -792,6 +840,7 @@
                 </div>
             </div>
 
+            <!-- ITEM 8: TIRANTE REDONDO -->
             <div class="fila-producto-premium">
                 <div class="visualizador-imagen-real">
                     <img src="imagenes/Gemini_Generated_Image_et1hwaet1hwaet1h.png" alt="Tirante Redondo">
@@ -807,6 +856,7 @@
                 </div>
             </div>
 
+            <!-- BOTÓN INTERNO COTIZAR PEDIDO -->
             <div style="text-align: center; margin-top: 45px;">
                 <button class="btn-lujo btn-whatsapp" onclick="enviarPresupuestoWhatsApp()">
                     <svg viewBox="0 0 448 512">
